@@ -253,19 +253,6 @@ return cb(null,foundUser);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // passport.use(new FacebookStrategy({
 //     clientID: "228431839468988",
 //     clientSecret: "7a7dcdf037c45e16694897737284b631",
@@ -369,7 +356,12 @@ app.get("/auth/facebook/final",
     console.log(req.user, req.isAuthenticated());
     res.render("welcome",{fname:facefname});
   });
-
+  app.get("/teacherDashboard",function(req,res){
+    res.sendFile(__dirname + "/teacherDashboard.html");
+  }); 
+app.get("/addStudent",function(req,res){
+  res.sendFile(__dirname + "/AddStudent.html");
+}); 
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/home.html");
 });
@@ -743,10 +735,6 @@ app.post("/signup", function(req, res) {
               console.log(err);
             }
           });
-
-
-
-
 
 
       });
