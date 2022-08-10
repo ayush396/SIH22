@@ -1,0 +1,76 @@
+<style>@import url('https://fonts.googleapis.com/css2?family=Gulzar&display=swap');</style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+</style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+  }
+.name{
+    font-size:25px ;
+    font-family: 'Lobster', cursive;
+    margin-left: 30%;
+    margin-top: 5%;
+    text-decoration: none;
+
+}
+a:link{
+    text-decoration: none;
+}
+.title{
+    margin-top: 1%;
+    text-align: center;
+    margin-left: 6%;
+    font-size: 47px;
+    font-family: 'Gulzar', serif;
+    font-weight: bolder;
+
+}
+
+
+
+.first{
+    margin-left: 25%;
+    /* border: solid 1px black; */
+    margin-top: 4%;
+
+}
+
+
+
+.box{
+
+        background-color:white;
+
+        border-radius:10px;
+        color:black;
+
+        margin-left: 20%;
+        margin-top: 2.5%;
+        padding-top: 5%;
+        border-radius: 40px;
+        box-shadow: 5px 5px 30px 7px rgba(11, 211, 221, 0.25), -5px -5px 30px 7px rgb(237, 253, 254);
+        cursor: pointer;
+        transition: 0.4s;
+
+
+}
+
+.box:hover{
+
+        transform: scale(1.1, 1.1);
+        box-shadow: 5px 5px 30px 15px rgba(177, 9, 234, 0.25),
+          -5px -5px 30px 15px rgba(205, 122, 213, 0.22);
+
+}
+
+.card_image img {
+    margin-left: 13%;
+    width: 210px;
+    height: 210px;
+    border-radius: 40px;
+    object-fit: cover;
+  }

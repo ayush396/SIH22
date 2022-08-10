@@ -1,0 +1,38 @@
+body{
+
+    background-image: linear-gradient(white,#87edcf, white);
+  }
+.lesson{
+
+  padding:130px 3% 15%;
+}
+
+table {
+  background-color: white;
+
+  border-collapse: collapse;
+  width: 100%;
+
+}
+
+tbody {
+height: 550px;
+display: block;
+  overflow: scroll;
+
+  overflow-x: hidden;
+}
+
+a{
+  text-decoration: none;
+  color:black;
+  font-size: 1.15rem;
+  margin-left: 10px;
+
+}
+
+td {
+width: 160%;
+  font-size: 1.5rem;
+  line-height: 3.2rem;
+}
