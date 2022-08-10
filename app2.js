@@ -441,7 +441,7 @@ app.post("/teacher_login",function(req,res){
         res.send("No account with these credentials");
       }else{
         if(found.password===req.body.password){
-          res.sendFile(__dirname + "/teacherDashboard.html");
+          res.render("teacherDashboard",{fname:found.fname});
         }else{
           res.send("Wrong Password");
         }
