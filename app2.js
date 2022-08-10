@@ -1,3 +1,5 @@
+// git checkout -b balkar
+// git push -u origin balkar
 require("dotenv").config()
 const express = require("express");
 var cron = require('node-cron');
@@ -456,6 +458,10 @@ app.post("/login", function(req, res) {
     username: req.body.username,
     password: req.body.password
   });
+  User.find().sort('-studentID').exec((err,doc)=>{
+    m=doc[0].studentID;
+    console.log(m);
+  })
   User.findOne({username:req.body.username}, function(err,found){
       if(err){
         console.log(err);
@@ -562,7 +568,12 @@ app.post("/signup", function(req, res) {
       console.log(req.body.gender);
       console.log(req.body.cnumber);
       console.log(req.body.city);
-
+      var m=4000;
+      User.find().sort('-studentID').exec((err,doc)=>{
+        m=doc[0].studentID + 1;
+        console.log(m);
+      })
+      console.log("latest id"+m);
       User.findOne({
       username: req.body.email
           }, function(err, found) {
@@ -575,12 +586,13 @@ app.post("/signup", function(req, res) {
 
                  User.register({
                    username: req.body.email,
-	           email:req.body.email,
+	                 email:req.body.email,
                    fname: req.body.fname,
                    lname: req.body.lname,
                    dob: req.body.dob,
                    gender: req.body.gender,
                    contact: req.body.cnumber,
+                   studentID:m,
                    city: req.body.city,
                    flag: 0,
                    thought:x,
@@ -599,33 +611,7 @@ app.post("/signup", function(req, res) {
                    }
                  });
 
-                 const newTeacher = new Teacher({
-                     email:"sample@teacher.com",
-                     password:"12345",
-                     fname:"Rajesh",
-                     lname:"Arora",
-                     designation:"Science",
-                     reminder:"none",
-                     dob:"01/05/1990",
-                     teacherID:4000,
-
-                   })
-                   for (i = 1; i <= 3; i++) {
-                     newTeacher.class.unshift(i);
-                   }
-                   for (i = 1; i <= 5; i++) {
-                     newTeacher.reminder.unshift(i);
-                   }
-
-
-                   newTeacher.save(function(err) {
-                     console.log("HRLLO JIII");
-                     if (err)
-                       console.log("ERRORS IN SCORE");
-                     else
-                       console.log("SUCCESS SCORE");
-                   });
-                 const newScore = new Score({
+                   const newScore = new Score({
                    email: req.body.email,
                    fname: req.body.fname,
                    score: 0,
@@ -739,9 +725,6 @@ app.post("/signup", function(req, res) {
                      }
                    })
                  res.sendFile(__dirname + '/login2.html'); console.log("new");
-
-
-
               }
             } else {
               console.log(err);
