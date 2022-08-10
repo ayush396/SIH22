@@ -428,13 +428,34 @@ cron.schedule('0 0 * * *', () => {
 });
 
 
+
+app.post("/teacher_login",function(req,res){
+  
+  Teacher.findOne({username:req.body.username},function(err,found){
+    if(err){
+      console.log(err);
+    }else{
+      if(!found){
+        res.send("No account with these credentials");
+      }else{
+        if(found.password===req.body.password){
+          res.sendFile(__dirname + "/teacherDashboard.html");
+        }else{
+          res.send("Wrong Password");
+        }
+      }
+    }
+  })
+})
+// sample@teacher.com
+// 12345
 app.post("/login", function(req, res) {
   const username = req.body.username;
+  console.log(username);
   const user = new User({
-    username: req.body.email,
+    username: req.body.username,
     password: req.body.password
   });
-
   User.findOne({username:req.body.username}, function(err,found){
       if(err){
         console.log(err);
@@ -442,7 +463,6 @@ app.post("/login", function(req, res) {
       }else{
           if(found){
               if(!found.confirmed){
-
                   res.sendFile(__dirname+"/login3.html");
               }
               else{
@@ -454,13 +474,6 @@ app.post("/login", function(req, res) {
                   } else {
                     passport.authenticate("local")(req, res, function() {
                       console.log("SUCCESS");
-
-                      var type=req.body.login_as;
-                      if(type=="Teacher"){
-                        res.send("Logged in as a teacher");
-                        }else{
-                          res.redirect("/final");
-        }
 
                       Score.findOne({
                           email: username
@@ -474,8 +487,6 @@ app.post("/login", function(req, res) {
                               console.log(foundUser.score);
                               console.log(foundUser.fname);
                               console.log(foundUser.lname);
-                              // console.log(foundUser.gender);
-                              // console.log(foundUser.dob);
                               res.render("welcome", {
                                   username: username,
                                   score: foundUser.score,
@@ -497,7 +508,8 @@ app.post("/login", function(req, res) {
           }
 	      else
 	      {
-                      res.sendFile(__dirname+"/login4.html");
+          console.log("hi");
+          res.sendFile(__dirname+"/login4.html");
 	      }
       }
   });
