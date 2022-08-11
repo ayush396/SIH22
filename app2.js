@@ -205,6 +205,7 @@ const Teacher = new mongoose.model("Teacher", teacherSchema);
 
 
 passport.use(User.createStrategy());
+
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
@@ -375,15 +376,15 @@ app.get("/auth/google",
   })
 );
 
-const newTeacher = new Teacher(
-  {
-    email:"sample@teacher.com",
-    password:"12345",
-    fname:"Rajesh",
-    lname:"Arora",
-    subject:"Science",
-    studentID:4000,
-  });
+// const newTeacher = new Teacher(
+//   {
+//     email:"sample@teacher.com",
+//     password:"12345",
+//     fname:"Rajesh",
+//     lname:"Arora",
+//     subject:"Science",
+//     studentID:4000,
+//   });
 
 app.get("/auth/google/final",
   passport.authenticate('google', {
@@ -407,7 +408,14 @@ app.get("/student", function(req, res) {
   res.sendFile(__dirname + "/login.html");
 });
 
+app.get("/parent", function(req, res) {
+  res.sendFile(__dirname + "/parent.html");
+});
 
+
+app.get("/student", function(req, res) {
+  res.sendFile(__dirname + "/login.html");
+});
 app.get("/signup", function(req, res) {
   res.sendFile(__dirname + "/signup.html");
 });
@@ -451,13 +459,57 @@ app.post("/teacher_login",function(req,res){
 })
 // sample@teacher.com
 // 12345
-app.post("/login", function(req, res) {
+
+
+// app.post("/parent_login", function(req,res){
+//      var mail;
+//      User.findOne({parentEmail:req.body.username},(err,found)=>{
+      
+//       if(err){
+//         console.log(err);
+//       }else{
+
+//         if(found){
+//           mail= found.email;
+//           console.log(mail+" inhbfb");
+//           const user = new User({
+//             username: mail,
+//             // studentID:found.studentID,
+//             // teacherID:found.teacherID,
+//             // confirmed:true,
+//             // _id:found._id
+//             password: req.body.password
+//           });
+          
+//           req.login(user, function(err) {
+//             if (err) {
+//               console.log(err);
+//               console.log("ERRORS");
+//             } else {
+//               console.log(user);
+//               passport.authenticate("local")(req, res, function() {
+//                 console.log("SUCCESS");
+//               });
+//             }
+//           });
+//         }else{
+//           console.log("No data found");
+//           res.send("abc");
+//         }
+//       }
+//     });
+//     // console.log(mail);
+    
+// })
+
+app.post("/parent_login", function(req, res) {
   const username = req.body.username;
   console.log(username);
   const user = new User({
     username: req.body.username,
     password: req.body.password
   });
+  console.log(user);
   User.find().sort('-studentID').exec((err,doc)=>{
     m=doc[0].studentID;
     console.log(m);
@@ -468,6 +520,80 @@ app.post("/login", function(req, res) {
         console.log("ERRORS IN LOGGING IN");
       }else{
           if(found){
+              // console.log(found);
+              if(!found.confirmed){
+                  res.sendFile(__dirname+"/login3.html");
+              }
+              else{
+                req.login(user, function(err) {
+                  if (err) {
+
+                    console.log(err);
+                    console.log("ERRORS");
+                  } else {
+                    passport.authenticate("local")(req, res, function() {
+                      console.log("SUCCESS");
+
+                      Score.findOne({
+                          email: username
+                        }, function(err, foundUser) {
+                          if (err) {
+                            console.log(err);
+                            console.log("ERRORS IN LOGGING IN");
+                          } else {
+                            if (foundUser) {
+
+                              console.log(foundUser.score);
+                              console.log(foundUser.fname);
+                              console.log(foundUser.lname);
+                              res.render("welcome", {
+                                  username: username,
+                                  score: foundUser.score,
+                                  fname: "Parent",
+                                  lname:foundUser.lname,
+                                  gender:foundUser.gender,
+                                  dob:foundUser.dob,
+                                });
+
+                            }
+                          }
+                        });
+
+                    });
+                  }
+                });
+
+              }
+          }
+	      else
+	      {
+          console.log("hi");
+          res.sendFile(__dirname+"/login4.html");
+	      }
+      }
+  });
+});
+
+
+app.post("/login", function(req, res) {
+  const username = req.body.username;
+  console.log(username);
+  const user = new User({
+    username: req.body.username,
+    password: req.body.password
+  });
+  console.log(user);
+  User.find().sort('-studentID').exec((err,doc)=>{
+    m=doc[0].studentID;
+    console.log(m);
+  })
+  User.findOne({username:req.body.username}, function(err,found){
+      if(err){
+        console.log(err);
+        console.log("ERRORS IN LOGGING IN");
+      }else{
+          if(found){
+              // console.log(found);
               if(!found.confirmed){
                   res.sendFile(__dirname+"/login3.html");
               }
@@ -558,22 +684,21 @@ app.post("/login1", function(req, res) {
     res.sendFile(__dirname + "/reset-password.html")
   }
 })
-app.post("/signup", function(req, res) {
-      const fname = req.body.fname;
-      console.log(req.body.fname);
-      console.log(req.body.lname);
-      console.log(req.body.email);
-      console.log(req.body.password);
-      console.log(req.body.dob);
-      console.log(req.body.gender);
-      console.log(req.body.cnumber);
-      console.log(req.body.city);
-      var m=4000;
-      User.find().sort('-studentID').exec((err,doc)=>{
+app.post("/signup",  function(req, res) {
+      // const fname = req.body.fname;
+      // console.log(req.body.fname);
+      // console.log(req.body.lname);
+      // console.log(req.body.email);
+      // console.log(req.body.password);
+      // console.log(req.body.dob);
+      // console.log(req.body.gender);
+      // console.log(req.body.cnumber);
+      // console.log(req.body.city);
+      
+       User.find().sort('-studentID').exec((err,doc)=>{
         m=doc[0].studentID + 1;
         console.log(m);
-      })
-      console.log("latest id"+m);
+      
       User.findOne({
       username: req.body.email
           }, function(err, found) {
@@ -593,6 +718,7 @@ app.post("/signup", function(req, res) {
                    gender: req.body.gender,
                    contact: req.body.cnumber,
                    studentID:m,
+                   parentEmail:req.body.parent_email,
                    city: req.body.city,
                    flag: 0,
                    thought:x,
@@ -733,7 +859,7 @@ app.post("/signup", function(req, res) {
 
 
       });
-
+    })
       app.get("/thankyou", function(req, res) {
       res.sendFile(__dirname + ('/thankyou.html'))
     })
