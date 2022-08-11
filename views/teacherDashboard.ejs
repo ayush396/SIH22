@@ -172,7 +172,7 @@ font-family: sans-serif;
                      </li>
 
                      <li class="nav-item active">
-                      <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="/addStudent">Add Students </a>
+                      <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="/addStudent?teacherID=<%=idd%>">Add Students </a>
                   </li>
 
                      <li class="nav-item">
@@ -199,7 +199,7 @@ font-family: sans-serif;
       </div>
       <p class="desc">Develop a passion for learning with our Smart Learning app specially curated for your child’s learning needs. A fun way to learn begins here. Because we believe that learning can happen anywhere not just in classroom. </p>
       <p class="desc1"> Fuel your child’s desire to learn by clicking the download button.</p>
-
+      <input type="text" id = "tech" hidden value="<%= idd %>" name="techid">
   </div>
 
 </div>

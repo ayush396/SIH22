@@ -1,6 +1,7 @@
 // git checkout -b balkar
 // git push -u origin balkar
 require("dotenv").config()
+
 const express = require("express");
 var cron = require('node-cron');
 const bodyParser = require("body-parser");
@@ -19,6 +20,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 const app = express();
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
+
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -439,8 +441,9 @@ cron.schedule('0 0 * * *', () => {
 
 
 
+
 app.post("/teacher_login",function(req,res){
-  
+ 
   Teacher.findOne({username:req.body.username},function(err,found){
     if(err){
       console.log(err);
@@ -449,13 +452,50 @@ app.post("/teacher_login",function(req,res){
         res.send("No account with these credentials");
       }else{
         if(found.password===req.body.password){
-          res.render("teacherDashboard",{fname:found.fname});
+          teachid=found.teacherID;
+          console.log(teachid)
+          res.render("teacherDashboard",{fname:found.fname,idd:found.teacherID});
         }else{
           res.send("Wrong Password");
         }
       }
     }
   })
+})
+app.post("/add",function(req,res){
+  const retrivedList=req.body.list;
+  var jsonListitems = JSON.parse(retrivedList)
+  console.log(JSON.parse(retrivedList));  
+  // console.log(teachid);
+  const teachid=req.body.tid;
+  // console.log();
+  jsonListitems.map((item) => {
+      // console.log(item.bt);
+
+      User.findOne({studentID:item.at},function(err,found){
+        if(err){
+          console.log(err);
+        }else{
+          
+          // console.log(req.body.at);
+          if(!found){
+            res.send("No Student Found");
+          }else{
+            console.log(item.at)
+            User.update({studentID:item.at},{teacherID: parseInt(teachid)},function(err,doc){
+              if(err){
+                console.log(err);
+              }else{
+                console.log(teachid);
+                console.log("Updated")
+                
+              }
+            })
+          }
+        }
+      })
+  })
+  res.redirect("/addStudent");
 })
 // sample@teacher.com
 // 12345
