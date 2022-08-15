@@ -12,33 +12,38 @@
     <script src="https://kit.fontawesome.com/59d8afb937.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
 
-    <title>Add Students</title>
+    <title>Test Management</title>
+    <style>
+      .quess{
+        background-color: #4005ad;
+      }
+    </style>
 </head>
 
 <body>
     <div class="section1">
         <div class=" quess">
             <div class="q1">
-                <i class="fa-solid fa-children i1"></i>
-                <p class="head1" style="align-items: center">Manage Test Links </p>
+              <i class="fa-solid fa-list-check i1" style="margin-left:25%;"></i>
+                <p class="head1" style="align-items: center; margin-top:15%;">Manage Tests </p>
             </div>
 
         </div>
         <div class=" anss">
 
-            <a href="/"> <p style="margin-left:84%; margin-top: 2%;margin-right:5%; color: #22663b ; font-size:1.2rem;">Dashboard</p></a>
+            <a href="/"> <p style="margin-left:84%; margin-top: 2%;margin-right:5%; color: #4005ad; font-size:1.2rem;">Dashboard</p></a>
 
 
             <div id="ipDetails" class="form3" style="margin-left: 15%;">
-                <h1 class="display-3" style="color: #22663b;">Test Details</h1>
+                <h1 class="display-3" style="color: #4005ad;">Assign Assessments</h1>
                 <br>
 
                 <div id="Idname" style="visibility: hidden;margin-top: -10%;">
                   <table style="width:80%;">
                     <tr>
-                      <th style="padding-left:12%;">Teacher ID</th>
+                      <th style="padding-left:12%;">Test ID</th>
                       <th style="padding-left:10%; width:50%;">Test Link</th>
-                      <th style="padding-left:12%;">Time</th>
+                      <th style="padding-left:12%;">Date Alloted</th>
                     </tr>
 
                   </table>
@@ -48,26 +53,26 @@
                 <br>
                 <div id="showinput"></div>
                 <hr>
-                <div class="container box">
+                <div class="container box" style=" background-color:#efe8fc;">
                   <div class="row">
                     <form action="/add" method="post">
                         <div class="form-group" style="margin-left:50px; float:left;  width: 24%">
                             <label class="col-form-label" for="inputDefault">Enter Teacher ID:</label>
-                            <input class="form-control" id="newat" name="at" placeholder="ID" type="text" size="35">
+                            <input class="form-control" id="newat" name="at" placeholder="Assign Teachers" type="text" size="35">
                         </div>
                         <div class="form-group" style="margin-left:50px; float:left;  width: 40%">
                             <label class="col-form-label" for="inputDefault">Enter Test Link</label>
-                            <input class="form-control" id="newbt" name="bt" placeholder="Student Name" type="text" size="35">
+                            <input class="form-control" id="newbt" name="bt" placeholder="Paste Test Link" type="text" size="35">
                             <input hidden id="newct" name="ct" type="text" >
                             <input type="text" hidden value="" id="hid" name="list">
                             <input type="text" hidden value="" id="hid1" name="tid">
                         </div>
                     
                     
-                    <button type="button" class="btn btn-primary" style="margin-left: 55%;margin-top:5%; border:none;background-color: #22663b; font-size: 1rem; padding:1.3%; padding-left:3.2%;padding-right:3.2%" >Export to CSV</button>
-                    <button type="button" class="btn btn-primary" style="margin-left: 5%;margin-top:5%; border:none;background-color: #22663b; font-size: 1.2rem; padding:1%; padding-left:3.2%;padding-right:3.2%" onclick="abcd()">Add</button>
+                    <!-- <button type="button" class="btn btn-primary" style="margin-left: 55%;margin-top:5%; border:none;background-color: #22663b; font-size: 1rem; padding:1.3%; padding-left:3.2%;padding-right:3.2%" >Export to CSV</button> -->
+                    <button type="button" class="btn btn-primary" style="margin-left: 55%;margin-top:5%; border:none;background-color: #4005ad; font-size: 1.2rem; padding:1%; padding-left:3.2%;padding-right:3.2%" onclick="abcd()">Add</button>
 
-                    <button type="submit" class="btn btn-primary" style="margin-left: 5%;margin-top:5%; border:none;background-color: #22663b; font-size: 1rem; padding:1.3%; padding-left:3.2%;padding-right:3.2%" onclick="saveChanges()">Save Changes</button>
+                    <button type="submit" class="btn btn-primary" style="margin-left: 5%;margin-top:5%; border:none;background-color: #4005ad; font-size: 1rem; padding:1.3%; padding-left:3.2%;padding-right:3.2%" onclick="saveChanges()">Save Changes</button>
                     </form>
                       
                   </div>
