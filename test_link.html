@@ -65,7 +65,7 @@
                             <input class="form-control" id="newbt" name="bt" placeholder="Paste Test Link" type="text" size="35">
                             <input hidden id="newct" name="ct" type="text" >
                             <input type="text" hidden value="" id="hid" name="list">
-                            <!-- <input type="text" hidden value="" id="hid1" name="tid"> -->
+                            <input type="text" hidden value="" id="hid1" name="tid">
                         </div>
                     
                     
@@ -86,11 +86,11 @@
 
 
     <script>
-      // const urlParams = new URLSearchParams(window.location.search);
-      // const greetingValue = urlParams.get('officalID');
-      // console.log(greetingValue);
+      const urlParams = new URLSearchParams(window.location.search);
+      const greetingValue = urlParams.get('officalID');
+      console.log(greetingValue);
       function abcd(){
-        // document.getElementById("hid1").value=greetingValue;
+        document.getElementById("hid1").value=greetingValue;
         addToList();
       }
     </script>
