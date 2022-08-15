@@ -90,6 +90,28 @@ const teacherSchema = new mongoose.Schema({
       unique: false
     }
 });
+
+
+const officialSchema = new mongoose.Schema({
+  email:String,
+  password:String,
+  fname:String,
+  lname:String,
+  dob:String,
+  designation:String,
+  
+  img:
+   {
+       data: Buffer,
+       contentType: String
+   },
+  officialID:Number,
+    class: {
+      type: [Number],
+      index: true,
+      unique: false
+    }
+});
 const userSchema = new mongoose.Schema({
 
   parentEmail:String,
@@ -204,7 +226,7 @@ userSchema.plugin(findOrCreate);
 
 const User = new mongoose.model("User", userSchema);
 const Teacher = new mongoose.model("Teacher", teacherSchema);
-
+const Official = new mongoose.model("Official", officialSchema);
 
 passport.use(User.createStrategy());
 
@@ -363,10 +385,15 @@ app.get("/auth/facebook/final",
   });
   app.get("/teacherDashboard",function(req,res){
     res.sendFile(__dirname + "/teacherDashboard.html");
-  }); 
+  });
+  
+
 app.get("/addStudent",function(req,res){
   res.sendFile(__dirname + "/AddStudent.html");
 }); 
+app.get("/test_link",(req,res)=>{
+  res.sendFile(__dirname + "/test_link.html");
+});
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/home.html");
 });
@@ -388,6 +415,9 @@ app.get("/auth/google",
 //     studentID:4000,
 //   });
 
+
+
+
 app.get("/auth/google/final",
   passport.authenticate('google', {
     failureRedirect: "/login"
@@ -404,6 +434,19 @@ app.get("/login", function(req, res) {
 
 app.get("/teacher", function(req, res) {
   res.sendFile(__dirname + "/teacher.html");
+});
+app.get("/officials", function(req, res) {
+  // const newoffical = new Official(
+  //   {
+  //     email:"sample@offical.com",
+  //     password:"123",
+  //     fname:"Bahuballi",
+  //     lname:"Singh",
+  //     officialID:420,
+  //     designation:"Offical"
+  //   });
+  //   newoffical.save();
+  res.sendFile(__dirname + "/officials.html");
 });
 
 app.get("/student", function(req, res) {
@@ -440,8 +483,6 @@ cron.schedule('0 0 * * *', () => {
 });
 
 
-
-
 app.post("/teacher_login",function(req,res){
  
   Teacher.findOne({username:req.body.username},function(err,found){
@@ -455,6 +496,25 @@ app.post("/teacher_login",function(req,res){
           teachid=found.teacherID;
           console.log(teachid)
           res.render("teacherDashboard",{fname:found.fname,lname:found.lname,idd:found.teacherID});
+        }else{
+          res.send("Wrong Password");
+        }
+      }
+    }
+  })
+})
+
+app.post("/officials_login",function(req,res){
+  
+  Official.findOne({username:req.body.username},function(err,found){
+    if(err){
+      console.log(err);
+    }else{
+      if(!found){
+        res.send("No account with these credentials");
+      }else{
+        if(found.password===req.body.password){
+          res.render("officialDashboard",{fname:found.fname,lname:found.lname,idd:found.officalID});
         }else{
           res.send("Wrong Password");
         }
