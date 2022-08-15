@@ -131,7 +131,7 @@ const userSchema = new mongoose.Schema({
   class:Number,
   studentID:{type:Number, default:4000},
   teacherID:{type:Number, default:200},
-
+  links:[],
   googleId: String,
   facebookId: String,
   githubId: String,
@@ -496,8 +496,8 @@ app.post("/teacher_login",function(req,res){
         if(found.password===req.body.password){
           teachid=found.teacherID;
           console.log(teachid);
-          console.log("Here is the list");
-          console.log(found.links);
+          // console.log("Here is the list");
+          // console.log(found.links);
           res.render("teacherDashboard",{fname:found.fname,lname:found.lname,idd:found.teacherID});
         }else{
           res.send("Wrong Password");
@@ -525,7 +525,18 @@ app.post("/officials_login",function(req,res){
     }
   })
 })
+app.get("/teacher_tests",(req,res)=>{
+  var t_id=req.query.teacherID;
+  
+  Teacher.findOne({teacherID:t_id},(err,found)=>{
+    if(err){
+      console.log(err);
+    }else{
+      res.render("teacher_links",{p:found.links,idd:t_id});
+    }
+  });
 
+});
 app.post("/add_test",function(req,res){
   const retrivedList=req.body.list;
   var jsonListitems = JSON.parse(retrivedList);
@@ -566,6 +577,21 @@ app.post("/add_test",function(req,res){
       })
   })
   res.sendFile(__dirname + "/test_link.html");
+})
+app.post("/send_to_student",(req,res)=>{
+  var link=req.body.link;
+  var time=req.body.time;
+  var tid=req.query.teacherID;
+  console.log(tid);
+  console.log(time);
+  User.update({teacherID:parseInt(tid) },{$push:{links:{$each:[{link,time}]}}},function(err,doc){
+    if(err){
+      console.log(err);
+    }else{
+      console.log("Updated");
+    }
+  });
+    res.redirect("/teacher_tests?teacherID="+tid);
 })
 app.post("/add",function(req,res){
   const retrivedList=req.body.list;
