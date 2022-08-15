@@ -517,7 +517,7 @@ app.post("/officials_login",function(req,res){
         res.send("No account with these credentials");
       }else{
         if(found.password===req.body.password){
-          res.render("officialDashboard",{fname:found.fname,lname:found.lname,idd:found.officalID});
+          res.render("officialDashboard",{fname:found.fname,lname:found.lname,idd:found.officialID});
         }else{
           res.send("Wrong Password");
         }
@@ -530,7 +530,8 @@ app.post("/add_test",function(req,res){
   const retrivedList=req.body.list;
   var jsonListitems = JSON.parse(retrivedList);
   console.log(JSON.parse(retrivedList));  
-  // const official_id=req.body.tid;
+  const official_id=req.body.tid;
+  console.log(official_id+"Id Sidhu ");
   jsonListitems.map((item) => {
       Teacher.findOne({teacherID :item.at},function(err,found){
         
@@ -541,7 +542,7 @@ app.post("/add_test",function(req,res){
             res.send("No Teacher Found");
           }else{
             console.log(item.at);
-            var l=item.bt, time=item.ct;
+            var l=item.bt, time=item.ct,ll=item.at;
             Teacher.update({teacherID:item.at},{$push:{links:{$each:[{l,time}]}}},function(err,doc){
               if(err){
                 console.log(err);
@@ -549,6 +550,14 @@ app.post("/add_test",function(req,res){
                 // console.log(official_id);
                 console.log("Updated")
                 
+              }
+            })
+
+            Official.update({officialID:official_id},{$push:{links:{$each:[{ll,l,time}]}}},function(err,doc){
+              if(err){
+                console.log(err);
+              }else{
+                console.log("Updated");
               }
             })
             
