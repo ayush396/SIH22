@@ -53,7 +53,7 @@ function displayList() {
         var input1 = document.createElement("input");
         input1.value = p[i].at;
         input1.setAttribute("class", "form-control text-primary");
-        input1.setAttribute("style", "width:19% ;float:left;margin-left:25px;text-align:center;");
+        input1.setAttribute("style", "width:15% ;float:left;margin-left:25px;text-align:center;");
         input1.setAttribute("disabled", "disabled");
         input1.setAttribute("id", "at" + i);
         var input2 = document.createElement("input");
@@ -61,15 +61,15 @@ function displayList() {
         input2.setAttribute("class", "form-control text-primary");
         input2.setAttribute("disabled", "disabled");
         input2.setAttribute("id", "bt" + i);
-        input2.setAttribute("style", "width:30% ;float:left;margin-left:50px;text-align:center;");
+        input2.setAttribute("style", "width:28% ;float:left;margin-left:50px;text-align:center;");
 
         var input3 = document.createElement("input");
         input3.value = p[i].ct;
         input3.setAttribute("class", "form-control text-primary");
-        input3.setAttribute("style", "width:19% ;float:left;margin-left:75px;text-align:center;");
+        input3.setAttribute("style", "width:19% ;float:left;margin-left:65px;text-align:center;");
         input3.setAttribute("disabled", "disabled");
         input3.setAttribute("id", "ct" + i);
-        input3.setAttribute("style", "width:30% ;float:left;margin-left:75px;text-align:center;");
+        input3.setAttribute("style", "width:30% ;float:left;margin-left:25px;text-align:center;");
 
 
         var btn = document.createElement("button");
@@ -79,7 +79,7 @@ function displayList() {
         btn.setAttribute("class", "btn btn-warning");
         btn.setAttribute("onclick", "edit(this.id)");
         // btn.setAttribute("style", "float:left;margin-left:20px;");
-        btn.setAttribute("style", "float:right;margin-right:50px;");
+        btn.setAttribute("style", "float:right;margin-right:5px;");
         var br = document.createElement("br");
         card.appendChild(pid);
         //card.appendChild(pid);
