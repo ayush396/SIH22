@@ -15,6 +15,7 @@ body{
 font-family: 'Merriweather', serif;
 font-family: 'Recursive', sans-serif;
 font-family: 'Ubuntu', sans-serif;
+
 }
 .container {
 position: relative;
@@ -23,9 +24,24 @@ max-width: 400px;
 }
 
 .container img {
-width: 100%;
+scale:1.2;
+
 height: auto;
 }
+
+
+.rotate {
+  animation: rotation 6s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 
 .container .btn {
 position: absolute;
@@ -65,53 +81,47 @@ background-color: black;
 .newclass{
   font-family: 'Luckiest Guy', cursive;
   display: inline-block;
-  margin-left: 32%;
-    right:35%;
-  top:140px;
+  
+  margin-left: 8%;
+  top:25%;
   position: absolute;
   z-index: -1;
 
 }
 .desc{
 font-family: sans-serif;
-  margin-left: 34%;
+  margin-left: 8%;
   font-weight: bold;
   display: inline-block;
   position: absolute;
   z-index: -1;
-  top:300px;
+  top:50%;
   font-size: 1.4vw;
-  right:10%;
+  right:38%;
   text-align: justify;
 
-
-
-
-
-  color:white;
 
 }
 .desc1{
 font-family: sans-serif;
-  margin-left: 34%;
-  right:22.5%;
+
+  margin-left:8%;
   font-weight: bold;
   display: inline-block;
   position: absolute ;
   z-index: -1;
-  top:410px;
+  top:67%;
   font-size: 1.4vw;
 
   text-align: justify;
-
-  color:white;
-
+  
 }
 
 .g:hover{
   background-color: #54a887;
 
 }
+
 
 </style>
 
@@ -140,12 +150,12 @@ font-family: sans-serif;
 
 </head>
 
-<body>
+<body style="background-color:#e5fce7;">
 
   <!-- <video src="/css/new2.mp4" autoplay loop muted poster="posterimage.jpg">
 
   </video> -->
-  <img src="/css/welcomebg.png" class ="fit" alt="">
+  <!-- <img src="/css/welcomebg.png" class ="fit" alt=""> -->
   <div class="introduction">
     <h1 class="log-header">
       <span style="color:#033808 "class="log">Successfully </span>
@@ -186,46 +196,48 @@ font-family: sans-serif;
      </header>
 
 <div class="row">
-  <div class="col-lg-3 col-md-3 col-sm-3">
-    <img src="https://docs.google.com/uc?id=1XZlCkuVikfBz1rGn9dMOO2XFlHeAUZjh" alt="" style="z-index:-1;   margin-left: 0;margin-top:100px;width:100%;">
-
-
-  </div>
+  
   <div class="col-lg-9 col-md-9 col-sm-9">
     <div class="newclass">
 
-   <h1 style="font-size:4vw; color:white;">Keep Your Child </h1>
-     <h1 style="font-size:3.5vw; color:white;"> One Step Ahead</h1>
+   <h1 style="font-size:4vw; ">To teach is to touch </h1>
+     <h1 style="font-size:3.5vw; "> lives forever.</h1>
       </div>
-      <p class="desc">Develop a passion for learning with our Smart Learning app specially curated for your child’s learning needs. A fun way to learn begins here. Because we believe that learning can happen anywhere not just in classroom. </p>
-      <p class="desc1"> Fuel your child’s desire to learn by clicking the download button.</p>
+      <p class="desc">Join our hands to bring forth the best in every child. Don't be merely a teacher, become an awakener. Come and experience the magic of Lil'Learn as it enables the students to soar to new heights. </p>
+      <p class="desc1"> Download the app right away for a unique teaching experience</p>
       <input type="text" id = "tech" hidden value="<%= idd %>" name="techid">
   </div>
+  
+  <div class="col-lg-3 col-md-3 col-sm-3" style="margin-top:3.7%; z-index:-1;">
+    <img src="css/backcircle.png"  class ="rotate" alt="" style="z-index:-1;margin-left:-46%;scale:1.15;margin-top:52%;width:140%; ">
+    <div style="margin-top:-95%">
+      <img src="css/teacher1.png"  alt="" style="z-index:1;margin-left:-46%;scale:1.25;width:130%; ">
+      
+    </div>
+  </div>
 
+ 
 </div>
-
-
-
 
 
 <!-- <button type="button"  id="g" style="background-color:#328073; position: absolute;bottom: 100px;right: 100px;width:300px;height:80px;" class="btn  "><a id="link" style="text-decoration:none;color:white;font-size:1.8vw;"href="css/setup.exe">Download Software</a></button> -->
 
-<a id="g"href="https://docs.google.com/uc?export=download&id=1c-LHVk4COsDctG8swEnTpKI0hJAj8V2p"> <button type="button"   style="background-color:#328073; z-index: 1;position: absolute;top:550px;right: 10%;width:20%;height:70px;" class="btn g"> <p style="color:white;font-size:1.8vw; padding-top:3%;">Download Software</p> </button></a>
+<a id="g"href="https://docs.google.com/uc?export=download&id=1c-LHVk4COsDctG8swEnTpKI0hJAj8V2p"> <button type="button"   style="background-color:#387543; z-index: 1;position: absolute;top:80%;right: 71.5%;width:20%;height:70px;" class="btn g"> <p style="color:white;font-size:1.6vw; padding-top:3%;">Download Software</p> </button></a>
 
 
-     <p class="delay"style="font-size: 1.1vw; margin-left: 80%;z-index:-1;color:white;font-weight: bold;position:absolute; top:105px;"> Welcome, <span class="span" style="font-size:1.1vw; color:#a2e6eb;"><%=fname%></span> </p>
+     <p class="delay"style="font-size: 1.1vw; margin-left: 80%;z-index:-1;font-weight: bold;position:absolute; top:16%;"> Welcome, <span class="span" style="font-size:1.1vw; color:#387543"><%=fname%> <%=lname%></span> </p>
 
 
-     <!-- <div class="footer">
-         <i class="footer-image fab fa-instagram fa-2x"></i>
-         <i class="footer-image fab fa-facebook fa-2x"></i>
-         <i class="footer-image fab fa-twitter fa-2x"></i>
-         <i class="footer-image fas fa-envelope fa-2x"></i>
-         <p>© Copyright 2021 Lil'learn</p>
-     </div> -->
+    
 
   </section>
-
+  <!-- <div class="footer">
+    <i class="footer-image fab fa-instagram fa-2x"></i>
+    <i class="footer-image fab fa-facebook fa-2x"></i>
+    <i class="footer-image fab fa-twitter fa-2x"></i>
+    <i class="footer-image fas fa-envelope fa-2x"></i>
+    <p>© Copyright 2021 Lil'learn</p>
+</div> -->
 
 
 
