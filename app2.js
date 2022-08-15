@@ -454,7 +454,7 @@ app.post("/teacher_login",function(req,res){
         if(found.password===req.body.password){
           teachid=found.teacherID;
           console.log(teachid)
-          res.render("teacherDashboard",{fname:found.fname,idd:found.teacherID});
+          res.render("teacherDashboard",{fname:found.fname,lname:found.lname,idd:found.teacherID});
         }else{
           res.send("Wrong Password");
         }
