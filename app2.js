@@ -77,7 +77,7 @@ const teacherSchema = new mongoose.Schema({
     unique: false
   },
   school:String,
-
+  links:[],
   img:
    {
        data: Buffer,
@@ -105,6 +105,7 @@ const officialSchema = new mongoose.Schema({
        data: Buffer,
        contentType: String
    },
+   links:[],
   officialID:Number,
     class: {
       type: [Number],
@@ -494,7 +495,9 @@ app.post("/teacher_login",function(req,res){
       }else{
         if(found.password===req.body.password){
           teachid=found.teacherID;
-          console.log(teachid)
+          console.log(teachid);
+          console.log("Here is the list");
+          console.log(found.links);
           res.render("teacherDashboard",{fname:found.fname,lname:found.lname,idd:found.teacherID});
         }else{
           res.send("Wrong Password");
@@ -522,6 +525,39 @@ app.post("/officials_login",function(req,res){
     }
   })
 })
+
+app.post("/add_test",function(req,res){
+  const retrivedList=req.body.list;
+  var jsonListitems = JSON.parse(retrivedList);
+  console.log(JSON.parse(retrivedList));  
+  // const official_id=req.body.tid;
+  jsonListitems.map((item) => {
+      Teacher.findOne({teacherID :item.at},function(err,found){
+        
+        if(err){
+          console.log(err);
+        }else{
+          if(!found){
+            res.send("No Teacher Found");
+          }else{
+            console.log(item.at);
+            var l=item.bt, time=item.ct;
+            Teacher.update({teacherID:item.at},{$push:{links:{$each:[{l,time}]}}},function(err,doc){
+              if(err){
+                console.log(err);
+              }else{
+                // console.log(official_id);
+                console.log("Updated")
+                
+              }
+            })
+            
+          }
+        }
+      })
+  })
+  res.sendFile(__dirname + "/test_link.html");
+})
 app.post("/add",function(req,res){
   const retrivedList=req.body.list;
   var jsonListitems = JSON.parse(retrivedList)
@@ -539,7 +575,7 @@ app.post("/add",function(req,res){
           
           // console.log(req.body.at);
           if(!found){
-            res.send("No Student Found");
+            res.send("No Student Found with id: "+item.at);
           }else{
             console.log(item.at)
             User.update({studentID:item.at},{teacherID: parseInt(teachid)},function(err,doc){
