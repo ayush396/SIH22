@@ -11,13 +11,9 @@
     <link rel="icon" href="https://docs.google.com/uc?id=1T2q0QcgrB5lJ6wqd-jYW4HAWr5YeXasA">
     <script src="https://kit.fontawesome.com/59d8afb937.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="css/manageTest.css">
     <title>Test Management</title>
-    <style>
-      .quess{
-        background-color: #4005ad;
-      }
-    </style>
+    
 </head>
 
 <body>
@@ -39,14 +35,7 @@
                 <br>
 
                 <div id="Idname" style="visibility: hidden;margin-top: -10%;">
-                  <table style="width:80%;">
-                    <tr>
-                      <th style="padding-left:12%;">Test ID</th>
-                      <th style="padding-left:8%; width:50%;">Test Link</th>
-                      <th >Date Alloted</th>
-                    </tr>
-
-                  </table>
+                  
                   <hr>
                 </div>
 
@@ -81,30 +70,33 @@
                 </div>
 
             </div>
-            <div id="Idname" style="margin-top: 6%;">
-              <table style="width:80%; margin-left:2%; ">
+            <!-- <h1 class="display-3" style="color: #4005ad; font-size:3rem; margin-left:5%; margin-top:4%;" >Earlier Assigned</h1>           
+               -->
+            <div id="Idname" style="margin-top: 4.5%;">
+              <table style="width:80%; margin-left:6%; ">
                 <tr>
-                  <th style="padding-left:4%; width:20%;">Test ID</th>
-                  <th style="padding-left:18%;">Test Link</th>
-                  <th style="padding-left:20%;">Date Alloted</th>
+                  <th style="padding-left:5%; width:20%;">S.No</th>
+                  <th style="padding-left:0%; width:20%;">Teacher ID</th>
+                  <th style="padding-left:11%;">Test Link</th>
+                  <th style="padding-left:5%;">Date Alloted</th>
                 </tr>
                 </table>
-                <hr>
+                <hr style="margin-left:5%;">
         
-                <table class="tableSpacing">
+                <table class="tableSpacing " style="margin-left:4%;">
                 <% var i=1; %>
                 <% p.forEach(pp=>{ %>
                     <tr >
-                        <td><input type="text" value="<%= i%>." disabled class="test-item1"></td>
+                        <td style="padding-left:4%;"><input type="text" value="<%= i%>." disabled class="test-item1"></td>
                         <% i= i+1; %>
-                        <td><input type="text" value="<%= pp.ll %>" disabled class="test-item3"></td>
+                        <td><input type="text" value="<%= pp.ll %>" disabled class="test-item5"></td>
                         <td><input type="text" value="<%= pp.l %>" disabled class="test-item2"></td>
                         <td><input type="text" value="<%= pp.time %>" disabled class="test-item3"></td>
-                        <td style="padding-left:13%;">
+                        <td style="padding-left:8%;">
                           <form action="/delete_link" method="post">
                           <input type="text" name="off_id" value="<%= idd %>" hidden>
                           <input type="text" name="link" value="<%= pp.l %>" hidden>
-                          <button  class="btn btn-warning test-item4"  type="submit">Delete</button>
+                          <button  class="btn btn-warning test-item4" type="submit">Delete</button>
                           </form>
                         </td>
                     </tr>
