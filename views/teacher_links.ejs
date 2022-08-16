@@ -11,13 +11,9 @@
     <link rel="icon" href="https://docs.google.com/uc?id=1T2q0QcgrB5lJ6wqd-jYW4HAWr5YeXasA">
     <script src="https://kit.fontawesome.com/59d8afb937.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="css/manageTest.css">
     <title>Test Management</title>
-    <style>
-      .quess{
-        background-color: #4005ad;
-      }
-    </style>
+    
 </head>
 
 <body>
@@ -36,29 +32,31 @@
 
             <div id="ipDetails" class="form3" style="margin-left: 15%;">
                 <h1 class="display-3" style="color: #4005ad;">Assign Assessments</h1>
-                <br>
-
-                <div id="Idname" style="margin-top: 10%;">
-                  <table style="width:80%;">
+     
+                <div id="Idname" style="margin-top: 6%;">
+                  <table style="width:80%; margin-left:2%; ">
                     <tr>
-                      <th style="padding-left:12%;">Test ID</th>
-                      <th style="padding-left:8%;">Test Link</th>
-                      <th >Date Alloted</th>
+                      <th style="padding-left:4%; width:20%;">Test ID</th>
+                      <th style="padding-left:18%;">Test Link</th>
+                      <th style="padding-left:20%;">Date Alloted</th>
                     </tr>
+                    </table>
                     <hr>
+    
+                    <table class="tableSpacing">
                     <% var i=1; %>
                     <% p.forEach(pp=>{ %>
                         
-                        <tr>
-                            <th><%= i%></th>
+                        <tr >
+                            <td><input type="text" value="<%= i%>." disabled class="test-item1"></td>
                             <% i= i+1; %>
-                            <th><%= pp.l %></th>
-                            <th><%= pp.time %></th>
-                            <th><form action="/send_to_student?teacherID=<%=idd%>" method="post">
+                            <td><input type="text" value="<%= pp.l %>" disabled class="test-item2"></td>
+                            <td><input type="text" value="<%= pp.time %>" disabled class="test-item3"></td>
+                            <td style="padding-left:13%;"><form action="/send_to_student?teacherID=<%=idd%>" method="post">
                                 <input type="text" name="time" value="<%= pp.time %>" hidden>
                                 <input type="text" name="link" value="<%= pp.l %>" hidden>
-                                <button type="submit">Send</button>
-                            </form></th>
+                                <button  class="btn btn-warning test-item4"  type="submit">Send</button>
+                            </form></td>
                         </tr>
                         
                         
