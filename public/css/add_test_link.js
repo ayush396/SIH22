@@ -131,5 +131,6 @@ function save(pos) {
 function saveChanges(){
     document.getElementById('hid').value=JSON.stringify(p);
     // console.log("hii");
+    p=[];
     console.log(JSON.stringify(p));
 }

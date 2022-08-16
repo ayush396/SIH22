@@ -65,7 +65,7 @@
                             <input class="form-control" id="newbt" name="bt" placeholder="Paste Test Link" type="text" size="35">
                             <input hidden id="newct" name="ct" type="text" >
                             <input type="text" hidden value="" id="hid" name="list">
-                            <input type="text" hidden value="" id="hid1" name="tid">
+                            <input type="text" hidden value="<%= idd %>" id="hid1" name="tid">
                         </div>
                     
                     
@@ -81,11 +81,47 @@
                 </div>
 
             </div>
+            <div id="Idname" style="margin-top: 6%;">
+              <table style="width:80%; margin-left:2%; ">
+                <tr>
+                  <th style="padding-left:4%; width:20%;">Test ID</th>
+                  <th style="padding-left:18%;">Test Link</th>
+                  <th style="padding-left:20%;">Date Alloted</th>
+                </tr>
+                </table>
+                <hr>
+        
+                <table class="tableSpacing">
+                <% var i=1; %>
+                <% p.forEach(pp=>{ %>
+                    <tr >
+                        <td><input type="text" value="<%= i%>." disabled class="test-item1"></td>
+                        <% i= i+1; %>
+                        <td><input type="text" value="<%= pp.ll %>" disabled class="test-item3"></td>
+                        <td><input type="text" value="<%= pp.l %>" disabled class="test-item2"></td>
+                        <td><input type="text" value="<%= pp.time %>" disabled class="test-item3"></td>
+                        <td style="padding-left:13%;">
+                          <form action="/delete_link" method="post">
+                          <input type="text" name="off_id" value="<%= idd %>" hidden>
+                          <input type="text" name="link" value="<%= pp.l %>" hidden>
+                          <button  class="btn btn-warning test-item4"  type="submit">Delete</button>
+                          </form>
+                        </td>
+                    </tr>
+                    
+                    
+               <% }) %>
+              </table>
+              
+            </div>
         </div>
+        
     </div>
 
+    
 
     <script>
+      document.getElementById("hid1").value="";
       const urlParams = new URLSearchParams(window.location.search);
       const greetingValue = urlParams.get('officalID');
       console.log(greetingValue);
