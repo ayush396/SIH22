@@ -1,0 +1,37 @@
+.quess{
+    background-color: #4005ad;
+  }
+  table tr td{
+    border:none;
+  }
+  .test-item1{
+    width:30%;
+    margin-right:45%;
+    border-radius: 5px;
+    padding: 3% 2% 3% 10%;
+  }
+  .test-item2{
+    width:150%;
+    margin-left:-50%;
+    border-radius: 5px;
+    padding: 3% 2% 3% 1%;
+    text-align:center;
+
+  }
+  .test-item3{
+   
+    margin-left:10%;
+    border-radius: 5px;
+    padding: 3% 2% 3% 1%;
+    text-align:center;
+
+  }
+  .test-item4{
+    font-size: 1.1rem;
+    text-align:center;
+
+  }
+  .tableSpacing {
+    border-collapse:separate;
+    border-spacing:0 17px;
+}
