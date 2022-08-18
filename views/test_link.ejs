@@ -118,7 +118,9 @@
       const greetingValue = urlParams.get('officalID');
       console.log(greetingValue);
       function abcd(){
-        document.getElementById("hid1").value=greetingValue;
+        if(document.getElementById("hid1").value===""){
+          document.getElementById("hid1").value=greetingValue;
+        }
         addToList();
       }
     </script>

@@ -397,7 +397,7 @@ app.get("/test_link",(req,res)=>{
   Official.findOne({officialID:parseInt(req.query.officalID)},(err,found)=>{
     if(!err){
     // console.log(found);
-    res.render("test_link",{idd:found.officialID,p:found.links});
+    res.render("test_link",{idd:parseInt(found.officialID),p:found.links});
     }
   })
   
@@ -549,7 +549,7 @@ app.post("/add_test",function(req,res){
   var jsonListitems = JSON.parse(retrivedList);
   console.log(JSON.parse(retrivedList));  
   const official_id=parseInt(req.body.tid);
-  console.log(official_id+"Id Sidhu ");
+ 
   jsonListitems.map((item) => {
       Teacher.findOne({teacherID :item.at},function(err,found){
         
@@ -600,8 +600,7 @@ app.post("/add_test",function(req,res){
   })
   Official.findOne({officialID:official_id},(err,found)=>{
     if(!err){
-    // console.log(found);
-    res.render("test_link",{idd:found.officialID,p:found.links});
+      res.render("test_link",{idd:parseInt(found.officialID),p:found.links});
     }
   });
 })
@@ -610,16 +609,59 @@ app.post("/delete_link",(req,res)=>{
   var link=req.body.link;
   var o_id=req.body.off_id;
   console.log(link+"    "+o_id);
-  res.send("Hello");
+  Official.updateMany({officialID:parseInt(o_id)},{$pull:{links:{l:link}}},function(err,obj){
+    if(err){
+      console.log(err);
+    }else{
+      console.log("In Official");
+      console.log(obj);
+    }
+  })
+  Teacher.updateMany({officialID:parseInt(o_id)},{$pull:{links:{l:link}}},function(err,obj){
+    if(err){
+      console.log(err);
+    }else{
+      console.log("In teacher");
+      console.log(obj);
+    }
+  })
+  Teacher.find({officialID:parseInt(o_id)},(err,found)=>{
+    if(err){
+      console.log("err");
+    }else{
+      User.updateMany({teacherID:parseInt(found.teacherID)},{$pull:{links:{link:link}}},function(err,obj){
+        if(err){
+          console.log(err);
+        }else{
+          console.log("In Student");
+          console.log(obj);
+        }
+      })
+    }
+  });
+  Official.findOne({officialID:parseInt(o_id)},(err,found)=>{
+    if(!err){
+    // console.log(found);
+    res.render("test_link",{idd:found.officialID,p:found.links});
+    }
+  });
+  // res.send("Hello");
 });
 
 app.post("/send_to_student",(req,res)=>{
   var link=req.body.link;
   var time=req.body.time;
   var tid=req.query.teacherID;
+  var currentdate = new Date();
+    var datetime =  currentdate.getDate() + "/"
+    + (currentdate.getMonth()+1)  + "/" 
+    + currentdate.getFullYear() + "  "  
+    + currentdate.getHours() + ":"  
+    + currentdate.getMinutes() + ":" 
+    + currentdate.getSeconds();
   console.log(tid);
   console.log(time);
-  User.update({teacherID:parseInt(tid) },{$push:{links:{$each:[{link,time}]}}},function(err,doc){
+  User.update({teacherID:parseInt(tid) },{$push:{links:{$each:[{link,datetime}]}}},function(err,doc){
     if(err){
       console.log(err);
     }else{
