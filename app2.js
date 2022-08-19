@@ -822,19 +822,22 @@ app.post("/parent_login", function(req, res) {
                             console.log(err);
                             console.log("ERRORS IN LOGGING IN");
                           } else {
-                            if (foundUser) {
 
-                              console.log(foundUser.score);
-                              console.log(foundUser.fname);
-                              console.log(foundUser.lname);
-                              res.render("welcome", {
+                            if (foundUser) {
+                              Score.find({},(eror,ff)=>{
+
+                                console.log(foundUser.score);
+                                console.log(foundUser.fname);
+                                console.log(foundUser.lname);
+                                res.render("parent", {
                                   username: username,
-                                  score: foundUser.score,
+                                  score: JSON.stringify(foundUser),
+                                  leader:JSON.stringify(ff),
                                   fname: "Parent",
-                                  lname:foundUser.lname,
-                                  gender:foundUser.gender,
-                                  dob:foundUser.dob,
                                 });
+                              })
+                              
+                              
 
                             }
                           }
