@@ -323,22 +323,85 @@ font-family: sans-serif;
 
 <div class="col-lg-6 col-md-6">
   <h1>flmnmslf</h1>
-
 </div>
 <div class="col-lg-6 col-md-6">
 <canvas id="myChart" style="width:100%;max-width:600px; background-color:aliceblue; padding:1%;"></canvas>
-
-  
 </div>
 </div>
-
-
-
-
-
 </section>
 
+<section style="padding-top: 8%; padding-bottom:8%;">
+
+  <div class=" row">
+  
+  
+  <div class="col-lg-6 col-md-6">
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  </div>
+  <div class="col-lg-6 col-md-6">
+    <h1>flmnmslf</h1>
+  </div>
+  </div>
+  </section>
+
 <script>
+  window.onload=function(){
+    var db=document.getElementById("plist").value;
+    db=JSON.parse(db);
+    var total=new Map();
+    var num=new Map();
+    db.forEach(s=>{
+      var m=s.marks;
+      var c=s.class;
+      if(!num.has(c))
+      num.set(c,0);
+      if(!total.has(c))
+      total.set(c,0);
+      num.set(c,m.length+num.get(c));
+      for(var i=0;i<m.length;i++){
+        for(var j=0;j<m[i].length;j++){
+          total.set(c,m[i][j]+total.get(c));
+        }
+      }
+    })
+    console.log(total);
+    console.log(num);
+    var loo=[];
+    num.forEach((key,value)=>{
+      if(key===0){
+        loo.push({y:0,label:value})
+      }else{
+        var vvv=parseFloat((total.get(value)/key).toFixed(2));
+        // loo.push(parseFloat((total.get(value)/key).toFixed(2)));
+        loo.push({y:vvv,label:value})
+      }
+    })
+    console.log(loo);
+
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      theme: "light1", // "light1", "light2", "dark1", "dark2"
+      title:{
+        text: "CLASS WISE L.O. GRADES"
+      },
+      axisY: {
+        title: "L.O. Points"
+      },
+      data: [{        
+        type: "column",  
+        showInLegend: true, 
+        legendMarkerColor: "black",
+        legendText: "Class",
+        dataPoints: loo
+      }]
+    });
+    chart.render();
+
+  }
+
+
 
   var card=document.getElementById("readMore");
   card.style.display="none";
@@ -371,11 +434,6 @@ font-family: sans-serif;
       type: 'line',
       data: {
         labels: basis,
-        // [
-        //   moment(new Date(2020, 2, 1)).format('YYYY-MM-DD'),
-        //   moment(new Date(2020, 2, 2)).format('YYYY-MM-DD'),
-        //   moment(new Date(2020, 2, 3)).format('YYYY-MM-DD')
-        // ],
         datasets: [{
             label: 'Section 1',
             data: a1,
