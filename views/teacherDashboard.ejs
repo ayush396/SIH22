@@ -231,13 +231,16 @@ font-family: sans-serif;
       Student's LO  <a href="javascript:myfun1()" style="text-decoration: none;"> <span style="right: 0; left:65%">❌</span>  </a> 
 
     </div>
-    <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
+    <div class="card-body" id="stud">
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js'></script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+      <canvas id="multipleLineChart" width="400" height="400"></canvas>
+      <!-- <h5 class="card-title">Special title treatment</h5>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="#" class="btn btn-primary">Go somewhere</a> -->
     </div>
     <div class="card-footer text-muted">
-      2 days ago
+      Statistics
     </div>
   </div>
 
@@ -339,10 +342,80 @@ font-family: sans-serif;
 
   var card=document.getElementById("readMore");
   card.style.display="none";
-  function myfun()
-  {
-    
+  function myfun(std){
+    std=parseInt(std);
     card.style.display="block";
+    console.log(std);
+    var db=document.getElementById("plist").value;
+    db=JSON.parse(db);
+    var basis=[],a1=[],a2=[],a3=[],a4=[];
+    db.forEach(s =>{
+      if(s.studentID==std){
+        var mr=s.marks;
+        for(var i=0;i<mr.length;i++){
+          basis.push("Test"+(i+1));
+          a1.push(mr[i][0]);
+          a2.push(mr[i][1]);
+          a3.push(mr[i][2]);
+          a4.push(mr[i][3]);
+        }
+      }
+    });
+    console.log(a1);
+    console.log(a2);
+    console.log(a3);
+    console.log(a4);
+    const ctx = document.getElementById('multipleLineChart').getContext('2d');
+
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: basis,
+        // [
+        //   moment(new Date(2020, 2, 1)).format('YYYY-MM-DD'),
+        //   moment(new Date(2020, 2, 2)).format('YYYY-MM-DD'),
+        //   moment(new Date(2020, 2, 3)).format('YYYY-MM-DD')
+        // ],
+        datasets: [{
+            label: 'Section 1',
+            data: a1,
+            borderWidth: 1,
+            fill: false,
+            borderColor: 'red'
+          },
+          {
+            label: 'Section 2',
+            data: a2,
+            borderWidth: 1,
+            fill: false,
+            borderColor: 'green'
+          },
+          {
+            label: 'Section 3',
+            data: a3,
+            borderWidth: 1,
+            fill: false,
+            borderColor: 'blue'
+          },
+          {
+            label: 'Section 4',
+            data: a4,
+            borderWidth: 1,
+            fill: false,
+            borderColor: 'yellow'
+          }
+        ]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
   }
   function myfun1()
   {
@@ -543,10 +616,11 @@ new Chart("myChart", {
         var btn = document.createElement("button");
         var text1 = document.createTextNode("Read More");
         btn.appendChild(text1);
-        btn.setAttribute("id", "btn" + i);
+        btn.setAttribute("id", "btn"+i);
         btn.setAttribute("class", "btn btn-success");
         btn.setAttribute("value",ids[i]);
-        btn.setAttribute("onclick", "myfun()");
+        var v=btn.value;
+        btn.setAttribute("onclick", "myfun(value)");
         btn.setAttribute("style", "float:left;margin-left:20px; width:130px;");
 
         td5.appendChild(btn);
@@ -554,7 +628,7 @@ new Chart("myChart", {
        
     
   }
-  table.appendChild(tbody);
+  // table.appendChild(tbody);
 }
 
 tableCreate();
