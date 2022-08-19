@@ -121,8 +121,10 @@ border: none;
 <body>
 <div style="margin-top: 100px;"></div>
 <input type="text" hidden value="<%= p %>" id="plist" />
-<label class="student" for="">Select the class</label>
-<select id="classVal" class="student" name="" >
+
+<label for="">Select the class</label>
+<select id="classVal"  onchange="myFunction()" name="" >
+
  <% cl.forEach(c=>{ %>
     <option  value="<%= c %>"> <%= c %> </option>
     <h1><%= c %></h1>
@@ -224,30 +226,46 @@ border: none;
 <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
 <script>
- 
-var db=document.getElementById("plist").value;
+  var db=document.getElementById("plist").value;
 db=JSON.parse(db);
-var classwise=[];
-var studID=[];
 var classVal=document.getElementById("classVal").value;
- 
-for (let i=0;i<db.length;i++)
-{
-  if(db[i].class === classVal)
-  {
-      studID.push(db[i].studentID);
+var total_marks=[];
+var no_of_students=[];
+db.forEach(s => {
+  if(s.class===classVal){
+    var mr=s.marks;
+    console.log(s.studentID);
+    for(var i=0;i<mr.length;i++){
+      var val=0;
+      for(var j=0;j<mr[i].length;j++){
+        val+=mr[i][j];
+      }
+      if(i < total_marks.length){
+        total_marks[i]+=val;
+        no_of_students[i]+=1;
+      }else{
+        total_marks.push(val);
+        no_of_students.push(1);
+      }
+      
+    }
   }
-}
-
-studID.forEach(c=>{
-  console.log(c);
 });
+// console.log(total_marks);
+// console.log( no_of_students);
+var basis=[];
+var ratio=[];
+for(var i=0;i<total_marks.length;i++){
+  ratio.push(parseFloat((total_marks[i]/no_of_students[i]).toFixed(2)));
+  basis.push(i+1);
+}
+// console.log(ratio);
+// console.log(basis);
 
-
-
-var xValues = [50,60,70,80,90,100,110,120,130,140,150];
-var yValues = [7,8,8,9,9,9,10,11,14,14,15];
-
+// var xValues = [50,60,70,80,90,100,110,120,130,140,150];
+// var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+var xValues=basis;
+var yValues=ratio;
 new Chart("myChart", {
   type: "line",
   data: {
@@ -263,10 +281,75 @@ new Chart("myChart", {
   options: {
     legend: {display: false},
     scales: {
-      yAxes: [{ticks: {min: 6, max:16}}],
+      yAxes: [{ticks: {min: 0, max:20}}],
     }
   }
 });
+
+
+  var cl=document.getElementById("classVal");
+  function myFunction(){
+    console.log(cl.value);
+    var db=document.getElementById("plist").value;
+    db=JSON.parse(db);
+    var classVal=cl.value;
+    var total_marks=[];
+    var no_of_students=[];
+    db.forEach(s => {
+      if(s.class===classVal){
+        var mr=s.marks;
+        // console.log(s.studentID);
+        for(var i=0;i<mr.length;i++){
+          var val=0;
+          for(var j=0;j<mr[i].length;j++){
+            val+=mr[i][j];
+          }
+          if(i < total_marks.length){
+            total_marks[i]+=val;
+            no_of_students[i]+=1;
+          }else{
+            total_marks.push(val);
+            no_of_students.push(1);
+          }
+          
+        }
+      }
+    });
+    console.log(total_marks);
+    console.log( no_of_students);
+    var basis=[];
+    var ratio=[];
+    for(var i=0;i<total_marks.length;i++){
+      ratio.push(parseFloat((total_marks[i]/no_of_students[i]).toFixed(2)));
+      basis.push(i+1);
+    }
+    console.log(ratio);
+    console.log(basis);
+
+    // var xValues = [50,60,70,80,90,100,110,120,130,140,150];
+    // var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+    var xValues=basis;
+    var yValues=ratio;
+    new Chart("myChart", {
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [{
+          fill: false,
+          lineTension: 0,
+          backgroundColor: "rgba(0,0,255,1.0)",
+          borderColor: "rgba(0,0,255,0.1)",
+          data: yValues
+        }]
+      },
+      options: {
+        legend: {display: false},
+        scales: {
+          yAxes: [{ticks: {min: 0, max:20}}],
+        }
+      }
+    });
+  }
 </script>
   <div class="row">
     <div class="col-md-12 col-sm-12 col-lg-6">
