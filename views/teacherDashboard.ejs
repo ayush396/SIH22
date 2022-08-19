@@ -210,8 +210,8 @@ font-family: sans-serif;
      <h1 style="font-size:4vw; ">To teach is to touch </h1>
        <h1 style="font-size:3.5vw; "> lives forever.</h1>
         </div>
-        <p class="desc">Join our hands to bring forth the best in every child. Don't be merely a teacher, become an awakener. Come and experience the magic of Lil'Learn as it enables the students to soar to new heights. </p>
-        <p class="desc1"> Download the app right away for a unique teaching experience</p>
+        <p class="desc " style="color: black;">Join our hands to bring forth the best in every child. Don't be merely a teacher, become an awakener. Come and experience the magic of Lil'Learn as it enables the students to soar to new heights. </p>
+        <p class="desc1" style="color: black;"> Experience a unique teaching experience</p>
         <input type="text" id = "tech" hidden value="<%= idd %>" name="techid">
     </div>
     
@@ -226,9 +226,24 @@ font-family: sans-serif;
    
   </div>
 
+  <div style="top: 150%;  z-index:1;position:absolute; text-align:center; left:30%;" class="card text-center" id="readMore">
+    <div class="card-header">
+      Student's LO  <a href="javascript:myfun1()" style="text-decoration: none;"> <span style="right: 0; left:65%">❌</span>  </a> 
+
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    <div class="card-footer text-muted">
+      2 days ago
+    </div>
+  </div>
 
 
-<section id="stats">
+
+<section id="stats" style="background-color: white ;">
 
 <div style="margin-top: 100px;"></div>
 <input type="text" hidden value="<%= p %>" id="plist" />
@@ -239,16 +254,30 @@ font-family: sans-serif;
     <h1><%= c %></h1>
    <% }) %>
 
-</select>
+
 
 
 <div class="student">
   <h1> </h1>
 
   <div class="row">
-    <div class="col-lg-6 col-md-6">
+
+
+    <div class="col-lg-6 col-md-6 " style="padding-top: 6%; padding-left:5%; padding-bottom:12%;">
+
+      <div style="margin-top: 10%;"></div>
+      <input type="text" hidden value="<%= p %>" id="plist" />
+      <label class="student" for="" style="color:#033808; font-size:1.5rem;">Select the Class:</label>
+      <select id="classVal" class="student" name="" onchange = "myFunction()" style="margin-bottom: 4%; padding-left:3%; margin-left:2%; width:10%; height:5%;" >
+       <% cl.forEach(c=>{ %>
+          <option  value="<%= c %>"> <%= c %> </option>
+          <h1><%= c %></h1>
+         <% }) %>
       
-      <div style="height: 289px; overflow: auto">
+      </select>
+
+      
+      <div style="height: 350px; overflow: auto">
 <div class=" container2">
   <table style="max-height:50px; overflow-y:auto;" class="table table-striped ">
     <thead>
@@ -259,27 +288,54 @@ font-family: sans-serif;
         <th style="width:30%" scope="col">Student LO</th>
       </tr>
     </thead>
+
     <tbody id="tb1">
       
+
     </tbody>
   </table>
   </div>
   </div>
   </div>
 
+
+  <div class="col-md-6 col-lg-6" style="padding-top: 10%;">
+
+    <h1 style="padding-top: 10%; font-family:cursive; font-size:2.7rem; color:#287335; padding-left:10%;  padding-right:10%;">Student-Wise LO Grade:</h1>
+    <div style="padding-right: 3%;">
+    <h4 style="padding-top: 5%; font-weight:100; padding-left:10%; text-align:justify;  padding-right:10%;">From the drop-down menu in the top left corner, choose the class and
+       section. Each student in the specified class and section is profiled 
+       in the table on the left. Find the student's name in the table and click
+        "Read More" to learn more about the LO grade. Your screen will provide 
+        an in-depth analysis and the progress of the students.</h3>
+  </div>
+  </div>
+
+</div>
+</section>
+
+<section style="padding-top: 8%; padding-bottom:8%;">
+
+<div class=" row">
+
+<div class="col-lg-6 col-md-6">
+  <h1>flmnmslf</h1>
+
+</div>
+<div class="col-lg-6 col-md-6">
+<canvas id="myChart" style="width:100%;max-width:600px; background-color:aliceblue; padding:1%;"></canvas>
+
+  
+</div>
 </div>
 
-<div class=" container2"></div>
 
 
 
 
-
-<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+</section>
 
 <script>
- 
-
 var db=document.getElementById("plist").value;
 db=JSON.parse(db);
 var classVal=document.getElementById("classVal").value;
@@ -360,8 +416,9 @@ new Chart("myChart", {
     scales: {
       yAxes: [{ticks: {min: 0, max:20}}],
     }
-  }
-});
+  });
+  
+
 
 
 
@@ -477,30 +534,31 @@ new Chart("myChart", {
 }
 
 tableCreate();
+
 </script>
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md-12 col-sm-12 col-lg-6">
 
 
-  <div class="container contact-form">
-    <div class="contact-image">
+  <div class="">
+    <div class="">
       <img class="rocket" src="https://docs.google.com/uc?id=1k4iZUhb1QL0mSBr3E903xBENzXG27Mmc" alt="rocket_contact" />
     </div>
     <form method="post" action="https://formsubmit.co/lillearn.13@gmail.com">
       <h3>Inform to Parents</h3>
       <div class="row">
         <div class="col-md-6">
-          <div class="form-group">
+          <div class="form-group" style="border: none;">
             <input type="text" name="txtName" class="form-control" placeholder="Student Name " value="" /><br>
           </div>
-          <div class="form-group">
+          <div class="form-group" style="border: none;">
             <input type="text" name="txtEmail" class="form-control" placeholder="Student Roll No. " value="" /><br>
           </div>
          
 
         </div>
         <div class="col-md-6">
-          <div class="form-group">
+          <div class="form-group" style="border: none;">
             <textarea name="txtMsg" class="form-control" placeholder="Remakrs" style="width: 100%; height: 120px;"></textarea>
           </div>
         </div>
@@ -516,13 +574,13 @@ tableCreate();
     </form>
   </div>
 </div>
-</div>
-</section>
+</div> -->
+
 
 
 <!-- <button type="button"  id="g" style="background-color:#328073; position: absolute;bottom: 100px;right: 100px;width:300px;height:80px;" class="btn  "><a id="link" style="text-decoration:none;color:white;font-size:1.8vw;"href="css/setup.exe">Download Software</a></button> -->
 
-<a id="g"href="https://docs.google.com/uc?export=download&id=1c-LHVk4COsDctG8swEnTpKI0hJAj8V2p"> <button type="button"   style="background-color:#387543; z-index: 1;position: absolute;top:80%;right: 71.5%;width:20%;height:70px;" class="btn g"> <p style="color:white;font-size:1.6vw; padding-top:3%;">Download Software</p> </button></a>
+<!-- <a id="g"href="https://docs.google.com/uc?export=download&id=1c-LHVk4COsDctG8swEnTpKI0hJAj8V2p"> <button type="button"   style="background-color:#387543; z-index: 1;position: absolute;top:80%;right: 71.5%;width:20%;height:70px;" class="btn g"> <p style="color:white;font-size:1.6vw; padding-top:3%;">Download Software</p> </button></a> -->
 
 
      <p class="delay"style="font-size: 1.1vw; margin-left: 80%;z-index:-1;font-weight: bold;position:absolute; top:16%;"> Welcome, <span class="span" style="font-size:1.1vw; color:#387543"><%=fname%> <%=lname%></span> </p>
@@ -530,24 +588,6 @@ tableCreate();
 
 
   </section>
-  <!-- <div class="footer">
-    <i class="footer-image fab fa-instagram fa-2x"></i>
-    <i class="footer-image fab fa-facebook fa-2x"></i>
-    <i class="footer-image fab fa-twitter fa-2x"></i>
-    <i class="footer-image fas fa-envelope fa-2x"></i>
-    <p>© Copyright 2021 Lil'learn</p>
-</div> -->
-
-
-
-
-
-
-
-
-
-
-
 
         <!-- <canvas class="background">
             </canvas> -->
