@@ -15,6 +15,7 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const jwt = require('jsonwebtoken');
 const jwt_secret = process.env.jwt_secret;
 const findOrCreate = require('mongoose-findorcreate');
+const { json } = require("body-parser");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 const app = express();
@@ -84,9 +85,8 @@ const teacherSchema = new mongoose.Schema({
        contentType: String
    },
   teacherID:Number,
-    class: {
-      type: [Number],
-      index: true,
+  classes: {
+      type: [String],
       unique: false
     }
 });
@@ -126,9 +126,10 @@ const userSchema = new mongoose.Schema({
   gender: String,
   contact: String,
   flag: Number,
+  marks:[],
+  class:{type:String, default:'1A'},
   thought:Number,
 	username:String,
-  class:Number,
   studentID:{type:Number, default:4000},
   teacherID:{type:Number, default:200},
   links:[],
@@ -480,6 +481,27 @@ app.get("/final", function(req, res) {
   });
 });
 
+app.get("/stats",(req,res)=>{
+  var t_id=req.query.teacherID;
+  var l=[];
+  Teacher.findOne({teacherID:t_id},(err,found)=>{
+    if(err){
+      console.log(err);
+    }else{
+      l=found.classes;
+      User.find({teacherID:t_id},(err,found)=>{
+        if(err){
+          console.log(err);
+        }else{
+          // console.log(l);
+          // console.log(found);
+          
+          res.render("stats",{p:JSON.stringify(found),cl:l});
+        }
+      });
+    }
+  });
+});
 
 //Update Values in MongoDB server after 24 hours
 var x=0;
@@ -650,10 +672,10 @@ app.post("/delete_link",(req,res)=>{
 
 app.post("/send_to_student",(req,res)=>{
   var link=req.body.link;
-  var time=req.body.time;
+  var times=req.body.time;
   var tid=req.query.teacherID;
   var currentdate = new Date();
-    var datetime =  currentdate.getDate() + "/"
+    var time =  currentdate.getDate() + "/"
     + (currentdate.getMonth()+1)  + "/" 
     + currentdate.getFullYear() + "  "  
     + currentdate.getHours() + ":"  
@@ -661,7 +683,7 @@ app.post("/send_to_student",(req,res)=>{
     + currentdate.getSeconds();
   console.log(tid);
   console.log(time);
-  User.update({teacherID:parseInt(tid) },{$push:{links:{$each:[{link,datetime}]}}},function(err,doc){
+  User.update({teacherID:parseInt(tid) },{$push:{links:{$each:[{link,time}]}}},function(err,doc){
     if(err){
       console.log(err);
     }else{
@@ -672,7 +694,7 @@ app.post("/send_to_student",(req,res)=>{
 })
 app.post("/add",function(req,res){
   const retrivedList=req.body.list;
-  var jsonListitems = JSON.parse(retrivedList)
+  var jsonListitems = JSON.parse(retrivedList);
   console.log(JSON.parse(retrivedList));  
   // console.log(teachid);
   const teachid=req.body.tid;
@@ -680,17 +702,17 @@ app.post("/add",function(req,res){
   jsonListitems.map((item) => {
       // console.log(item.bt);
 
-      User.findOne({studentID:item.at},function(err,found){
+      User.findOne({studentID:parseInt(item.at)},function(err,found){
         if(err){
           console.log(err);
         }else{
           
           // console.log(req.body.at);
           if(!found){
-            res.send("No Student Found with id: "+item.at);
+            console.log("No Student Found with id: "+item.at);
           }else{
-            console.log(item.at)
-            User.update({studentID:item.at},{teacherID: parseInt(teachid)},function(err,doc){
+            console.log(item.dt)
+            User.update({studentID:item.at},{teacherID: parseInt(teachid),class:(item.dt)},function(err,doc){
               if(err){
                 console.log(err);
               }else{
