@@ -4,7 +4,7 @@ var index = 1;
 function addToList() {
     var at = document.getElementById("newat").value;
     var bt = document.getElementById("newbt").value;
-
+    var dt = document.getElementById("newdt").value;
     if (isNaN(parseInt(at)) && isNaN(parseInt(bt))) {
         window.alert("Please enter valid inputs");
         return;
@@ -19,14 +19,14 @@ function addToList() {
     p.push({
         "at": parseInt(at),
         "bt": bt,
-        
+        "dt": dt
     });
 
     index = index + 1;
     displayList();
     document.getElementById("newat").value = "";
     document.getElementById("newbt").value = "";
-
+    document.getElementById("newdt").value = "";
 }
 
 function displayList() {
@@ -47,7 +47,7 @@ function displayList() {
         var input1 = document.createElement("input");
         input1.value = p[i].at;
         input1.setAttribute("class", "form-control text-primary");
-        input1.setAttribute("style", "width:19% ;float:left;margin-left:25px;text-align:center;");
+        input1.setAttribute("style", "width:15% ;float:left;margin-left:25px;text-align:center;");
         input1.setAttribute("disabled", "disabled");
         input1.setAttribute("id", "at" + i);
         var input2 = document.createElement("input");
@@ -56,6 +56,14 @@ function displayList() {
         input2.setAttribute("disabled", "disabled");
         input2.setAttribute("id", "bt" + i);
         input2.setAttribute("style", "width:30% ;float:left;margin-left:50px;text-align:center;");
+
+        var input3 = document.createElement("input");
+        input3.value = p[i].dt;
+        input3.setAttribute("class", "form-control text-primary");
+        input3.setAttribute("disabled", "disabled");
+        input3.setAttribute("id", "dt" + i);
+        input3.setAttribute("style", "width:15% ;float:left;margin-left:50px;text-align:center;");
+
         var btn = document.createElement("button");
         var text1 = document.createTextNode("EDIT");
         btn.appendChild(text1);
@@ -69,6 +77,7 @@ function displayList() {
         //card.appendChild(pid);
         card.appendChild(input1);
         card.appendChild(input2);
+        card.appendChild(input3);
         card.appendChild(btn);
         inp.appendChild(card);
         //inp.appendChild(br);
@@ -83,11 +92,13 @@ function edit(id) {
     button.setAttribute("onclick", "save(" + pos + ")");
     document.getElementById("at" + pos).removeAttribute("disabled");
     document.getElementById("bt" + pos).removeAttribute("disabled");
+    document.getElementById("dt" + pos).removeAttribute("disabled");
 }
 
 function save(pos) {
     at = parseInt(document.getElementById("at" + pos).value);
     bt = document.getElementById("bt" + pos).value;
+    dt= document.getElementById("dt" + pos).value;
     if (isNaN(parseInt(at)) && isNaN(parseInt(bt))) {
         window.alert("Please enter valid inputs");
         return;
@@ -105,6 +116,7 @@ function save(pos) {
 
     p[pos].at = at;
     p[pos].bt = bt;
+    p[pos].dt = dt;
     displayList();
 }
 
