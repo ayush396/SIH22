@@ -528,13 +528,13 @@ app.post("/teacher_login",function(req,res){
           // console.log("Here is the list");
           // console.log(found.links);
           l=found.classes;
-          User.find({teacherID:teachid},(err,found)=>{
+          User.find({teacherID:teachid},(err,found2)=>{
           if(err){
             console.log(err);
           }else{
             // console.log(l);
             // console.log(found);
-            res.render("teacherDashboard",{fname:found.fname,lname:found.lname,idd:teachid,p:JSON.stringify(found),cl:l});
+            res.render("teacherDashboard",{fname:found.fname,lname:found.lname,idd:teachid,p:JSON.stringify(found2),cl:l});
             // res.render("stats",{});
           }
         });
