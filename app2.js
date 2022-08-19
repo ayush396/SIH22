@@ -407,6 +407,68 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/home.html");
 });
 
+app.post("/success",function(req,res){
+  res.send("Message Sent Successfully");
+  var stud_id=req.body.stud_id;
+  var remarks=req.body.remarks;
+  var stud_name=req.body.stud_name;
+
+  User.find({studentID:parseInt(stud_id)},(err,found)=>{
+            if(err){
+              console.log(err);
+            }else{
+              // console.log(l);
+              // console.log(found);
+              // console.log(found);
+              var pEmail=found[0].parentEmail;
+              console.log(pEmail);
+
+              var transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                  user: 'lillearn.13@gmail.com',
+                  pass: 'SuBaAySh23#'
+                }
+              });
+
+              var mailOptions = {
+                from:"Team Lil-learn",
+                to:pEmail,
+
+                subject: 'Child Remarks',
+                text: remarks
+
+              };
+
+              transporter.sendMail(mailOptions, function(error, info) {
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Email sent: ' + info.response);
+                }
+              });
+                // Email.send({
+                //   Host: "smtp.gmail.com",
+                //   Username: "lillearn.13@gmail.com",
+                //   Password: "SuBaAySh23#",
+                //   To: pEmail,
+                //   From: "lillearn.13@gmail.com",
+                //   Subject: "Your ward Remarks",
+                //   Body: remarks,
+                // })
+                //   .then(function (message) {
+                //     alert("mail sent successfully")
+                //   });
+              
+              
+              
+            }
+          });
+
+
+
+})
+
 app.get("/auth/google",
   passport.authenticate('google', {
     scope: ['profile', 'email']
