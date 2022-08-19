@@ -233,7 +233,7 @@ font-family: sans-serif;
 <div style="margin-top: 100px;"></div>
 <input type="text" hidden value="<%= p %>" id="plist" />
 <label class="student" for="">Select the class</label>
-<select id="classVal" class="student" name="" style="margin-bottom: 4%;" >
+<select id="classVal" onchange="myFunction()" class="student" name="" style="margin-bottom: 4%;" >
  <% cl.forEach(c=>{ %>
     <option  value="<%= c %>"> <%= c %> </option>
     <h1><%= c %></h1>
@@ -259,65 +259,8 @@ font-family: sans-serif;
         <th style="width:30%" scope="col">Student LO</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td> <a href="" style=" text-decoration:none;">Read More</a> </td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-         <td> <a href="" style=" text-decoration:none;">Read More</a> </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td> <td> <a href="" style=" text-decoration:none;">Read More</a> </td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td> <td> <a href="" style=" text-decoration:none;">Read More</a> </td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td> <td> <a href="" style=" text-decoration:none;">Read More</a> </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td> <td> <a href="" style=" text-decoration:none;">Read More</a> </td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td> <td> <a href="" style=" text-decoration:none;">Read More</a> </td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td> <td> <a href="" style=" text-decoration:none;">Read More</a> </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td> <td> <a href="" style=" text-decoration:none;">Read More</a> </td>
-      </tr>
-
+    <tbody id="tb1">
+      
     </tbody>
   </table>
   </div>
@@ -336,29 +279,70 @@ font-family: sans-serif;
 
 <script>
  
+
 var db=document.getElementById("plist").value;
 db=JSON.parse(db);
-var classwise=[];
-var studID=[];
 var classVal=document.getElementById("classVal").value;
- 
-for (let i=0;i<db.length;i++)
-{
-  if(db[i].class === classVal)
-  {
-      studID.push(db[i].studentID);
+
+
+
+
+var names=[];
+var ids=[];
+var lo=[];
+
+var total_marks=[];
+var no_of_students=[];
+db.forEach(s => {
+  if(s.class===classVal){
+    var mr=s.marks;
+    var vv=0;
+    var no_t=mr.length;
+
+    console.log(s.studentID);
+    for(var i=0;i<mr.length;i++){
+      var val=0;
+      for(var j=0;j<mr[i].length;j++){
+        val+=mr[i][j];
+        vv+=mr[i][j];
+      }
+      if(i < total_marks.length){
+        total_marks[i]+=val;
+        no_of_students[i]+=1;
+      }else{
+        total_marks.push(val);
+        no_of_students.push(1);
+      }
+      
+    }
+
+    names.push(s.fname);
+    ids.push(s.studentID);
+    if(no_t===0){
+      lo.push(0);
+    }else{
+      lo.push(parseFloat((vv/no_t).toFixed(2)));
+    }
   }
-}
-
-studID.forEach(c=>{
-  console.log(c);
+  
 });
+console.log(names);
+console.log(ids);
+console.log(lo);
 
+var basis=[];
+var ratio=[];
+for(var i=0;i<total_marks.length;i++){
+  ratio.push(parseFloat((total_marks[i]/no_of_students[i]).toFixed(2)));
+  basis.push(i+1);
+}
+// console.log(ratio);
+// console.log(basis);
 
-
-var xValues = [50,60,70,80,90,100,110,120,130,140,150];
-var yValues = [7,8,8,9,9,9,10,11,14,14,15];
-
+// var xValues = [50,60,70,80,90,100,110,120,130,140,150];
+// var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+var xValues=basis;
+var yValues=ratio;
 new Chart("myChart", {
   type: "line",
   data: {
@@ -374,10 +358,125 @@ new Chart("myChart", {
   options: {
     legend: {display: false},
     scales: {
-      yAxes: [{ticks: {min: 6, max:16}}],
+      yAxes: [{ticks: {min: 0, max:20}}],
     }
   }
 });
+
+
+
+
+  var cl=document.getElementById("classVal");
+  function myFunction(){
+    console.log(cl.value);
+    var db=document.getElementById("plist").value;
+    db=JSON.parse(db);
+    var classVal=cl.value;
+
+    names=[];
+    ids=[];
+    lo=[];
+
+    var total_marks=[];
+    var no_of_students=[];
+    db.forEach(s => {
+      if(s.class===classVal){
+        var mr=s.marks;
+        var vv=0;
+        var no_t=mr.length;
+        // console.log(s.studentID);
+        for(var i=0;i<mr.length;i++){
+          var val=0;
+          for(var j=0;j<mr[i].length;j++){
+            val+=mr[i][j];
+            vv+=mr[i][j];
+          }
+          if(i < total_marks.length){
+            total_marks[i]+=val;
+            no_of_students[i]+=1;
+          }else{
+            total_marks.push(val);
+            no_of_students.push(1);
+          }
+          
+        }
+        names.push(s.fname);
+        ids.push(s.studentID);
+        if(no_t===0){
+          lo.push(0);
+        }else{
+          lo.push(parseFloat((vv/no_t).toFixed(2)));
+        }
+      }
+    });
+    console.log(names);
+    console.log(ids);
+    console.log(lo);
+    
+    // console.log(total_marks);
+    // console.log( no_of_students);
+    var basis=[];
+    var ratio=[];
+    for(var i=0;i<total_marks.length;i++){
+      ratio.push(parseFloat((total_marks[i]/no_of_students[i]).toFixed(2)));
+      basis.push(i+1);
+    }
+    // console.log(ratio);
+    // console.log(basis);
+
+    // var xValues = [50,60,70,80,90,100,110,120,130,140,150];
+    // var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+    var xValues=basis;
+    var yValues=ratio;
+    new Chart("myChart", {
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [{
+          fill: false,
+          lineTension: 0,
+          backgroundColor: "rgba(0,0,255,1.0)",
+          borderColor: "rgba(0,0,255,0.1)",
+          data: yValues
+        }]
+      },
+      options: {
+        legend: {display: false},
+        scales: {
+          yAxes: [{ticks: {min: 0, max:20}}],
+        }
+      }
+    });
+    tableCreate();
+  }
+  function tableCreate() {
+  var tbody=document.getElementById('t1')
+  var tbody=document.getElementById('tb1')
+  tbody.innerHTML="";
+  for (let i = 0; i < names.length; i++) {
+        const tr = tbody.insertRow();
+        const td1 = tr.insertCell();
+        td1.appendChild(document.createTextNode(i+1));
+        td1.style.border = '1px solid black';
+        const td2 = tr.insertCell();
+        td2.appendChild(document.createTextNode(names[i]));
+        td2.style.border = '1px solid black';
+        const td3 = tr.insertCell();
+        td3.appendChild(document.createTextNode(ids[i]));
+        td3.style.border = '1px solid black';
+        const td4 = tr.insertCell();
+        td4.appendChild(document.createTextNode(lo[i]));
+        td4.style.border = '1px solid black';
+        const td5 = tr.insertCell();
+        td5.appendChild(document.createTextNode("Read More"));
+        td5.style.border = '1px solid black';
+       
+    
+  }
+  table.appendChild(tbody);
+}
+
+tableCreate();
 </script>
   <div class="row">
     <div class="col-md-12 col-sm-12 col-lg-6">
