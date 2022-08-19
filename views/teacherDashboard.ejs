@@ -245,7 +245,7 @@ font-family: sans-serif;
 
 <section id="stats" style="background-color: white ;">
 
-<div style="margin-top: 100px;"></div>
+<!-- <div style="margin-top: 100px;"></div>
 <input type="text" hidden value="<%= p %>" id="plist" />
 <label class="student" for="">Select the class</label>
 <select id="classVal" onchange="myFunction()" class="student" name="" style="margin-bottom: 4%;" >
@@ -253,7 +253,7 @@ font-family: sans-serif;
     <option  value="<%= c %>"> <%= c %> </option>
     <h1><%= c %></h1>
    <% }) %>
-
+ -->
 
 
 
@@ -336,6 +336,18 @@ font-family: sans-serif;
 </section>
 
 <script>
+
+  var card=document.getElementById("readMore");
+  card.style.display="none";
+  function myfun()
+  {
+    
+    card.style.display="block";
+  }
+  function myfun1()
+  {
+    card.style.display="none";
+  }
 var db=document.getElementById("plist").value;
 db=JSON.parse(db);
 var classVal=document.getElementById("classVal").value;
@@ -416,6 +428,7 @@ new Chart("myChart", {
     scales: {
       yAxes: [{ticks: {min: 0, max:20}}],
     }
+  }
   });
   
 
@@ -506,6 +519,8 @@ new Chart("myChart", {
     });
     tableCreate();
   }
+
+
   function tableCreate() {
   var tbody=document.getElementById('t1')
   var tbody=document.getElementById('tb1')
@@ -514,19 +529,28 @@ new Chart("myChart", {
         const tr = tbody.insertRow();
         const td1 = tr.insertCell();
         td1.appendChild(document.createTextNode(i+1));
-        td1.style.border = '1px solid black';
+        
         const td2 = tr.insertCell();
         td2.appendChild(document.createTextNode(names[i]));
-        td2.style.border = '1px solid black';
+        
         const td3 = tr.insertCell();
         td3.appendChild(document.createTextNode(ids[i]));
-        td3.style.border = '1px solid black';
+        
         const td4 = tr.insertCell();
         td4.appendChild(document.createTextNode(lo[i]));
-        td4.style.border = '1px solid black';
+        
         const td5 = tr.insertCell();
-        td5.appendChild(document.createTextNode("Read More"));
-        td5.style.border = '1px solid black';
+        var btn = document.createElement("button");
+        var text1 = document.createTextNode("Read More");
+        btn.appendChild(text1);
+        btn.setAttribute("id", "btn" + i);
+        btn.setAttribute("class", "btn btn-success");
+        btn.setAttribute("value",ids[i]);
+        btn.setAttribute("onclick", "myfun()");
+        btn.setAttribute("style", "float:left;margin-left:20px; width:130px;");
+
+        td5.appendChild(btn);
+        
        
     
   }
