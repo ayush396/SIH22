@@ -534,7 +534,7 @@ app.post("/teacher_login",function(req,res){
           }else{
             // console.log(l);
             // console.log(found);
-            res.render("teacherDashboard",{fname:found.fname,lname:found.lname,idd:found.teacherID,p:JSON.stringify(found),cl:l});
+            res.render("teacherDashboard",{fname:found.fname,lname:found.lname,idd:teachid,p:JSON.stringify(found),cl:l});
             // res.render("stats",{});
           }
         });
