@@ -481,27 +481,27 @@ app.get("/final", function(req, res) {
   });
 });
 
-app.get("/stats",(req,res)=>{
-  var t_id=req.query.teacherID;
-  var l=[];
-  Teacher.findOne({teacherID:t_id},(err,found)=>{
-    if(err){
-      console.log(err);
-    }else{
-      l=found.classes;
-      User.find({teacherID:t_id},(err,found)=>{
-        if(err){
-          console.log(err);
-        }else{
-          // console.log(l);
-          // console.log(found);
+// app.get("/stats",(req,res)=>{
+//   var t_id=req.query.teacherID;
+//   var l=[];
+//   Teacher.findOne({teacherID:t_id},(err,found)=>{
+//     if(err){
+//       console.log(err);
+//     }else{
+//       l=found.classes;
+//       User.find({teacherID:t_id},(err,found)=>{
+//         if(err){
+//           console.log(err);
+//         }else{
+//           // console.log(l);
+//           // console.log(found);
           
-          res.render("stats",{p:JSON.stringify(found),cl:l});
-        }
-      });
-    }
-  });
-});
+//           res.render("stats",{p:JSON.stringify(found),cl:l});
+//         }
+//       });
+//     }
+//   });
+// });
 
 //Update Values in MongoDB server after 24 hours
 var x=0;
@@ -527,7 +527,18 @@ app.post("/teacher_login",function(req,res){
           console.log(teachid);
           // console.log("Here is the list");
           // console.log(found.links);
-          res.render("teacherDashboard",{fname:found.fname,lname:found.lname,idd:found.teacherID});
+          l=found.classes;
+          User.find({teacherID:teachid},(err,found)=>{
+          if(err){
+            console.log(err);
+          }else{
+            // console.log(l);
+            // console.log(found);
+            res.render("teacherDashboard",{fname:found.fname,lname:found.lname,idd:found.teacherID,p:JSON.stringify(found),cl:l});
+            // res.render("stats",{});
+          }
+        });
+          
         }else{
           res.send("Wrong Password");
         }
