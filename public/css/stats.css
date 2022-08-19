@@ -254,12 +254,53 @@
         font-size: 15px;
         line-height: 1;
     }
+.chart{
+  margin-top:-1%; 
+  width:100%;
+  max-width:650px;
+   height:106%; 
+   border-radius:5px;
+   border:1px solid;
+   background-color:white; 
+   padding:5%;
+   box-shadow: 4px 5px 9px #888888;
+}
+.cloud{ 
+  width: 25%;
+ 
+  background:#ECEFF1;
+  box-shadow: 10px 10px rgba(0,0,0,0.2);
+}
 
+.kuch{
+  bottom:4%;
+  right:2%;
+   position:fixed;
+   border-radius: 100%;
+  width:5%;
+  border: 1px solid green;
+}
+.kuch:hover{
+  width: 5.5%;
+  transition:width 0.5s;
+}
+
+.chart2{
+  margin-top:-1%; 
+  width:1000px;
+
+   height:106%; 
+   border-radius:5px;
+   border:1px solid;
+   background-color:white; 
+  
+   box-shadow: 4px 5px 9px #888888;
+}
     .footer {
         text-align: center;
         font-size: 10px;
         padding-top: 0;
-        margin-bottom: -90px;
+        padding-bottom: 1%;
     }
 
     .footer-image {
@@ -274,6 +315,22 @@
     .new3:hover{
       color: white;
     }
+    .footer-image{
+      margin : 5px 15px;
+      }
+      .face:hover{
+      color:#3d799c;
+      }
+      .in:hover{
+      color: #f21f82;
+      }
+      .tw:hover{
+      color: #229ff2;
+      }
+      .mail:hover{
+      color: red;
+      }
+      
 
 .introduction  {
   position: fixed;

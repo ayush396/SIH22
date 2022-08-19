@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <script src="https://kit.fontawesome.com/59d8afb937.js" crossorigin="anonymous"></script>
 
 <head>
     <meta charset="utf-8">
@@ -125,7 +126,7 @@ font-family: sans-serif;
 
 </style>
 
-
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Merriweather:wght@900&family=Recursive:wght@500&family=Ubuntu&display=swap" rel="stylesheet">
@@ -152,7 +153,73 @@ font-family: sans-serif;
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
+
 <body style="background-color:#e5fce7;">
+ 
+  <div id="mail" style="bottom:15%;  z-index:1;position:fixed; padding-top:1%;  right:2%; width:25%; " class="card cloud">
+
+    <a href="javascript:myfun3();" style="text-decoration: none; margin-left:90% ;margin-top:5%"> ❌</a>
+    
+    <div class="" style="padding: 16% 8% 18%;">
+      <div class="">
+        <img class="rocket" src="https://docs.google.com/uc?id=1k4iZUhb1QL0mSBr3E903xBENzXG27Mmc" alt="rocket_contact" />
+      </div>
+      <form method="post" action="/success">
+        <h3>Inform to Parents</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group" style="border: none;">
+              <input type="text" name="stud_name" class="form-control"  placeholder="Student Name " value="" /><br>
+            </div>
+            <div class="form-group" style="border: none;">
+              <input type="text" name="stud_id" class="form-control" placeholder="Student ID. " value="" /><br>
+            </div>
+           
+  
+          </div>
+          <div class="col-md-6">
+            <div class="form-group" style="border: none;">
+              <textarea name="remarks" class="form-control" placeholder="Remakrs" style="width: 100%; height: 120px;"></textarea>
+            </div>
+          </div>
+  
+  
+              <div class="col-md-6 col-sm-6">
+                <input type="hidden" name="_next" value="https://www.lillearn.com/thankyou">
+                <input class="dp" type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+              </div>
+  
+  
+        </div>
+      </form>
+    </div>
+
+
+
+
+  </div>
+
+  <div style="top: 125%;  z-index:1;position:absolute; text-align:center; left:30%; width:35%;  " class="card text-center" id="readMore">
+    <div class="card-header">
+      Student's LO  <a href="javascript:myfun1()" style="text-decoration: none;"> <span style="right: 0; left:65%">❌</span>  </a> 
+
+    </div>
+    <div class="card-body" id="stud">
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js'></script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+      <canvas id="multipleLineChart" width="400" height="400"></canvas>
+      <!-- <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    </div>
+    <div class="card-footer text-muted">
+      Statistics
+    </div>
+  </div>
+
+  
+
+  <div id="blur"> 
 
   <!-- <video src="/css/new2.mp4" autoplay loop muted poster="posterimage.jpg">
 
@@ -207,11 +274,11 @@ font-family: sans-serif;
     <div class="col-lg-9 col-md-9 col-sm-9">
       <div class="newclass">
   
-     <h1 style="font-size:4vw; ">To teach is to touch </h1>
+     <h1 style="font-size:4vw; padding-top:10%;">To teach is to touch </h1>
        <h1 style="font-size:3.5vw; "> lives forever.</h1>
         </div>
-        <p class="desc " style="color: black;">Join our hands to bring forth the best in every child. Don't be merely a teacher, become an awakener. Come and experience the magic of Lil'Learn as it enables the students to soar to new heights. </p>
-        <p class="desc1" style="color: black;"> Experience a unique teaching experience</p>
+        <p class="desc " style="color: black; padding-top:3%;">Join our hands to bring forth the best in every child. Don't be merely a teacher, become an awakener. Come and experience the magic of Lil'Learn as it enables the students to soar to new heights. </p>
+        <p class="desc1" style="color: black;  padding-top:4%;"> Experience a unique teaching experience</p>
         <input type="text" id = "tech" hidden value="<%= idd %>" name="techid">
     </div>
     
@@ -226,27 +293,11 @@ font-family: sans-serif;
    
   </div>
 
-  <div style="top: 150%;  z-index:1;position:absolute; text-align:center; left:30%;" class="card text-center" id="readMore">
-    <div class="card-header">
-      Student's LO  <a href="javascript:myfun1()" style="text-decoration: none;"> <span style="right: 0; left:65%">❌</span>  </a> 
-
-    </div>
-    <div class="card-body" id="stud">
-      <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js'></script>
-      <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
-      <canvas id="multipleLineChart" width="400" height="400"></canvas>
-      <!-- <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a> -->
-    </div>
-    <div class="card-footer text-muted">
-      Statistics
-    </div>
-  </div>
+ 
 
 
 
-<section id="stats" style="background-color: white ;">
+<section id="stats" style="background-image: linear-gradient(#e5fce7,white, #e5fce7);">
 
 <!-- <div style="margin-top: 100px;"></div>
 <input type="text" hidden value="<%= p %>" id="plist" />
@@ -266,12 +317,12 @@ font-family: sans-serif;
   <div class="row">
 
 
-    <div class="col-lg-6 col-md-6 " style="padding-top: 6%; padding-left:5%; padding-bottom:12%;">
+    <div class="col-lg-6 col-md-6 " style="padding-top: 6%; padding-left:5%; padding-bottom:2%;"data-aos="fade-up" data-aos-duration="2000">
 
       <div style="margin-top: 10%;"></div>
       <input type="text" hidden value="<%= p %>" id="plist" />
       <label class="student" for="" style="color:#033808; font-size:1.5rem;">Select the Class:</label>
-      <select id="classVal" class="student" name="" onchange = "myFunction()" style="margin-bottom: 4%; padding-left:3%; margin-left:2%; width:10%; height:5%;" >
+      <select id="classVal" class="student" name="" onchange = "myFunction()" style="margin-bottom: 4%; padding-left:2%; margin-left:2%;padding-bottom:1%; width:10%; height:6%;" >
        <% cl.forEach(c=>{ %>
           <option  value="<%= c %>"> <%= c %> </option>
           <h1><%= c %></h1>
@@ -280,7 +331,7 @@ font-family: sans-serif;
       </select>
 
       
-      <div style="height: 350px; overflow: auto">
+      <div style="height: 350px; overflow: auto; margin-top:6%;" data-aos="fade-right" data-aos-duration="2000">
 <div class=" container2">
   <table style="max-height:50px; overflow-y:auto;" class="table table-striped ">
     <thead>
@@ -289,6 +340,7 @@ font-family: sans-serif;
         <th style="width:25%"  scope="col">Student Name</th>
         <th style="width:25%" scope="col"> Student ID</th>
         <th style="width:30%" scope="col">Student LO</th>
+        <th style="padding-left:5%;" scope="col">Analysis</th>
       </tr>
     </thead>
 
@@ -302,11 +354,11 @@ font-family: sans-serif;
   </div>
 
 
-  <div class="col-md-6 col-lg-6" style="padding-top: 10%;">
+  <div class="col-md-6 col-lg-6" style="padding-top: 10%; padding-bottom:2%;"data-aos="fade-left" data-aos-duration="2000">
 
-    <h1 style="padding-top: 10%; font-family:cursive; font-size:2.7rem; color:#287335; padding-left:10%;  padding-right:10%;">Student-Wise LO Grade:</h1>
+    <h1 style="padding-top: 4%;  font-size:2.7rem; color:#287335; padding-left:10%;  padding-right:10%;"data-aos="fade-left" data-aos-duration="2000">Student-Wise LO Grade</h1>
     <div style="padding-right: 3%;">
-    <h4 style="padding-top: 5%; font-weight:100; padding-left:10%; text-align:justify;  padding-right:10%;">From the drop-down menu in the top left corner, choose the class and
+    <h4 style="padding-top: 5%; font-weight:100; padding-left:10%; text-align:justify;  padding-right:10%;"data-aos="fade-up" data-aos-duration="1500">From the drop-down menu in the top left corner, choose the class and
        section. Each student in the specified class and section is profiled 
        in the table on the left. Find the student's name in the table and click
         "Read More" to learn more about the LO grade. Your screen will provide 
@@ -317,34 +369,43 @@ font-family: sans-serif;
 </div>
 </section>
 
-<section style="padding-top: 8%; padding-bottom:8%;">
+<section style="padding-left:3%; padding-bottom:8%;background-image: linear-gradient(#e5fce7,white, #e5fce7);">
 
 <div class=" row">
 
-<div class="col-lg-6 col-md-6">
-  <h1>flmnmslf</h1>
+<div class="col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="2500">
+  <h1 style="  font-size:2.7rem; color:#287335; padding-left:10%;  padding-right:10%;" data-aos="fade-right" data-aos-duration="1500">Tests Performance</h1>
+  <div style="padding-right: 3%;">
+  <h4 style="padding-top: 5%; font-weight:100; padding-left:10%; text-align:justify;  padding-right:10%;">On the right side, a comprehensive graph can be observed to learn the details of each student's score per class. The progress of each class can be evaluated.
+    The  graph provides a thorough assessment of how the chosen class performed in a series of tests. It compares the average scores obtained by students of that class on an examination to all other examinations that have been conducted.</h4>
 </div>
-<div class="col-lg-6 col-md-6">
-<canvas id="myChart" style="width:100%;max-width:600px; background-color:aliceblue; padding:1%;"></canvas>
+</div>
+<div class="col-lg-6 col-md-6"  data-aos="fade-left" data-aos-duration="2000">
+<canvas id="myChart" class="chart"></canvas>
 </div>
 </div>
 </section>
 
-<section style="padding-top: 8%; padding-bottom:8%;">
+<section style="padding-left:3%;padding-top: 10%; padding-bottom:12%;background-image: linear-gradient(#e5fce7,white, #e5fce7);">
 
   <div class=" row">
   
-  
   <div class="col-lg-6 col-md-6">
-    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <div id="chartContainer" style="height: 370px; width: 70%;" class="chart2">
+      <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    </div>
+   
   </div>
   <div class="col-lg-6 col-md-6">
     <h1>flmnmslf</h1>
   </div>
   </div>
   </section>
-
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+      AOS.init();
+  </script>
 <script>
   window.onload=function(){
     var db=document.getElementById("plist").value;
@@ -406,6 +467,10 @@ font-family: sans-serif;
   var card=document.getElementById("readMore");
   card.style.display="none";
   function myfun(std){
+    var x=document.getElementById("blur");
+    x.style.opacity=0.5;
+    card.style.opacity=1.0;
+
     std=parseInt(std);
     card.style.display="block";
     console.log(std);
@@ -477,6 +542,10 @@ font-family: sans-serif;
   }
   function myfun1()
   {
+    
+    var x=document.getElementById("blur");
+    x.style.opacity=1.0;
+
     card.style.display="none";
   }
 var db=document.getElementById("plist").value;
@@ -563,10 +632,6 @@ new Chart("myChart", {
   });
   
 
-
-
-
-
   var cl=document.getElementById("classVal");
   function myFunction(){
     console.log(cl.value);
@@ -643,6 +708,7 @@ new Chart("myChart", {
       },
       options: {
         legend: {display: false},
+       
         scales: {
           yAxes: [{ticks: {min: 0, max:20}}],
         }
@@ -683,7 +749,6 @@ new Chart("myChart", {
 
         td5.appendChild(btn);
         
-       
     
   }
   // table.appendChild(tbody);
@@ -761,6 +826,19 @@ tableCreate();
 
 
       <script >
+        var blur=document.getElementById("blur");
+        var mail=document.getElementById("mail");
+        mail.style.display="none";
+        function myfun2()
+        {
+          mail.style.display="block";
+          blur.style.opacity=0.2;
+        }
+        function myfun3()
+        {
+          mail.style.display="none";
+          blur.style.opacity=1.0;
+        }
       $(document).ready(function() {
         setTimeout(function() {
           $("#g").show();
@@ -800,10 +878,28 @@ tableCreate();
         })
       })
 
+
       </script>
+      
+        <!-- <h1>fklndsjkg</h1> -->
 
 
+<div >
+   <a href="javascript:myfubnb2();" > <img src="/css/parent1.png" onclick="myfun2()" id="connect" class="kuch" alt=""></a> 
 
+</div>
+
+       
+      
+      <div class=" footer " >
+        <i class="footer-image fab in fa-instagram fa-2x "></i>
+        <i class="footer-image fab face fa-facebook fa-2x "></i>
+        <i class="footer-image fab tw fa-twitter fa-2x "></i>
+        <i class="footer-image fas mail fa-envelope fa-2x "></i>
+        <p>© Copyright 2022 Prob-Z</p>
+    </div>
+
+</div>
 
 </body>
 
