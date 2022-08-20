@@ -22,9 +22,7 @@
     }
 
    
-.desc{
-  color:purple;
-}
+
 .demo{
   font-family: 'Rowdies', cursive;
 }
@@ -256,13 +254,13 @@
     }
 .chart{
   margin-top:-1%; 
-  width:100%;
+  width:103%;
   max-width:650px;
-   height:106%; 
+   height:107%; 
    border-radius:5px;
    border:1px solid;
    background-color:white; 
-   padding:5%;
+   padding:3%;
    box-shadow: 4px 5px 9px #888888;
 }
 .cloud{ 
@@ -281,8 +279,9 @@
   border: 1px solid green;
 }
 .kuch:hover{
-  width: 5.5%;
-  transition:width 0.5s;
+  
+  scale:1.1;
+  transition:scale 0.5s;
 }
 
 .chart2{
@@ -296,6 +295,18 @@
   
    box-shadow: 4px 5px 9px #888888;
 }
+.chart3{
+  margin-top:-1%; 
+  width:1000px;
+
+   height:106%; 
+   border-radius:5px;
+   border:1px solid;
+   background-color:white; 
+   padding :1%;
+   box-shadow: 4px 5px 9px #888888;
+}
+   
     .footer {
         text-align: center;
         font-size: 10px;
