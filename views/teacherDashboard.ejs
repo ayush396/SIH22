@@ -92,7 +92,7 @@ background-color: black;
 .desc{
 font-family: sans-serif;
   margin-left: 8%;
-  font-weight: bold;
+  
   display: inline-block;
   position: absolute;
   z-index: -1;
@@ -247,7 +247,7 @@ font-family: sans-serif;
              <div class="collapse navbar-collapse" style="margin-left:10%;" id="navbarCollapse">
                  <ul class="navbar-nav ms-auto" >
                      <li class="nav-item active">
-                         <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="/">Home </a>
+                         <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="#">Home </a>
                      </li>
 
                      <li class="nav-item active">
@@ -268,7 +268,7 @@ font-family: sans-serif;
              </div>
          </nav>
      </header>
-
+<section >
   <div class="row">
   
     <div class="col-lg-9 col-md-9 col-sm-9">
@@ -277,8 +277,8 @@ font-family: sans-serif;
      <h1 style="font-size:4vw; padding-top:10%;">To teach is to touch </h1>
        <h1 style="font-size:3.5vw; "> lives forever.</h1>
         </div>
-        <p class="desc " style="color: black; padding-top:3%;">Join our hands to bring forth the best in every child. Don't be merely a teacher, become an awakener. Come and experience the magic of Lil'Learn as it enables the students to soar to new heights. </p>
-        <p class="desc1" style="color: black;  padding-top:4%;"> Experience a unique teaching experience</p>
+        <p class="desc" style=" padding-top:3%;">Join our hands to bring forth the best in every child. Don't be merely a teacher, become an awakener. Come and experience the magic of Lil'Learn as it enables the students to soar to new heights. </p>
+        <p class="desc1" style="color: black;  padding-top:4%;"> Experience a unique teaching experience ...</p>
         <input type="text" id = "tech" hidden value="<%= idd %>" name="techid">
     </div>
     
@@ -295,6 +295,8 @@ font-family: sans-serif;
 
  
 
+</section>
+  
 
 
 <section id="stats" style="background-image: linear-gradient(#e5fce7,white, #e5fce7);">
@@ -369,7 +371,7 @@ font-family: sans-serif;
 </div>
 </section>
 
-<section style="padding-left:3%; padding-bottom:8%;background-image: linear-gradient(#e5fce7,white, #e5fce7);">
+<section style="margin-top:-2%;padding-left:3%; padding-bottom:12%;background-image: linear-gradient(#e5fce7,white, #e5fce7);">
 
 <div class=" row">
 
@@ -377,7 +379,7 @@ font-family: sans-serif;
   <h1 style="  font-size:2.7rem; color:#287335; padding-left:10%;  padding-right:10%;" data-aos="fade-right" data-aos-duration="1500">Tests Performance</h1>
   <div style="padding-right: 3%;">
   <h4 style="padding-top: 5%; font-weight:100; padding-left:10%; text-align:justify;  padding-right:10%;">On the right side, a comprehensive graph can be observed to learn the details of each student's score per class. The progress of each class can be evaluated.
-    The  graph provides a thorough assessment of how the chosen class performed in a series of tests. It compares the average scores obtained by students of that class on an examination to all other examinations that have been conducted.</h4>
+    The graph provides a thorough assessment of how the chosen class performed in a series of tests. It compares the average scores obtained by students of that class on an examination to all other examinations that have been conducted.</h4>
 </div>
 </div>
 <div class="col-lg-6 col-md-6"  data-aos="fade-left" data-aos-duration="2000">
@@ -386,19 +388,22 @@ font-family: sans-serif;
 </div>
 </section>
 
-<section style="padding-left:3%;padding-top: 10%; padding-bottom:12%;background-image: linear-gradient(#e5fce7,white, #e5fce7);">
+<section style="padding-left:8%;padding-top: 10%; padding-bottom:12%;background-image: linear-gradient(#e5fce7,white, #e5fce7);">
 
   <div class=" row">
   
-  <div class="col-lg-6 col-md-6">
+  <div class="col-lg-6 col-md-6"data-aos="fade-right" data-aos-duration="1500">
 
-    <div id="chartContainer" style="height: 370px; width: 70%;" class="chart2">
+    <div id="chartContainer" style="height: 370px; width: 95%;" class="chart2">
       <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     </div>
    
   </div>
-  <div class="col-lg-6 col-md-6">
-    <h1>flmnmslf</h1>
+  <div class="col-lg-6 col-md-6"data-aos="fade-left" data-aos-duration="1500">
+    <h1 style="  font-size:2.7rem; color:#287335; padding-left:5%;  padding-right:10%;" data-aos="fade-right" data-aos-duration="1500">Performance Of Classes</h1>
+    <div style="padding-right: 3%;">
+    <h4 style="padding-top: 5%; font-weight:100; padding-left:5%; text-align:justify;  padding-right:10%;">Your allocated classes and their performance are shown in the graph on the right. From the examinations conducted, the average results for each class are shown. It may be used efficiently to compare classes and determine how much attention should be given to each class.</h4>
+  </div>
   </div>
   </div>
   </section>
@@ -445,16 +450,18 @@ font-family: sans-serif;
       animationEnabled: true,
       theme: "light1", // "light1", "light2", "dark1", "dark2"
       title:{
-        text: "CLASS WISE L.O. GRADES"
+        text: "Class Wise Comparision"
       },
       axisY: {
         title: "L.O. Points"
       },
+      axisX: {
+        title: "Classes"
+      },
       data: [{        
         type: "column",  
-        showInLegend: true, 
-        legendMarkerColor: "black",
-        legendText: "Class",
+        showInLegend: false, 
+        
         dataPoints: loo
       }]
     });
@@ -624,9 +631,19 @@ new Chart("myChart", {
     }]
   },
   options: {
+    responsive: true,
     legend: {display: false},
     scales: {
-      yAxes: [{ticks: {min: 0, max:20}}],
+      
+      yAxes: [{ticks: {min: 0, max:25}, scaleLabel: {
+        display: true,
+        labelString: 'Average Marks'
+      }}],
+      xAxes: [{ticks: {min: 0, max:25}, scaleLabel: {
+        display: true,
+        labelString: 'Number Of Tests'
+      }}]
+     
     }
   }
   });
