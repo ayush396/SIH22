@@ -1,0 +1,157 @@
+#g   {
+    display: none;
+  }
+  body{
+    font-family: 'Luckiest Guy', cursive;
+  font-family: 'Merriweather', serif;
+  font-family: 'Recursive', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
+  }
+  .container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  }
+  
+  .container img {
+  width: 100%;
+  height: auto;
+  }
+  
+  
+  .container .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  }
+  
+  .container .btn:hover {
+  background-color: black;
+  }
+  .delay{
+    opacity: 1;
+    transition: ease-out;
+    transition-delay: 3s;
+  }
+  .fit
+  {
+    position: absolute;
+    top: 2%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    z-index: -1;
+  }
+  .newclass{
+    font-family: 'Luckiest Guy', cursive;
+    display: inline-block;
+    margin-left: 32%;
+      right:35%;
+    top:140px;
+    position: absolute;
+    z-index: -1;
+  
+  }
+  body{
+      overflow-x: hidden;
+  }
+  
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/* ::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #092cdb; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #092cdb; 
+} 
+  .chart{
+    margin-top:-1%; 
+    width:90%;
+    max-width:800px;
+
+     height:85%; 
+     border-radius:5px;
+     border:1px solid;
+     background-color:white; 
+     padding:3%;
+     padding-top: 5%;
+     box-shadow: 4px 5px 9px #888888;
+  }
+  .desc{
+  font-family: sans-serif;
+    margin-left: 34%;
+    font-weight: bold;
+    display: inline-block;
+    position: absolute;
+    z-index: -1;
+    top:300px;
+    font-size: 1.4vw;
+    right:10%;
+    text-align: justify;
+    color:white;
+  
+  }
+  .desc1{
+  font-family: sans-serif;
+    margin-left: 34%;
+    right:22.5%;
+    font-weight: bold;
+    display: inline-block;
+    position: absolute ;
+    z-index: -1;
+    top:410px;
+    font-size: 1.4vw;
+  
+    text-align: justify;
+    color:white;
+  
+  }
+  
+  .g:hover{
+    background-color: #54a887;
+  
+  }
+  
