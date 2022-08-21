@@ -845,81 +845,76 @@ app.post("/add",function(req,res){
     
 // })
 
-app.post("/parent_login", function(req, res) {
+app.post('/kidids',function(req,res){
   const username = req.body.username;
   console.log(username);
   const user = new User({
     username: req.body.username,
     password: req.body.password
   });
-  console.log(user);
+  User.findOne({username:req.body.username}, function(err,found){
+    if(err){
+      console.log(err);
+      console.log("ERRORS IN LOGGING IN");
+    }else{
+        if(found){
+            // console.log(found);
+            if(!found.confirmed){
+                res.sendFile(__dirname+"/login3.html");
+            }
+            else{
+              req.login(user, function(err) {
+                if (err) {
+
+                  console.log(err);
+                  console.log("ERRORS");
+                } else {
+                  passport.authenticate("local")(req, res, function() {
+                    console.log("SUCCESS");
+                    
+                    res.render("kidProfile",{idd:found.studentID});
+                  })
+                }
+              })
+              
+              
+          }
+}}})
+  
+})
+
+app.get("/parent_login", function(req, res) {
+  
+  const studID=req.query.id;
+
   User.find().sort('-studentID').exec((err,doc)=>{
     m=doc[0].studentID;
     console.log(m);
   })
-  User.findOne({username:req.body.username}, function(err,found){
-      if(err){
-        console.log(err);
-        console.log("ERRORS IN LOGGING IN");
-      }else{
-          if(found){
-              // console.log(found);
-              if(!found.confirmed){
-                  res.sendFile(__dirname+"/login3.html");
-              }
-              else{
-                req.login(user, function(err) {
-                  if (err) {
+ 
+  Score.findOne({studentID: studID}, function(err, foundUser) {
+    if (err) {
+      console.log(err);
+      console.log("ERRORS IN LOGGING IN");
+    } else {
 
-                    console.log(err);
-                    console.log("ERRORS");
-                  } else {
-                    passport.authenticate("local")(req, res, function() {
-                      console.log("SUCCESS");
+      if (foundUser) {
+        Score.find({},(eror,ff)=>{
 
-                      Score.findOne({
-                          email: username
-                        }, function(err, foundUser) {
-                          if (err) {
-                            console.log(err);
-                            console.log("ERRORS IN LOGGING IN");
-                          } else {
+          console.log(foundUser.score);
+          console.log(foundUser.fname);
+          console.log(foundUser.lname);
+          res.render("parent", {
+          username: foundUser.email,
+          score: JSON.stringify(foundUser),
+          leader:JSON.stringify(ff),
+          fname: "Parent",});
+      })
+  }
+  }});
 
-                            if (foundUser) {
-                              Score.find({},(eror,ff)=>{
-
-                                console.log(foundUser.score);
-                                console.log(foundUser.fname);
-                                console.log(foundUser.lname);
-                                res.render("parent", {
-                                  username: username,
-                                  score: JSON.stringify(foundUser),
-                                  leader:JSON.stringify(ff),
-                                  fname: "Parent",
-                                });
-                              })
-                              
-                              
-
-                            }
-                          }
-                        });
-
-                    });
-                  }
-                });
-
-              }
-          }
-	      else
-	      {
-          console.log("hi");
-          res.sendFile(__dirname+"/login4.html");
-	      }
-      }
-  });
 });
-
+                 
 
 app.post("/login", function(req, res) {
   const username = req.body.username;
