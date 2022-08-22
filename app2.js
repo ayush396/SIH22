@@ -886,6 +886,12 @@ app.post('/kidids',function(req,res){
 app.get("/parent_login", function(req, res) {
   
   const studID=req.query.id;
+  let Fname
+  let lname;
+  let gender;
+  let stud_ID;
+  let dateofbirth;
+let teach_ID;
 
   User.find().sort('-studentID').exec((err,doc)=>{
     m=doc[0].studentID;
@@ -904,11 +910,46 @@ app.get("/parent_login", function(req, res) {
           console.log(foundUser.score);
           console.log(foundUser.fname);
           console.log(foundUser.lname);
-          res.render("parent", {
-          username: foundUser.email,
-          score: JSON.stringify(foundUser),
-          leader:JSON.stringify(ff),
-          fname: "Parent",});
+          User.findOne({studentID:studID},(err,found2)=>{
+            if (err) {
+              console.log(err);
+              console.log("ERRORS IN LOGGING IN");
+            } else {
+                Fname=found2.fname;
+                lname=found2.lname;
+                gender=found2.gender;
+                dateofbirth=found2.dob;
+                stud_ID=found2.studentID;
+                teach_ID=found2.teacherID;
+                Teacher.findOne({teacherID:teach_ID},function(err,found3){
+                  if(err){
+                    console.log(err);
+                  }else{
+                    var tname=found3.fname;
+                    var tlname=found3.lname;
+                    res.render("parent", {
+            
+                      username: foundUser.email,
+                      score: JSON.stringify(foundUser),
+                      leader:JSON.stringify(ff),
+                      fname: "Parent",
+                      name:Fname+lname,
+                      gender:gender,
+                      dob:dateofbirth,
+                      id:stud_ID,
+                      teacherName:tname+' '+tlname,
+                    
+                    });
+                  }
+                  
+                })
+                
+                
+
+            }
+
+          })
+         
       })
   }
   }});
