@@ -69,27 +69,21 @@
 
         <div class=" anss" >
             <div class="first " style="width:80% ; margin-top:20% ; margin-left:7%;">
-                <div class="container">
-                      <div class="row">
+                
+                <div class="container" id="cont">
+
+
+                    <input type="text" value="<%=profiles%>" id="p" hidden>
+
+                    <div class="row">
                         <div class="col-md 6">
-                            <a href="/parent_login?id=<%=idd%>"> 
-                                <div class="box">
-                                <div class="card_image"> <img src="css/student.png" /> </div>
-                                <div class="card_title title-white">
-                                <p class="name">Student</p>
-                                </div>
+                            <div class="box2">
+                                <a href="/signup"> <div class="card_image box1"> <img src="css/add.png" /> </div>
+                            <div class="card_title title-white">
+                            <p class="name" style="">Add Student</p>
                             </div>
-                            </a>
-                        </div>
-                        <div class="col-md 6">
-                            
-                                <div class="box2">
-                                    <a href="/signup"> <div class="card_image box1"> <img src="css/add.png" /> </div>
-                                <div class="card_title title-white">
-                                <p class="name" style="margin-left:20%;">Add Student</p>
-                                </div>
                             </div>
-                           
+                       
                         </div>
                     </div>
                 </div>
@@ -98,6 +92,47 @@
 
 
     </div>
+    <script>
+        var p=document.getElementById("p").value;
+        p=JSON.parse(p);
+        p.forEach(element => {
+            
+            // console.log(element);
+            create(element.fname,element.studentID);
+        });
+        // container.innerHTML="";
+        function create(namez,idz){
+            var container=document.getElementById("cont");
+            
+            var d1=document.createElement("div");
+            d1.setAttribute("class","row");
+            var d2=document.createElement("div");
+            d2.setAttribute("class","col-md 6");
+            var d3=document.createElement('a');
+            d3.setAttribute("href","/parent_login?id="+idz);
+            var d4=document.createElement("div");
+            d4.setAttribute("class","box");
+            var d5=document.createElement("div");
+            d5.setAttribute("class","card_image");
+            var d6=document.createElement("img");
+            d6.setAttribute("src","css/student.png");
+            var d7=document.createElement("div");
+            d7.setAttribute("class","card_title title-white");
+            var d8=document.createElement("p");
+            d8.setAttribute("class","name");
+            d8.innerText=namez;
+            d7.appendChild(d8);
+            d5.appendChild(d6);
+            d4.appendChild(d5);
+            d4.appendChild(d7);
+            d3.appendChild(d4);
+            d2.appendChild(d3);
+            d1.appendChild(d2);
 
+            container.appendChild(d1);
+        }
+        
+
+    </script>
 </body>
 </html>

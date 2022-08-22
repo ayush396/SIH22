@@ -221,8 +221,14 @@ const scoreSchema = {
   },
 
 };
-const Score = new mongoose.model("Score", scoreSchema);
+const parentSchema=new mongoose.Schema({
+  email:String,
+  password:String,
+  children:[]
+});
 
+const Score = new mongoose.model("Score", scoreSchema);
+const Parent = new mongoose.model("Parent",parentSchema);
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
 
@@ -845,42 +851,31 @@ app.post("/add",function(req,res){
     
 // })
 
-app.post('/kidids',function(req,res){
-  const username = req.body.username;
-  console.log(username);
-  const user = new User({
-    username: req.body.username,
-    password: req.body.password
-  });
-  User.findOne({username:req.body.username}, function(err,found){
-    if(err){
-      console.log(err);
-      console.log("ERRORS IN LOGGING IN");
-    }else{
-        if(found){
-            // console.log(found);
-            if(!found.confirmed){
-                res.sendFile(__dirname+"/login3.html");
-            }
-            else{
-              req.login(user, function(err) {
-                if (err) {
 
-                  console.log(err);
-                  console.log("ERRORS");
-                } else {
-                  passport.authenticate("local")(req, res, function() {
-                    console.log("SUCCESS");
-                    
-                    res.render("kidProfile",{idd:found.studentID});
-                  })
-                }
-              })
-              
-              
-          }
-}}})
-  
+app.post("/kidids",(req,res)=>{
+  const n=req.body.username,pass= req.body.password;
+  console.log(n);
+  Parent.findOne({email:n},(err,found)=>{
+    if(err){
+      console.log("Error Logging In");
+    }else{
+      if(!found){
+        console.log("No Child have account");
+        res.send("No Child have account");
+      }else{
+        if(found.password!==pass){
+          console.log("Wrong Password");
+          res.send("Wrong password");
+        }else{
+          User.find({parentEmail:n},(err,f)=>{
+            console.log("hello");
+            console.log(f);
+            res.render("kidProfile",{profiles:JSON.stringify(f)});
+          })
+        }
+      }
+    }
+  })
 })
 
 app.get("/parent_login", function(req, res) {
@@ -891,7 +886,7 @@ app.get("/parent_login", function(req, res) {
   let gender;
   let stud_ID;
   let dateofbirth;
-let teach_ID;
+  let teach_ID;
 
   User.find().sort('-studentID').exec((err,doc)=>{
     m=doc[0].studentID;
@@ -1118,6 +1113,45 @@ app.post("/signup",  function(req, res) {
 
                    }
                  });
+                //  abcde
+                var passw=Math.floor((Math.random()*1000000)+1);
+                const pp=new Parent({
+                  email:req.body.parent_email,
+                  password:"12345",
+                  children:[req.body.email]
+                })
+                
+                Parent.findOne({email:req.body.parent_email},(err,ff)=>{
+                  if(err){
+                    console.log(err);
+                  }else{
+                    if(ff){
+                      var mail=req.body.email;
+                      Parent.update({email:ff.email},{$push:{children:{$each:[mail]}}},(err,doc)=>{
+                        if(err){
+                          console.log("No parent push");
+                        }else{
+                          console.log("Successful parent push");
+                        }
+                      })
+                      Teacher.update({teacherID:item.at},{$push:{links:{$each:[{l,time}],$sort:{time :-1}}}},function(err,doc){
+                        if(err){
+                          console.log(err);
+                        }else{
+                          // console.log(official_id);
+                          console.log("Updated")
+                          
+                        }
+                      })
+                    }else{
+                      pp.save(()=>{
+                        if(err){
+                          console.log("no parent added");
+                        }
+                      })
+                    }
+                  }
+                })
 
                    const newScore = new Score({
                    email: req.body.email,
