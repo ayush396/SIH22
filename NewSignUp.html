@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <script src="https://kit.fontawesome.com/433f1b34e2.js" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <link rel="icon" href="https://docs.google.com/uc?id=1T2q0QcgrB5lJ6wqd-jYW4HAWr5YeXasA">
+    <title>Lil'learn Sign Up</title>
+  <link rel="stylesheet" href="css/retry.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+		
+		<link rel="stylesheet" href="css/newSignup.css">
+	</head>
+
+	<body>
+		<div style="position: fixed; z-index:-1; width:100%;">
+			<img src="css/Pic3.jpeg" width=100% alt="">
+		</div>
+		<div class="wrapper">
+			<!-- <p style="margin-top:-50%;" >Home</p> -->
+			<div class="inner">
+				<div class="image-holder">
+					<img src="css/Pic1.jpg" alt="">
+				</div>
+				<div class="container " style="width: 700px; margin-top:-20%; ">
+
+					<div style=" opacity:0.85 ;">
+					<article class="card-body mx-auto" style="max-width: 500px;">
+						<h3 class="card-title mt-3 text-center" style="font-weight: bold; margin-left:-20%;">Create Account</h3>
+						<p class="text-center"; style="margin-left: -20%;" >Get started with your free account</p>
+						<p style="margin-left: 0%; padding-top: 5%; padding-bottom:5%;">
+							<a href="/auth/google" >  <img class="abc" src="css/Google.png" alt=""> </a>
+							<a href="/auth/facebook" >  <img class="abc1"  src="css/Facebook.png" alt=""> </a>
+						</p>
+						<p class="divider-text" style="margin-left:-25%;">
+							<span class="bg-light">OR</span>
+						</p>
+		<form style="margin-left:-10%;" action="/signup" onsubmit=" if(password.value!==confirm_password.value){
+			alert('Passwords Don`t Match');
+			event.preventDefault();
+		  }" method="POST">
+		  <div class="form-group input-group">
+			  <div class="input-group-prepend">
+				  <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+			   </div>
+			   <input type="text" style="height: 32px;"name="fname" id="fname" class="cc form-control"  required placeholder="First Name" />
+			   <span class="input-group-btn" style="width:20px;"></span>
+			   <div class="input-group-prepend">
+				  <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+			   </div>
+			   <input type="text"style="height: 32px;  margin-bottom:10px;" name="lname" id="lname"class="cc form-control" required placeholder="Last Name" />
+		  </div>
+		
+		  <div class="form-group input-group">
+			  <div class="input-group-prepend">
+				  <span class="input-group-text"> <i class="fas fa-birthday-cake"></i> </span>
+			   </div>
+			   <input style="height: 32px;" type="date" class="cc form-control" name="dob" id="dob"  required  placeholder="DD/MM/YYYY" />
+			   <span class="input-group-btn" style="width:20px;"></span>
+			   <div class="input-group-prepend">
+				  <span class="input-group-text"> <i class="fa fa-male"></i> </span>
+			   </div>
+			   <!-- <input style="height: 32px; margin-bottom:10px;"type="text" name="gender" id="gender" class="cc form-control" required placeholder="Gender" /> -->
+			   <select class="cc custom-select" style="max-width: 190px; height:32px;margin-bottom:10px;" name="gender" id="gender" required>
+				   <option value="Male"selected="">Male</option>
+				   <option value="Female">Female</option>
+				   <option value="Prefer not to say">Prefer not to say</option>
+		
+		
+		
+			   </select>
+		  </div>
+		
+		
+		  <!-- <div class="form-group input-group">
+			  <div class="input-group-prepend">
+				  <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+			  </div>
+			  <select class="cc custom-select" style="max-width: 120px; height: 32px;">
+				  <option selected="">+91</option>
+		
+			  </select>
+			  <input style="height: 32px;  margin-bottom:10px;"type="text"  class="cc form-control" name="cnumber" id="cnumber" required placeholder="Contact Number" />
+		  </div> -->
+		
+		  <div class="form-group input-group">
+			  <div class="input-group-prepend">
+				  <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+			  </div>
+			  <input style="height: 32px;  margin-bottom:10px;"type="text"  class="cc form-control" name="cnumber" id="cnumber" required placeholder="Contact Number" />
+			  <span class="input-group-btn" style="width:20px;"></span>
+			  <div class="input-group-prepend">
+				  <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+			   </div>
+			  <input style="height: 32px;" type="email" name="parent_email" id="parent_email" class="cc form-control" required placeholder="Parent's email" />
+		
+		  </div>
+		
+		  <div class="form-group input-group">
+			  <div class="input-group-prepend">
+				  <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+			   </div>
+			   <input style="height: 32px;" type="email" name="email" id="email" class="cc form-control" required placeholder="Email" />
+			   <span class="input-group-btn" style="width:20px;"></span>
+			   <div class="input-group-prepend">
+				  <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+			   </div>
+			   <select  id="country"  class="cc custom-select form-control" name="country" style="height: 32px; margin-bottom:10px; font-size:14px;" required>
+				  <option value="" style="font-size:1px; padding-bottom:400px;" >Country</option>
+			  </select>
+		
+		  </div>
+		
+		  <div class="form-group input-group">
+			  <div class="input-group-prepend">
+				  <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+			   </div>
+			   <select  id="state"  class="cc custom-select form-control" name="state" style="height: 32px; margin-bottom:10px; font-size:14px;" required>
+				  <option value="" >State</option>
+			  </select>
+			   <span class="input-group-btn" style="width:20px;"></span>
+			   <div class="input-group-prepend">
+				  <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+			   </div>
+			   <select  id="city"  class="cc custom-select form-control" name="city" style="height: 32px; margin-bottom:10px; font-size:14px; position:relative; " required>
+				  <option value="" >City</option>
+			  </select>
+		
+		  </div>
+		
+		  <div class="form-group input-group">
+			  <div class="input-group-prepend">
+				  <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+			  </div>
+		
+			  <input style="height: 32px;"  type="password" name="password" id="pass" class="cc form-control" required placeholder="Password" />
+		
+			  <span class="input-group-btn" style="width:20px;"></span>
+			  <div class="input-group-prepend">
+				  <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+			  </div>
+			  <script type="text/javascript">
+				var password=document.getElementById("pass");
+				var confirm_password=getElementById("confirm_password");
+			</script>
+		
+			  <input style="height: 32px; margin-bottom:10px;" id="confirm_password"  type="password" class="form-control cc" required placeholder="Re Enter Password" />
+		
+		  </div>
+		
+		  <div class="form-group" style="margin-left:30%;">
+			  <button type="submit" name="signup_submi" value="Sign Up" style="background-color:#0ca87b; padding:3%; width:60%;" class="btn create btn-primary btn-block"> Create Account  </button>
+		  </div>
+		  <p style="margin-top:10px;"class="text-center">Have an account? <a style="color:#0ca87b;"href="/login">Log In</a> </p>
+		</form>
+		</article>
+		</div>
+		
+		</div>
+		
+				
+			</div>
+		</div>
+
+		
+		<script src="jquery-3.3.1.min.js"></script>
+		<script src="main.js"></script>
+		<script>
+			let auth_token;
+			$(document).ready( function(){
+				$.ajax({
+					type:'get',
+					url:'https://www.universal-tutorial.com/api/getaccesstoken',
+					success:function(data){
+						auth_token=data.auth_token;
+						getCountry(data.auth_token);
+						console.log('ajax');
+					},
+					error:function(error){
+						console.log(error);
+					},
+					headers:{
+						"Accept": "application/json",
+						"api-token": "Y4iA6bE_Bep9tMA6Xq1Fjkem-h0I6yQ1Twbu0FplS4oDCHpHunYXVPOFM_OB5_wWKqo",
+						"user-email": "balkar81199@gmail.com"
+					}
+	
+				})
+				$('#country').change(function(){
+					getState();
+				});
+				$('#state').change(function(){
+					getCity();
+				});
+				console.log('hello');
+			})
+			function getCountry(auth_token){
+				$.ajax({
+					type:'get',
+					url:'https://www.universal-tutorial.com/api/countries/',
+					success:function(data){
+						data.forEach(element => {
+						   $('#country').append( '<option value="'+element.country_name+ '">'+element.country_name+'</option>' );
+						});
+						// getState(auth_token);
+						console.log('ajax');
+					},
+					error:function(error){
+						console.log(error);
+					},
+					headers:{
+						"Authorization": "Bearer " +auth_token,
+						"Accept": "application/json"
+					}
+	
+				})
+			}
+	
+			function getState(){
+				let country_name=$('#country').val();
+				$.ajax({
+					type:'get',
+					url:'https://www.universal-tutorial.com/api/states/'+country_name,
+					success:function(data){
+						$('#state').empty();
+						data.forEach(element=>{
+							$('#state').append( '<option value="'+element.state_name+ '">'+element.state_name+'</option>' );
+						})
+						// getCity(auth_token);
+						console.log('ajax');
+					},
+					error:function(error){
+						console.log(error);
+					},
+					headers:{
+						"Authorization": "Bearer " +auth_token,
+						"Accept": "application/json"
+					}
+	
+				})
+			}
+	
+	
+			function getCity(){
+				let state_name=$('#state').val();
+				$.ajax({
+					type:'get',
+					url:'https://www.universal-tutorial.com/api/cities/'+state_name,
+					success:function(data){
+						$('#city').empty();
+						data.forEach(element=>{
+							$('#city').append( '<option value="'+element.city_name+ '">'+element.city_name+'</option>' );
+						})
+					   console.log('ajax');
+					},
+					error:function(error){
+						console.log(error);
+					},
+					headers:{
+						"Authorization": "Bearer " +auth_token,
+						"Accept": "application/json"
+					}
+	
+				})
+			}
+		</script>
+	</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

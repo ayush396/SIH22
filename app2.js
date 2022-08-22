@@ -539,7 +539,7 @@ app.get("/student", function(req, res) {
   res.sendFile(__dirname + "/login.html");
 });
 app.get("/signup", function(req, res) {
-  res.sendFile(__dirname + "/signup.html");
+  res.sendFile(__dirname + "/newSignup.html");
 });
 
 
@@ -1082,7 +1082,7 @@ app.post("/signup",  function(req, res) {
             if (!err) {
               if (found) {
 
-                res.sendFile(__dirname+"/signup1.html")
+                res.sendFile(__dirname+"/newSignup.html")
               }
                else {
 
