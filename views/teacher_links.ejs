@@ -55,7 +55,7 @@
                             <td style="padding-left:13%;"><form action="/send_to_student?teacherID=<%=idd%>" method="post">
                                 <input type="text" name="time" value="<%= pp.time %>" hidden>
                                 <input type="text" name="link" value="<%= pp.l %>" hidden>
-                                <button  class="btn btn-warning test-item4"  type="submit">Send</button>
+                                <button  class="btn btn-warning test-item4" onclick="myfun()" type="submit">Send</button>
                             </form></td>
                         </tr>
                         
@@ -74,7 +74,9 @@
         </div>
     </div>  
 
-
+<script>
+    alert("The test link has been sent to students successfully!!");
+</script>
 </body>
 
 </html>
