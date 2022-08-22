@@ -1,0 +1,94 @@
+.chart2{
+    margin-top:-1%; 
+    width:107%;
+    margin-left: 8%;
+    max-width:700px;
+     height:103%; 
+     border-radius:5px;
+     border:1px solid;
+     background-color:white; 
+     padding:5%;
+     box-shadow: 4px 5px 9px #888888;
+
+  }
+  .chart3{
+    margin-top:3%; 
+    width:83%;
+    margin-left: 6%;
+    /* max-width:700px; */
+     height:103%; 
+     border-radius:5px;
+     border:1px solid;
+     background-color:white; 
+     padding:3%;
+     box-shadow: 4px 5px 9px #888888;
+  }
+ .des1{
+    color:black;
+    font-size:1.1rem;
+    margin-top: 5%;
+
+ }
+.bolder{
+    font-weight: bold;
+}
+  .chart4{
+    margin-top:1%; 
+    width:80%;
+    margin-left: 12%;
+    /* max-width:700px; */
+     height:75%; 
+     border-radius:5px;
+     border:1px solid;
+     background-color:#edfffc; 
+     padding:5%;
+     box-shadow: 4px 5px 9px #888888;
+  }
+  .footer-image{
+    margin : 3px 15px;
+    }
+    .face:hover{
+    color:#3d799c;
+    }
+    .insta:hover{
+    color: #f21f82;
+    }
+    .twi:hover{
+    color: #229ff2;
+    }
+    .mail:hover{
+    color: red;
+    }
+    .userIcon{
+      font-size: 7rem;
+      margin-top:15%;
+    }
+  
+    .rocket{
+      width:30%;
+  }
+  .contain{
+    background-color: white;
+    width:90%;
+    margin-left:2%;
+    border-radius: 15px;
+    padding:5%;
+  }
+  .kuch{
+    bottom:4%;
+    right:2%;
+     position:fixed;
+     border-radius: 100%;
+    width:5%;
+    border: 1px solid green;
+  }
+  .kuch:hover{
+    
+    scale:1.1;
+    transition:scale 0.5s;
+  }
+  
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+background-color: #b3e2ff; /* Choose your own color here */
+}

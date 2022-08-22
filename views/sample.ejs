@@ -144,6 +144,9 @@ font-family: sans-serif;
     <link rel="stylesheet" type="text/css" href="/css/stats.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
 </head>
@@ -153,7 +156,7 @@ font-family: sans-serif;
 
 <body style="background-color:#e5fce7;">
  
-  <div id="mail" style="bottom:15%;  z-index:1;position:fixed; padding-top:1%;  right:2%; width:25%; " class="card cloud">
+  <!-- <div id="mail" style="bottom:15%;  z-index:1;position:fixed; padding-top:1%;  right:2%; width:25%; " class="card cloud">
 
     <a href="javascript:myfun3();" style="text-decoration: none; margin-left:90% ;margin-top:5%"> ❌</a>
     
@@ -172,7 +175,7 @@ font-family: sans-serif;
               <input type="text" name="stud_id" class="form-control" placeholder="Student ID. " value="" /><br>
             </div>
            
-  
+            
           </div>
           <div class="col-md-6">
             <div class="form-group" style="border: none;">
@@ -192,7 +195,7 @@ font-family: sans-serif;
     </div>
 
 
-
+ -->
 
   </div>
 
@@ -248,13 +251,13 @@ font-family: sans-serif;
                      </li>
 
                      <li class="nav-item active">
-                      <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="/addStudent?teacherID=<%=idd%>">Add Students </a>
+                      <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="">Add Students </a>
                   </li>
                   <li class="nav-item active">
                     <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="#stats">Statistics </a>
                 </li>
                   <li class="nav-item active">
-                    <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="/teacher_tests?teacherID=<%=idd%>">Tests </a>
+                    <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="">Tests </a>
                 </li>
                      <li class="nav-item">
                          <a style="margin-right:80px; font-weight: bold;font-size: 1rem; color: white;" class="nav-link" href="/logout">Sign Out</a>
@@ -276,7 +279,10 @@ font-family: sans-serif;
         </div>
         <p class="desc" style=" padding-top:3%;">Join our hands to bring forth the best in every child. Don't be merely a teacher, become an awakener. Come and experience the magic of Lil'Learn as it enables the students to soar to new heights. </p>
         <p class="desc1" style="color: black;  padding-top:4%;"> Experience a unique teaching experience ...</p>
-        <input type="text" id = "tech" hidden value="<%= idd %>" name="techid">
+
+        <input type="text" hidden value="<%= score %>" id="score" />
+        <input type="text" hidden value="<%= leader %>" id="leader" />
+      
     </div>
     
     <div class="col-lg-3 col-md-3 col-sm-3" style="margin-top:3.7%; z-index:-1;">
@@ -298,15 +304,7 @@ font-family: sans-serif;
 
 <section id="stats" style="background-image: linear-gradient(#e5fce7,white, #e5fce7);">
 
-<!-- <div style="margin-top: 100px;"></div>
-<input type="text" hidden value="<%= p %>" id="plist" />
-<label class="student" for="">Select the class</label>
-<select id="classVal" onchange="myFunction()" class="student" name="" style="margin-bottom: 4%;" >
- <% cl.forEach(c=>{ %>
-    <option  value="<%= c %>"> <%= c %> </option>
-    <h1><%= c %></h1>
-   <% }) %>
- -->
+
 
 
 
@@ -319,15 +317,9 @@ font-family: sans-serif;
     <div class="col-lg-6 col-md-6 " style="padding-top: 6%; padding-left:5%; padding-bottom:2%;"data-aos="fade-up" data-aos-duration="2000">
 
       <div style="margin-top: 10%;"></div>
-      <input type="text" hidden value="<%= p %>" id="plist" />
+
       <label class="student" for="" style="color:#033808; font-size:1.5rem;">Select the Class:</label>
-      <select id="classVal" class="student" name="" onchange = "myFunction()" style="margin-bottom: 4%; padding-left:2%; margin-left:2%;padding-bottom:1%; width:10%; height:6%;" >
-       <% cl.forEach(c=>{ %>
-          <option  value="<%= c %>"> <%= c %> </option>
-          <h1><%= c %></h1>
-         <% }) %>
-      
-      </select>
+     
 
       
       <div style="height: 350px; overflow: auto; margin-top:6%;" data-aos="fade-right" data-aos-duration="2000">
@@ -380,7 +372,7 @@ font-family: sans-serif;
 </div>
 </div>
 <div class="col-lg-6 col-md-6"  data-aos="fade-left" data-aos-duration="2000">
-<canvas id="myChart" class="chart"></canvas>
+<!-- <canvas id="myChart" class="chart"></canvas> -->
 </div>
 </div>
 </section>
@@ -392,7 +384,7 @@ font-family: sans-serif;
   <div class="col-lg-6 col-md-6"data-aos="fade-right" data-aos-duration="1500">
 
     <div id="chartContainer" style="height: 370px; width: 95%;" class="chart2">
-      <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+      <!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
     </div>
    
   </div>
@@ -816,9 +808,6 @@ tableCreate();
 <!-- <button type="button"  id="g" style="background-color:#328073; position: absolute;bottom: 100px;right: 100px;width:300px;height:80px;" class="btn  "><a id="link" style="text-decoration:none;color:white;font-size:1.8vw;"href="css/setup.exe">Download Software</a></button> -->
 
 <!-- <a id="g"href="https://docs.google.com/uc?export=download&id=1c-LHVk4COsDctG8swEnTpKI0hJAj8V2p"> <button type="button"   style="background-color:#387543; z-index: 1;position: absolute;top:80%;right: 71.5%;width:20%;height:70px;" class="btn g"> <p style="color:white;font-size:1.6vw; padding-top:3%;">Download Software</p> </button></a> -->
-
-
-     <p class="delay"style="font-size: 1.1vw; margin-left: 80%;z-index:-1;font-weight: bold;position:absolute; top:16%;"> Welcome, <span class="span" style="font-size:1.1vw; color:#387543"><%=fname%> <%=lname%></span> </p>
 
 
 
