@@ -35,6 +35,58 @@
 
 </head>
 <body>
+    <div class="introduction">
+        <h1 class="log-header">
+          <span style="color:white "class="log">Successfully </span>
+          <span class="log">Signed In! <i class="fas fa-clipboard-check"></i></span>
+        </h1>
+      
+      </div>
+    <style>
+        body{
+            overflow-y: hidden;
+        } 
+        .container{
+            display:inline-flex;
+            margin-top: 1%;
+         
+        }
+        .anss {
+            width: 70%;
+            height: 1400px;
+            margin-left:-4%;
+            object-fit: cover;
+            background-size: cover;
+            flex-direction:column;
+            display: inline-block;
+        
+        }
+        .box3{
+
+            background-color:white;
+            
+            border-radius:10px;
+            color:black;
+            width:140%;
+       
+            margin-top: 2.5%;
+            padding-top: 5%;
+            border-radius: 40px;
+            box-shadow: 5px 5px 30px 7px rgba(11, 211, 221, 0.25), -5px -5px 30px 7px rgb(237, 253, 254);
+            cursor: pointer;
+            transition: 0.4s;
+    
+    
+    }
+    
+    .box3:hover{
+    
+            transform: scale(1.1, 1.1);
+            box-shadow: 5px 5px 30px 15px rgba(177, 9, 234, 0.25),
+              -5px -5px 30px 15px rgba(205, 122, 213, 0.22);
+    
+    }
+    </style>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark ">
 
 
@@ -60,7 +112,7 @@
         <div class=" quess">
             <div class="q1">
                 
-                <i class="fa-solid fa-users-gear i1"></i>
+                <i class="fa-solid fa-users-gear i1" style="margin-top:80%;"></i>
                 <p class="head1" >Choose Profile</p>
               
             </div>
@@ -68,54 +120,48 @@
         </div>
 
         <div class=" anss" >
-            <div class="first " style="width:80% ; margin-top:20% ; margin-left:7%;">
+            <div class="first " style="width:80% ; margin-top:20% ; margin-left:15%;">
                 
                 <div class="container" id="cont">
-
-
                     <input type="text" value="<%=profiles%>" id="p" hidden>
-
-                    <div class="row">
-                        <div class="col-md 6">
-                            <div class="box2">
-                                <a href="/signup"> <div class="card_image box1"> <img src="css/add.png" /> </div>
-                            <div class="card_title title-white">
-                            <p class="name">Add Student</p>
-                            </div>
-                            </div>
-                       
-                        </div>
-                    </div>
-                </div>
+                                 
+                </div>  
+                </div>           
             </div>
-        </div>
+        
 
 
     </div>
     <script>
         var p=document.getElementById("p").value;
+        var cnt =0;
         p=JSON.parse(p);
         p.forEach(element => {
             
             // console.log(element);
-            create(element.fname,element.studentID);
+            cnt=cnt+1
+            create(element.fname,element.studentID,cnt);
+            
         });
+        add();
+    
         // container.innerHTML="";
-        function create(namez,idz){
+        function create(namez,idz,cnt){
             var container=document.getElementById("cont");
             
-            var d1=document.createElement("div");
-            d1.setAttribute("class","row");
             var d2=document.createElement("div");
-            d2.setAttribute("class","col-md 6");
+            d2.setAttribute("class","container");
+            if(cnt>1){
+                d2.setAttribute("style","margin-left:10%;");
+            }
             var d3=document.createElement('a');
             d3.setAttribute("href","/parent_login?id="+idz);
             var d4=document.createElement("div");
-            d4.setAttribute("class","box");
+            d4.setAttribute("class","box3");
             var d5=document.createElement("div");
             d5.setAttribute("class","card_image");
             var d6=document.createElement("img");
-            d6.setAttribute("src","css/student.png");
+            d6.setAttribute("src","css/user.png");
             var d7=document.createElement("div");
             d7.setAttribute("class","card_title title-white");
             var d8=document.createElement("p");
@@ -127,12 +173,80 @@
             d4.appendChild(d7);
             d3.appendChild(d4);
             d2.appendChild(d3);
-            d1.appendChild(d2);
-
-            container.appendChild(d1);
+            container.appendChild(d2);
+        }
+        function add(){
+            var container=document.getElementById("cont");
+            
+            var d2=document.createElement("div");
+            d2.setAttribute("class","container");
+            d2.setAttribute("style","margin-left:10%;");
+            
+            var d3=document.createElement('a');
+            d3.setAttribute("href","/signup");
+            var d4=document.createElement("div");
+            d4.setAttribute("class","box3");
+            var d5=document.createElement("div");
+            d5.setAttribute("class","card_image");
+            var d6=document.createElement("img");
+            d6.setAttribute("src","css/add.png");
+            var d7=document.createElement("div");
+            d7.setAttribute("class","card_title title-white");
+            var d8=document.createElement("p");
+            d8.setAttribute("class","name");
+            d8.innerText="Add Student";
+            d7.appendChild(d8);
+            d5.appendChild(d6);
+            d4.appendChild(d5);
+            d4.appendChild(d7);
+            d3.appendChild(d4);
+            d2.appendChild(d3);
+            container.appendChild(d2);
         }
         
 
+    </script>
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+              $("#g").show();
+            }, 2500);
+          });
+    
+    
+    
+        // var x=document.getElementById('g');
+        //   setTimeout(function() {
+        //       x.style.zIndex=0;
+        //   }, 3000);
+    
+    
+    
+          let intro=document.querySelector('.introduction');
+          let logo=document.querySelector('.log-header');
+          let logoSpan=document.querySelectorAll('.log');
+          window.addEventListener('DOMContentLoaded',()=>{
+            setTimeout(()=>{
+              logoSpan.forEach((span,idx)=>{
+                setTimeout(()=>{
+                  span.classList.add('active');
+                },(idx+1)*400)
+              });
+              setTimeout(()=>{
+                logoSpan.forEach((span,idx)=>{
+                  setTimeout(()=>{
+                    span.classList.vwove('active');
+                    span.classList.add('fade');
+                  },(idx+1)*2000)
+                })
+              },2000);
+              setTimeout(()=>{
+                intro.style.top='-100vh';
+              },2300)
+            })
+          })
+    
+        
     </script>
 </body>
 </html>
