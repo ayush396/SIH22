@@ -113,10 +113,10 @@
 .anss {
     width: 70%;
     height: 1400px;
-  
+
     object-fit: cover;
     background-size: cover;
-    flex-direction: column;
+    flex-direction:column;
     display: inline-block;
 
 }
