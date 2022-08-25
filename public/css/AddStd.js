@@ -1,6 +1,11 @@
 const p = [];
 var index = 1;
-
+var list=document.getElementById("list").value;
+function solve(){
+    list=JSON.parse(list);
+    console.log(list);
+}
+solve();
 function addToList() {
     var at = document.getElementById("newat").value;
     var bt = document.getElementById("newbt").value;
@@ -30,6 +35,7 @@ function addToList() {
 }
 
 function displayList() {
+
 
     var inp = document.getElementById("showinput");
     //inp.setAttribute("style", "height:" + p.length * 80 + "px");
