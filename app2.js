@@ -375,13 +375,13 @@ var facefname="";
     res.sendFile(__dirname+"/body.html");
   });
 var link_list=[
-  "https://www.youtube.com/embed/hq3yfQnllfQ",
+"https://www.youtube.com/embed/hq3yfQnllfQ",
 "https://www.youtube.com/embed/YgCNHOgJv3I",
-"https://www.youtube.com/watch?v=BY5TkXOk2kQ",
+"https://www.youtube.com/embed/BY5TkXOk2kQ",
 "https://www.youtube.com/embed/mjlsSYLLOSE",
 "https://www.youtube.com/embed/Rnw5ixvU074",
 "https://www.youtube.com/embed/BchpGkLvTy8",
-"https://www.youtube.com/watch?v=BZf6frPNrhg",
+"https://www.youtube.com/embed/BZf6frPNrhg",
 "https://www.youtube.com/embed/wKfrbnRRD-k",
 "https://www.youtube.com/embed/1rWGNEkvGMY",
 "https://www.youtube.com/embed/DOT15xaX7-E",
