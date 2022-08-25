@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myForm" action="/csv" method="POST">
+      <input type="file" id="csvFile" accept=".csv" />
+      <br />
+      <input type="text" hidden name="csv" value="" id="csv1">
+      <button type="submit">Sub</button>
+      <!-- <input type="submit" value="Submit" /> -->
+    </form>
+    <script>
+      const myForm = document.getElementById("myForm");
+      const csvFile = document.getElementById("csvFile");
+  
+      myForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const input = csvFile.files[0];
+
+        const reader = new FileReader();
+  
+        reader.onload = function (e) {
+          const csv = e.target.result;
+          //console.log(text);
+          var lines = csv.split("\n");
+          var result = [];
+          var headers=lines[0].split(",");
+          for(var i=1;i<lines.length;i++){
+            var obj = {};
+            var currentline=lines[i].split(",");
+            for(var j=0;j<headers.length;j++){
+              obj[headers[j]] = currentline[j];
+            }
+            result.push(obj);
+            }  
+            //return result; //JavaScript object
+            //JSON
+          //console.log(result);
+          result.forEach((i) => {
+            console.log(i["Y\r"]);
+          })
+          result= JSON.stringify(result); 
+          document.getElementById('csv1').value=result;
+   
+        };
+  
+        reader.readAsText(input);
+
+      });
+
+    </script>
+  </body>
+
+
+</html>
