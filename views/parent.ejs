@@ -115,13 +115,13 @@
 </section>
 
 
-<!-- <div class="introduction">
+<div class="introduction">
   <h1 class="log-header">
     <span style="color:white "class="log">Successfully </span>
     <span class="log">Signed In! <i class="fas fa-clipboard-check"></i></span>
   </h1>
 
-</div> -->
+</div>
 
 
 
@@ -438,11 +438,11 @@ var ctxP = document.getElementById("pieChart").getContext('2d');
     var myPieChart = new Chart(ctxP, {
       type: 'pie',
       data: {
-        labels: ["Alphabets", "Numbers", "Shapes", "Operations", "Aniamals","Uniforms","Transport", "Fruits&Veggies"],
+        labels: ["Alphabets", "Numbers", "Shapes", "Operations", "Aniamals","Uniforms","Transport"],
         datasets: [{
           data:p, //[300, 50, 100, 40, 120],
-          backgroundColor: ["#FF7300", "#FF2725", "#2A9BD6", "#949FB1", "#4D5360","#52D726","#FFEC00","#8F34EB"],
-          hoverBackgroundColor: ["#FF590E", "#FF0000", "#007ED6", "#A8B3C5", "#616774","#2DD717","#FDFF11",]
+          backgroundColor: ["#FF7300", "#FF2725", "#2A9BD6", "#949FB1", "#4D5360","#52D726","#FFEC00"],
+          hoverBackgroundColor: ["#FF590E", "#FF0000", "#007ED6", "#A8B3C5", "#616774","#2DD717","#FDFF11"]
         }]
       },
       options: {
@@ -450,7 +450,46 @@ var ctxP = document.getElementById("pieChart").getContext('2d');
       }
     });
 
-  </script>
+      $(document).ready(function() {
+        setTimeout(function() {
+          $("#g").show();
+        }, 2500);
+      });
+
+
+
+    // var x=document.getElementById('g');
+    //   setTimeout(function() {
+    //       x.style.zIndex=0;
+    //   }, 3000);
+
+
+
+      let intro=document.querySelector('.introduction');
+      let logo=document.querySelector('.log-header');
+      let logoSpan=document.querySelectorAll('.log');
+      window.addEventListener('DOMContentLoaded',()=>{
+        setTimeout(()=>{
+          logoSpan.forEach((span,idx)=>{
+            setTimeout(()=>{
+              span.classList.add('active');
+            },(idx+1)*400)
+          });
+          setTimeout(()=>{
+            logoSpan.forEach((span,idx)=>{
+              setTimeout(()=>{
+                span.classList.vwove('active');
+                span.classList.add('fade');
+              },(idx+1)*2000)
+            })
+          },2000);
+          setTimeout(()=>{
+            intro.style.top='-100vh';
+          },2300)
+        })
+      })
+
+      </script>
    
     </div>
 

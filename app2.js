@@ -375,7 +375,7 @@ var facefname="";
     res.sendFile(__dirname+"/body.html");
   });
 app.get("/lessons",function(req,res){
-  res.sendFile(__dirname+"/lessons.html");
+  res.sendFile(__dirname+"/alphabets.html");
 });
 
 app.get("/auth/facebook",
