@@ -415,6 +415,14 @@ var facefname="";
   app.get("/body",function(req,res){
     res.sendFile(__dirname+"/body.html");
   });
+  app.get("/uploadCSV",function(req,res){
+    res.sendFile(__dirname+"/csv.html");
+  });
+  app.post("/csv",function(req,res){
+    // console.log("inside");
+    res.send("Success");
+    // console.log(req.body.csv);
+  });
 var link_list=[
 "https://www.youtube.com/embed/hq3yfQnllfQ",
 "https://www.youtube.com/embed/YgCNHOgJv3I",
