@@ -219,7 +219,48 @@ const scoreSchema = {
     index: true,
     unique: false
   },
-
+  maths:{
+    time:{
+      type:Number,
+      default:0
+    },
+    count:{
+      type:Number,
+      default:0
+    },
+    isdone:{
+      type:Number,
+      default:false
+    }
+  },
+  english:{
+    time:{
+      type:Number,
+      default:0
+    },
+    count:{
+      type:Number,
+      default:0
+    },
+    isdone:{
+      type:Number,
+      default:false
+    }
+  },
+  cognitive:{
+    time:{
+      type:Number,
+      default:0
+    },
+    count:{
+      type:Number,
+      default:0
+    },
+    isdone:{
+      type:Number,
+      default:false
+    }
+  }
 };
 const parentSchema=new mongoose.Schema({
   email:String,
@@ -428,13 +469,25 @@ app.get("/auth/facebook/final",
   
 
 app.get("/addStudent",function(req,res){
-  res.sendFile(__dirname + "/AddStudent.html");
+  var t_id=req.query.teacherID;
+  t_id=parseInt(t_id);
+
+  User.find({teacherID:200},(err,found)=>{
+    Teacher.findOne({teacherID:t_id},(er,f)=>{
+      if (err) {
+        
+      }
+      var l=f.classes;
+      res.render("AddStudent",{list:JSON.stringify(found),tlist:l});
+    })
+  });
+
+  
 }); 
 app.get("/test_link",(req,res)=>{
   console.log(req.query.officalID);
   Official.findOne({officialID:parseInt(req.query.officalID)},(err,found)=>{
     if(!err){
-    // console.log(found);
     res.render("test_link",{idd:parseInt(found.officialID),p:found.links});
     }
   })
@@ -446,17 +499,57 @@ app.get("/", function(req, res) {
 
 app.post("/success",function(req,res){
   res.send("Message Sent Successfully");
-  var stud_id=req.body.stud_id;
+  var stud_id=req.query.stud_id;
   var remarks=req.body.remarks;
-  var stud_name=req.body.stud_name;
-
   User.find({studentID:parseInt(stud_id)},(err,found)=>{
             if(err){
               console.log(err);
             }else{
-              // console.log(l);
-              // console.log(found);
-              // console.log(found);
+              var tid=found[0].teacherID;
+              Teacher.findOne({teacherID:parseInt(tid)},(err,f)=>{
+                tEmail=f.email;
+               console.log(tEmail);
+
+              var transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                  user: 'lillearn.13@gmail.com',
+                  pass: 'oqkwpkvybwqmmbfj'
+                }
+              });
+
+              var mailOptions = {
+                from:"Team Lil-learn",
+                to:tEmail,
+
+                subject: 'Child Remarks',
+                text: remarks
+
+              };
+
+              transporter.sendMail(mailOptions, function(error, info) {
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Email sent: ' + info.response);
+                }
+              });
+            })
+            }
+          });
+
+
+})
+
+app.post("/success_t",function(req,res){
+  res.send("Message Sent Successfully");
+  var stud_id=req.body.stud_id;
+  console.log(stud_id);
+  var remarks=req.body.remarks;
+  User.find({studentID:parseInt(stud_id)},(err,found)=>{
+            if(err){
+              console.log(err);
+            }else{
               var pEmail=found[0].parentEmail;
               console.log(pEmail);
 
@@ -464,7 +557,7 @@ app.post("/success",function(req,res){
                 service: 'gmail',
                 auth: {
                   user: 'lillearn.13@gmail.com',
-                  pass: 'SuBaAySh23#'
+                  pass: 'oqkwpkvybwqmmbfj'
                 }
               });
 
@@ -484,20 +577,6 @@ app.post("/success",function(req,res){
                   console.log('Email sent: ' + info.response);
                 }
               });
-                // Email.send({
-                //   Host: "smtp.gmail.com",
-                //   Username: "lillearn.13@gmail.com",
-                //   Password: "SuBaAySh23#",
-                //   To: pEmail,
-                //   From: "lillearn.13@gmail.com",
-                //   Subject: "Your ward Remarks",
-                //   Body: remarks,
-                // })
-                //   .then(function (message) {
-                //     alert("mail sent successfully")
-                //   });
-              
-              
               
             }
           });
@@ -505,6 +584,7 @@ app.post("/success",function(req,res){
 
 
 })
+
 
 app.get("/auth/google",
   passport.authenticate('google', {
@@ -604,11 +684,23 @@ app.get("/final", function(req, res) {
 
 //Update Values in MongoDB server after 24 hours
 var x=0;
-
+// Score.updateMany({},{$set:{"math.count":0,"english.count":0,"cognitive.count":0}},(err,o)=>{
+//   if(err){
+//     console.log(err);
+//   }else{
+//     console.log("Done");
+//   }
+// })
 cron.schedule('0 0 * * *', () => {
   console.log('running when days changes');
   x=(x+1)%70;
-
+  Score.updateMany({},{$set:{"maths.isdone":false,"english.isdone":false,"cognitive.isdone":false}},(err,o)=>{
+    if(err){
+      console.log(err);
+    }else{
+      console.log("Done");
+    }
+  })
 });
 
 
@@ -811,39 +903,41 @@ app.post("/send_to_student",(req,res)=>{
     res.redirect("/teacher_tests?teacherID="+tid);
 })
 app.post("/add",function(req,res){
-  const retrivedList=req.body.list;
+  const retrivedList=req.body.student_list;
   var jsonListitems = JSON.parse(retrivedList);
   console.log(JSON.parse(retrivedList));  
-  // console.log(teachid);
+  
   const teachid=req.body.tid;
+  const classs=req.body.classs;
   // console.log();
   jsonListitems.map((item) => {
-      // console.log(item.bt);
-
-      User.findOne({studentID:parseInt(item.at)},function(err,found){
+    if(item.dt!==0){
+      User.updateOne({studentID:parseInt(item.at)},{teacherID: parseInt(teachid),class:classs},function(err,doc){
         if(err){
           console.log(err);
         }else{
-          
-          // console.log(req.body.at);
-          if(!found){
-            console.log("No Student Found with id: "+item.at);
-          }else{
-            console.log(item.dt)
-            User.update({studentID:item.at},{teacherID: parseInt(teachid),class:(item.dt)},function(err,doc){
-              if(err){
-                console.log(err);
-              }else{
-                console.log(teachid);
-                console.log("Updated")
-                
-              }
-            })
-          }
+          console.log(doc);
+          console.log("Updated");
         }
-      })
+    })
+    }
   })
-  res.redirect("/addStudent");
+  Teacher.findOne({username:parseInt(teachid)},function(err,found){
+    if(err){
+      console.log(err);
+    }else{
+          l=found.classes;
+          User.find({teacherID:teachid},(err,found2)=>{
+          if(err){
+            console.log(err);
+          }else{
+            res.render("teacherDashboard",{fname:found.fname,lname:found.lname,idd:teachid,p:JSON.stringify(found2),cl:l});
+          }
+        });
+          
+      
+    }
+  })
 })
 // sample@teacher.com
 // 12345
@@ -1280,7 +1374,7 @@ app.post("/signup",  function(req, res) {
                              service: 'gmail',
                              auth: {
                                user: 'lillearn.13@gmail.com',
-                               pass: 'nfwjukmzuedravrf'
+                               pass: 'oqkwpkvybwqmmbfj'
                              }
                            });
 
@@ -1338,7 +1432,7 @@ app.post("/signup",  function(req, res) {
             service: 'gmail',
             auth: {
               user: 'lillearn.13@gmail.com',
-              pass: 'nfwjukmzuedravrf'
+              pass: 'oqkwpkvybwqmmbfj'
             }
           });
 

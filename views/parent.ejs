@@ -33,7 +33,7 @@
       <div class="">
         <img class="rocket" src="https://docs.google.com/uc?id=1k4iZUhb1QL0mSBr3E903xBENzXG27Mmc" alt="rocket_contact" />
       </div>
-      <form method="post" action="/success">
+      <form method="post" action="/success?stud_id=<%= id %>">
         <h3>Contact Teacher</h3>
         <div class="row">
           <!-- <div class="col-md-6">
@@ -43,8 +43,6 @@
             <div class="form-group" style="border: none;">
               <input type="text" name="stud_id" class="form-control" placeholder="Student ID. " value="" /><br>
             </div> -->
-           
-  
           <!-- </div>  -->
           
             <div class="form-group" style="border: none;">
@@ -54,9 +52,7 @@
               <div class="col-md-6 col-sm-6" style="margin-top:3%;">
                 <input type="hidden" name="_next" value="https://www.lillearn.com/thankyou">
                 <input class="dp" type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
-              </div>
-  
-  
+              </div>  
         </div>
       </form>
     </div>
@@ -329,10 +325,12 @@
                     }]
                 },
                 options: {
-                    legend: {display: false},
+                    legend: {display:false},
                     scales: {
-                    yAxes: [{ticks: {min: 0, max:60}}],
+                    yAxes: [{ticks: {min: 0, max:60}, scaleLabel:{display: true,labelString: 'No of question per day'}}],
+                    xAxes:[{scaleLabel:{display: true,labelString: 'Days of the month'}}]
                     }
+                    
                 }
                 });
             }
