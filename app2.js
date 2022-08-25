@@ -374,8 +374,30 @@ var facefname="";
   app.get("/body",function(req,res){
     res.sendFile(__dirname+"/body.html");
   });
+var link_list=[
+"https://www.youtube.com/embed/hq3yfQnllfQ",
+"https://www.youtube.com/embed/YgCNHOgJv3I",
+"https://www.youtube.com/embed/BY5TkXOk2kQ",
+"https://www.youtube.com/embed/mjlsSYLLOSE",
+"https://www.youtube.com/embed/Rnw5ixvU074",
+"https://www.youtube.com/embed/BchpGkLvTy8",
+"https://www.youtube.com/embed/BZf6frPNrhg",
+"https://www.youtube.com/embed/wKfrbnRRD-k",
+"https://www.youtube.com/embed/1rWGNEkvGMY",
+"https://www.youtube.com/embed/DOT15xaX7-E",
+"https://www.youtube.com/embed/WS6AIG7q148",
+"https://www.youtube.com/embed/hewioIU4a64",
+"https://www.youtube.com/embed/i5aXwiC3wWc",
+"https://www.youtube.com/embed/RJ2bQWH6GCM",
+];
 app.get("/lessons",function(req,res){
-  res.sendFile(__dirname+"/alphabets.html");
+  console.log(req.query.vid);
+  var v=req.query.vid;
+  v=link_list[v];
+  // <iframe width="100%" height="550" id="vid" src="https://www.youtube.com/embed/hq3yfQnllfQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  link_='<iframe width="100%" height="550" id="vid" src="'+v+'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+  res.render("alphabets",{link:v});
+  // res.sendFile(__dirname+"/alphabets.html");
 });
 
 app.get("/auth/facebook",
