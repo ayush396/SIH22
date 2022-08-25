@@ -1,38 +1,18 @@
 const p = [];
-var index = 1;
+// var index = 1;
 var list=document.getElementById("list").value;
 function solve(){
     list=JSON.parse(list);
-    console.log(list);
+    list.forEach(e => { 
+        p.push({
+            "at":e.studentID,
+            "bt":e.fname,
+            "dt":0
+        })
+    });
+    displayList();
 }
 solve();
-function addToList() {
-    var at = document.getElementById("newat").value;
-    var bt = document.getElementById("newbt").value;
-    var dt = document.getElementById("newdt").value;
-    if (isNaN(parseInt(at)) && isNaN(parseInt(bt))) {
-        window.alert("Please enter valid inputs");
-        return;
-    }
-
-
-    if (parseInt(at) < 0 ) {
-        window.alert("Invalid inputs");
-        return;
-    }
-    
-    p.push({
-        "at": parseInt(at),
-        "bt": bt,
-        "dt": dt
-    });
-
-    index = index + 1;
-    displayList();
-    document.getElementById("newat").value = "";
-    document.getElementById("newbt").value = "";
-    document.getElementById("newdt").value = "";
-}
 
 function displayList() {
 
@@ -64,18 +44,18 @@ function displayList() {
         input2.setAttribute("style", "width:30% ;float:left;margin-left:50px;text-align:center;");
 
         var input3 = document.createElement("input");
-        input3.value = p[i].dt;
-        input3.setAttribute("class", "form-control text-primary");
-        input3.setAttribute("disabled", "disabled");
+        input3.value =0;
+        // input3.setAttribute("class", "form-control text-primary");
+        input3.setAttribute("hidden", "true");
         input3.setAttribute("id", "dt" + i);
-        input3.setAttribute("style", "width:15% ;float:left;margin-left:50px;text-align:center;");
+        // input3.setAttribute("style", "width:15% ;float:left;margin-left:50px;text-align:center;");
 
         var btn = document.createElement("button");
-        var text1 = document.createTextNode("EDIT");
+        var text1 = document.createTextNode("ADD");
         btn.appendChild(text1);
         btn.setAttribute("id", "btn" + i);
         btn.setAttribute("class", "btn btn-warning");
-        btn.setAttribute("onclick", "edit(this.id)");
+        btn.setAttribute("onclick", "func(this.id)");
         btn.setAttribute("style", "float:left;margin-left:20px;");
         //btn.setAttribute("style", "float:right;margin-right:50px;");
         var br = document.createElement("br");
@@ -89,45 +69,26 @@ function displayList() {
         //inp.appendChild(br);
     }
 }
-
-
-function edit(id) {
+function func(id){
+    console.log(id);
     var pos = parseInt(id.substr(3));
     var button = document.getElementById(id);
-    button.innerHTML = "SAVE";
-    button.setAttribute("onclick", "save(" + pos + ")");
-    document.getElementById("at" + pos).removeAttribute("disabled");
-    document.getElementById("bt" + pos).removeAttribute("disabled");
-    document.getElementById("dt" + pos).removeAttribute("disabled");
+    button.innerHTML = "REMOVE";
+    p[pos].dt=1;
+    button.setAttribute("onclick", "remove("+pos+")");
 }
-
-function save(pos) {
-    at = parseInt(document.getElementById("at" + pos).value);
-    bt = document.getElementById("bt" + pos).value;
-    dt= document.getElementById("dt" + pos).value;
-    if (isNaN(parseInt(at)) && isNaN(parseInt(bt))) {
-        window.alert("Please enter valid inputs");
-        return;
-    }
-    if (isNaN(parseInt(at))) {
-        window.alert("Please enter valid inputs");
-        return;
-    }
-
-    if (parseInt(at) < 0 ) {
-        window.alert("Invalid inputs");
-        return;
-    }
-
-
-    p[pos].at = at;
-    p[pos].bt = bt;
-    p[pos].dt = dt;
-    displayList();
+function remove(pos){
+    // console.log(pos);
+    p[pos].dt=0;
+    var button = document.getElementById("btn"+pos);
+    button.innerHTML = "ADD";
+    var c="func(btn"+pos+")";
+    // console.log(c);
+    button.setAttribute("onclick","func(this.id)");
 }
-
 function saveChanges(){
-    document.getElementById('hid').value=JSON.stringify(p);
-    // console.log("hii");
+
+    document.getElementById('sends').value=JSON.stringify(p);
+    document.getElementById("cls").value=document.getElementById("cv").value;
     console.log(JSON.stringify(p));
 }

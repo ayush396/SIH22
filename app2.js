@@ -468,9 +468,19 @@ app.get("/auth/facebook/final",
   
 
 app.get("/addStudent",function(req,res){
+  var t_id=req.query.teacherID;
+  t_id=parseInt(t_id);
+
   User.find({teacherID:200},(err,found)=>{
-    res.render("AddStudent",{list:JSON.stringify(found)});
-  })
+    Teacher.findOne({teacherID:t_id},(er,f)=>{
+      if (err) {
+        
+      }
+      var l=f.classes;
+      res.render("AddStudent",{list:JSON.stringify(found),tlist:l});
+    })
+  });
+
   
 }); 
 app.get("/test_link",(req,res)=>{
@@ -884,39 +894,41 @@ app.post("/send_to_student",(req,res)=>{
     res.redirect("/teacher_tests?teacherID="+tid);
 })
 app.post("/add",function(req,res){
-  const retrivedList=req.body.list;
+  const retrivedList=req.body.student_list;
   var jsonListitems = JSON.parse(retrivedList);
   console.log(JSON.parse(retrivedList));  
-  // console.log(teachid);
+  
   const teachid=req.body.tid;
+  const classs=req.body.classs;
   // console.log();
   jsonListitems.map((item) => {
-      // console.log(item.bt);
-
-      User.findOne({studentID:parseInt(item.at)},function(err,found){
+    if(item.dt!==0){
+      User.updateOne({studentID:parseInt(item.at)},{teacherID: parseInt(teachid),class:classs},function(err,doc){
         if(err){
           console.log(err);
         }else{
-          
-          // console.log(req.body.at);
-          if(!found){
-            console.log("No Student Found with id: "+item.at);
-          }else{
-            console.log(item.dt)
-            User.update({studentID:item.at},{teacherID: parseInt(teachid),class:(item.dt)},function(err,doc){
-              if(err){
-                console.log(err);
-              }else{
-                console.log(teachid);
-                console.log("Updated")
-                
-              }
-            })
-          }
+          console.log(doc);
+          console.log("Updated");
         }
-      })
+    })
+    }
   })
-  res.redirect("/addStudent");
+  Teacher.findOne({username:parseInt(teachid)},function(err,found){
+    if(err){
+      console.log(err);
+    }else{
+          l=found.classes;
+          User.find({teacherID:teachid},(err,found2)=>{
+          if(err){
+            console.log(err);
+          }else{
+            res.render("teacherDashboard",{fname:found.fname,lname:found.lname,idd:teachid,p:JSON.stringify(found2),cl:l});
+          }
+        });
+          
+      
+    }
+  })
 })
 // sample@teacher.com
 // 12345

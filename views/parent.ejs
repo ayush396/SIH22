@@ -325,10 +325,12 @@
                     }]
                 },
                 options: {
-                    legend: {display: false},
+                    legend: {display:false},
                     scales: {
-                    yAxes: [{ticks: {min: 0, max:60}}],
+                    yAxes: [{ticks: {min: 0, max:60}, scaleLabel:{display: true,labelString: 'No of question per day'}}],
+                    xAxes:[{scaleLabel:{display: true,labelString: 'Days of the month'}}]
                     }
+                    
                 }
                 });
             }

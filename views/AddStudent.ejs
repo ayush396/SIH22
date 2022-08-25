@@ -33,13 +33,20 @@
             <div id="ipDetails" class="form3" style="margin-left: 15%;">
                 <h1 class="display-3" style="color: #22663b;">Student Details</h1>
                 <br>
-
+                <label for="">Select Class</label>
+                <select id="cv" class="student"  style="margin-bottom: 4%; padding-left:2%; margin-left:2%;padding-bottom:1%; width:10%; height:6%;" >
+                  <% tlist.forEach(c=>{ %>
+                     <option  value="<%= c %>"> <%= c %> </option>
+                     <h1><%= c %></h1>
+                    <% }) %>
+                 
+                 </select>
                 <div id="Idname" style="visibility: hidden;margin-top: -10%;">
                   <table style="width:80%;">
                     <tr>
                       <th style="padding-left:10%;">Student ID</th>
-                      <th style="padding-left:10%; width:40%;">Student Name</th>
-                      <th style="padding-left:10%; width:30%;">Student Class</th>
+                      <th style="width:50%;">Student Name</th>
+                      <!-- <th style="padding-left:10%; width:30%;">Student Class</th> -->
                     </tr>
 
                   </table>
@@ -48,34 +55,14 @@
 
                 <br>
                 <div id="showinput"></div>
-                <hr>
-                <div class="container box">
-                  <div class="row">
-                    <form action="/add" method="post">
-                        <div class="form-group" style="margin-left:50px; float:left;  width: 24%">
-                            <label class="col-form-label" for="inputDefault">Enter Student ID:</label>
-                            <input class="form-control" id="newat" name="at" placeholder="ID" type="text" size="35">
-                        </div>
-                        <div class="form-group" style="margin-left:50px; float:left;  width: 40%">
-                            <label class="col-form-label" for="inputDefault">Enter Student Name:</label>
-                            <input class="form-control" id="newbt" name="bt" placeholder="Student Name" type="text" size="35">
-                            <label class="col-form-label" for="inputDefault">Enter Class:</label>
-                            <input class="form-control" id="newdt" name="dt" placeholder="Student Class" type="text" size="35">
-                            <input type="text" hidden value="" id="hid" name="list">
-                            <input type="text" hidden value="" id="hid1" name="tid">
-                        </div>
-                    
-                    
-                    <button type="button" class="btn btn-primary" style="margin-left: 55%;margin-top:5%; border:none;background-color: #22663b; font-size: 1rem; padding:1.3%; padding-left:3.2%;padding-right:3.2%" >Export to CSV</button>
-                    <button type="button" class="btn btn-primary" style="margin-left: 5%;margin-top:5%; border:none;background-color: #22663b; font-size: 1.2rem; padding:1%; padding-left:3.2%;padding-right:3.2%" onclick="abcd()">Add</button>
 
-                    <button type="submit" class="btn btn-primary" style="margin-left: 55%;margin-top:5%; border:none;background-color: #22663b; font-size: 1rem; padding:1.3%; padding-left:3.2%;padding-right:3.2%" onclick="saveChanges()">Save Changes</button>
-                    </form>
-                      
-                  </div>
-                  <br>
-                  
-                </div>
+                <form action="/add" method="post">
+                  <input type="text" hidden name="student_list" id="sends"/>
+                  <input type="text" hidden name="tid" id="tid"/>
+                  <input type="text" hidden name="classs" id="cls" >
+                  <button type="submit" class="btn btn-primary" style="margin-left: 55%;margin-top:5%; border:none;background-color: #22663b; font-size: 1rem; padding:1.3%; padding-left:3.2%;padding-right:3.2%" onclick="saveChanges()">Save Changes</button>
+                </form>
+                <hr>
 
             </div>
         </div>
@@ -86,10 +73,7 @@
       const urlParams = new URLSearchParams(window.location.search);
       const greetingValue = urlParams.get('teacherID');
       console.log(greetingValue);
-      function abcd(){
-        document.getElementById("hid1").value=greetingValue;
-        addToList();
-      }
+      document.getElementById("tid").value=greetingValue;
     </script>
     <script src="css/AddStd.js"></script>
 
