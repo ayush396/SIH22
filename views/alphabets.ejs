@@ -32,108 +32,97 @@
       </div>
     </nav>
 <div class="row lesson">
-  <div class="col-lg-9 col-sm-9 col-md-9">
-    
-      <iframe width="100%" height="550" id="vid" src="https://www.youtube.com/embed/hq3yfQnllfQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    
-
+  <div class="col-lg-9 col-sm-9 col-md-9" id="lin">
+      <iframe width="100%" height="550" id="vid" src="<%=link%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
   <div class="col-lg-3 col-sm-3 col-md-3 more" >
     <table>
 <tbody>
-
-
         <tr>
-
             <td bgcolor="#d1dcf0" width="130px">  <div class="new">
-              <a href="javascript:alpha()" >1. Learn Alphabets</a>
+              <a href="/lessons?vid=0" >1. Learn Alphabets</a>
             </div>
           </td>
-
-
-            </tr>
-
-
+        </tr>
       <tr>
         <td bgcolor="#b8c8e6"> <div class="new">
-          <!-- <h2 onclick="number()">2. Learn Numbers</h2> -->
-          <a href="javascript:number();">2. Learn Numbers</a>
+          <a href="/lessons?vid=1">2. Learn Numbers</a>
         </div> </td>
       </tr>
       <tr>
         <td bgcolor="#d1dcf0">
           <div class="new">
-             <a href="javascript:shape()">3. Learn Shapes</a>
+             <a href="/lessons?vid=2">3. Learn Shapes</a>
           </div>
           </td>
       </tr>
       <tr>
         <td bgcolor="#b8c8e6">
           <div class="new">
-             <a href="javascript:add()">4. Learn Addition</a>
+             <a href="/lessons?vid=3">4. Learn Addition</a>
           </div>
           </td>
       </tr>
       <tr>
         <td bgcolor="#d1dcf0">
           <div class="new">
-             <a href="javascript:sub()">5. Learn Subtraction</a>
+             <a href="/lessons?vid=4">5. Learn Subtraction</a>
           </div>
           </td>
       </tr>
       <tr>
         <td bgcolor="#b8c8e6">
           <div class="new">
-             <a href="javascript:multi()">6. Learn Multiplication</a>
+             <a href="/lessons?vid=5">6. Learn Multiplication</a>
           </div>
           </td>
       </tr>
       <tr>
         <td bgcolor="#d1dcf0">
           <div class="new">
-            <a href="javascript:transport()">7. Learn Different Modes of Transport</a>
+            <a href="/lessons?vid=6">7. Learn Different Modes of Transport</a>
           </div> </td>
       </tr>
       <tr>
         <td bgcolor="#b8c8e6">
           <div class="new">
-<a href="javascript:occupation()">8. Learn Different Occupations</a>
+          <a href="/lessons?vid=7">8. Learn Different Occupations</a>
           </div> </td>
       </tr>
       <tr>
         <td bgcolor="#d1dcf0">
           <div class="new">
-            <a  href="javascript:fruit()">9. Learn Different Fruits</a>
+            <a  href="/lessons?vid=8">9. Learn Different Fruits</a>
           </div> </td>
       </tr>
       <tr>
         <td bgcolor="#b8c8e6">
           <div class="new">
-            <a href="javascript:veg1()">10. Learn Different Vegetables (i)</a>
+            <a href="/lessons?vid=9">10. Learn Different Vegetables (i)</a>
           </div> </td>
       </tr>
       <tr>
         <td bgcolor="#d1dcf0">
           <div class="new">
-            <a href="javascript:veg2()"> 11. Learn Different Vegetables (ii)</a>
+            <a href="/lessons?vid=10"> 11. Learn Different Vegetables (ii)</a>
           </div> </td>
       </tr>
       <tr>
         <td bgcolor="#b8c8e6">
           <div class="new">
-            <a href="javascript:animal()">12. Learn Different Animals</a>
+            <a href="/lessons?vid=11">12. Learn Different Animals</a>
           </div> </td>
       </tr>
       <tr>
         <td bgcolor="#d1dcf0">
           <div class="new">
-            <a href="javascript:body()"> 13. Learn Body Organs</a>
+            <a href="/lessons?vid=12"> 13. Learn Body Organs</a>
           </div> </td>
       </tr>
       <tr>
         <td bgcolor="#b8c8e6">
           <div class="new">
-            <a href="javascript:solar()">14. Learn Solar System</a>
+            <a href="/lessons?vid=13">14. Learn Solar System</a>
           </div> </td>
       </tr>
     </tbody>
@@ -144,71 +133,6 @@
   </div>
 
 </div>
-<script type="text/javascript">
-  $('table').scrollTableBody();
-   let link=document.getElementById("vid"); 
 
-  function alpha()
-  {
-    
-    iframe.src="https://www.youtube.com/embed/hq3yfQnllfQ";
-  }
-  function number()
-  {
-    alert("chal ja salea");
-    document.getElementById("vid").contentWindow.document.location.href="https://www.youtube.com/embed/YgCNHOgJv3I";
-   
-    //link.src="https://www.youtube.com/embed/YgCNHOgJv3I";
-  }
-  function shape()
-  {
-    link.src="https://www.youtube.com/embed/hq3yfQnllfQ";
-  }
-  function add()
-  {
-    link.src="https://www.youtube.com/embed/mjlsSYLLOSE";
-  }
-  function sub()
-  {
-    link.src="https://www.youtube.com/embed/Rnw5ixvU074";
-  }
-  function multi()
-  {
-    link.src="https://www.youtube.com/embed/BchpGkLvTy8";
-  }
-  function transport()
-  {
-    link.src="https://www.youtube.com/embed/hq3yfQnllfQ";
-  }
-  function occupation()
-  {
-    link.src="https://www.youtube.com/embed/wKfrbnRRD-k";
-  }
-  function fruit()
-  {
-    link.src="https://www.youtube.com/embed/1rWGNEkvGMY ";
-  }
-  function veg1()
-  {
-    link.src="https://www.youtube.com/embed/DOT15xaX7-E";
-  }
-  function veg2()
-  {
-    link.src="https://www.youtube.com/embed/WS6AIG7q148";
-  }
-  function animal()
-  {
-    link.src="https://www.youtube.com/embed/hewioIU4a64";
-  }
-  function body()
-  {
-    link.src="https://www.youtube.com/embed/i5aXwiC3wWc";
-  }
-  function solar()
-  {
-    link.src="https://www.youtube.com/embed/RJ2bQWH6GCM";
-  }
-
-</script>
   </body>
 </html>
