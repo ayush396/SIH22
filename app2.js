@@ -647,6 +647,11 @@ app.post("/teacher_login",function(req,res){
 })
 
 app.post("/officials_login",function(req,res){
+
+  var oname=req.body.oname;
+  console.log(oname);
+
+  
   
   Official.findOne({username:req.body.username},function(err,found){
     if(err){
@@ -655,8 +660,11 @@ app.post("/officials_login",function(req,res){
       if(!found){
         res.send("No account with these credentials");
       }else{
-        if(found.password===req.body.password){
-          res.render("officialDashboard",{fname:found.fname,lname:found.lname,idd:found.officialID});
+        if(found.password===req.body.password && oname=="state"){
+          res.render("state",{fname:found.fname,lname:found.lname,idd:found.officialID});
+        }else if(found.password===req.body.password && oname=="center"){
+          res.render("center",{fname:found.fname,lname:found.lname,idd:found.officialID});
+         
         }else{
           res.send("Wrong Password");
         }

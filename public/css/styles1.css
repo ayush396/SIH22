@@ -441,6 +441,9 @@ animation-timing-function: linear;
   75% {transform: scaleX(0.9);}
   100% {transform: scaleX(1);}
 }
+body{
+  overflow-x: hidden;
+}
 
 .bouncing-text:after {
   left: 57px;

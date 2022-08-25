@@ -94,11 +94,20 @@
                                             </div>
                                             <input type="password" name="password" class="form-control" required placeholder="Password" />
                                         </div>
+                                        <div class="input-group form-group">
+                                            
+                                            <select name="" id="official" onchange="a()">
+                                                <option value="state"> State Official</option>
+                                                <option value="center"> Center Official</option>
+    
+                                            </select>
+                                            </div>
+                                        
 
-                                       
+                                       <input type="text" hidden value="" id="oid" name="oname">
 
                                         <div class="form-group">
-                                            <input type="submit" value="Login" style="background-color:orangered; color:white;" class="btn float-right login_btn" />
+                                            <input type="submit" value="Login"  style="background-color:orangered; color:white;" class="btn float-right login_btn" />
                                         </div>
                                     </form>
 
@@ -131,7 +140,14 @@
             <p>© Copyright 2022 Lil'learn</p>
         </div>
     </main>
-    
+    <script>
+        var e=document.getElementById("official");
+        function a()
+        {
+        //alert(e.value);
+        document.getElementById("oid").value=e.value;
+        }
+    </script>
 </body>
 
 </html>
