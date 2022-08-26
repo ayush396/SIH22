@@ -5,13 +5,9 @@
 <head>
     <meta charset="utf-8">
     <title>Lil'Learn Welcome</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Officials</title>
-    <link rel="stylesheet" href="styleofficial.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styleofficial.css">
     <link rel = "icon" type = "image/png" href = "css/icon.png">
-    <!-- CSS only -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
@@ -28,6 +24,111 @@ font-family: 'Recursive', sans-serif;
 font-family: 'Ubuntu', sans-serif;
 
 }
+.container {
+position: relative;
+width: 100%;
+max-width: 400px;
+}
+
+.container img {
+scale:1.2;
+
+height: auto;
+}
+
+
+.rotate {
+  animation: rotation 6s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+
+.container .btn {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+background-color: #555;
+color: white;
+font-size: 16px;
+padding: 12px 24px;
+border: none;
+cursor: pointer;
+border-radius: 5px;
+text-align: center;
+}
+
+.container .btn:hover {
+background-color: black;
+}
+.delay{
+  opacity: 1;
+  transition: ease-out;
+  transition-delay: 3s;
+}
+.fit
+{
+  position: absolute;
+  top: 2%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  z-index: -1;
+}
+.newclass{
+  font-family: 'Luckiest Guy', cursive;
+  display: inline-block;
+  
+  margin-left: 8%;
+  top:25%;
+  position: absolute;
+  z-index: -1;
+
+}
+.desc{
+font-family: sans-serif;
+  margin-left: 8%;
+  
+  display: inline-block;
+  position: absolute;
+  z-index: -1;
+  top:50%;
+  font-size: 1.4vw;
+  right:38%;
+  text-align: justify;
+
+
+}
+.desc1{
+font-family: sans-serif;
+
+  margin-left:8%;
+  font-weight: bold;
+  display: inline-block;
+  position: absolute ;
+  z-index: -1;
+  top:67%;
+  font-size: 1.4vw;
+
+  text-align: justify;
+  
+}
+
+.g:hover{
+  background-color: #54a887;
+
+}
+
 
 </style>
 
@@ -56,47 +157,9 @@ font-family: 'Ubuntu', sans-serif;
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 
-<body style="background-color:#e5fce7;">
+<body >
  
-  <div id="mail" style="bottom:15%;  z-index:1;position:fixed; padding-top:1%;  right:2%; width:25%; " class="card cloud">
-
-    <a href="javascript:myfun3();" style="text-decoration: none; margin-left:90% ;margin-top:5%"> ❌</a>
-    
-    <div class="" style="padding: 16% 8% 18%;">
-      <div class="">
-        <img class="rocket" src="https://docs.google.com/uc?id=1k4iZUhb1QL0mSBr3E903xBENzXG27Mmc" alt="rocket_contact" />
-      </div>
-      <form method="post" action="/success_t">
-        <h3>Inform to Parents</h3>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group" style="border: none;">
-              <input type="text" name="stud_name" class="form-control"  placeholder="Student Name " value="" /><br>
-            </div>
-            <div class="form-group" style="border: none;">
-              <input type="text" name="stud_id" class="form-control" placeholder="Student ID. " value="" /><br>
-            </div>
-           
-  
-          </div>
-          <div class="col-md-6">
-            <div class="form-group" style="border: none;">
-              <textarea name="remarks" class="form-control" placeholder="Remarks" style="width: 100%; height: 120px;"></textarea>
-            </div>
-          </div>
-  
-  
-              <div class="col-md-6 col-sm-6">
-                <input type="hidden" name="_next" value="https://www.lillearn.com/thankyou">
-                <input class="dp" type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
-              </div>
-  
-  
-        </div>
-      </form>
-    </div>
-
-
+  <div id="mail" style="bottom:15%;  z-index:1;position:fixed; padding-top:1%;  right:2%; width:25%; ">
 
 
   </div>
@@ -138,55 +201,57 @@ font-family: 'Ubuntu', sans-serif;
 
 
   <header>
-         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark ">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark ">
 
 
-             <a style="margin-left:80px; font-size: 2.6rem;" class="navclass navbar-brand " href="/"> <img class="logo1" src="https://i.imgur.com/nmkZOyJ.png" alt=""> Lil'Learn
-             </a>
-             <button class="navbar-toggler" style="margin-right:10%;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-             </button>
-             <div class="collapse navbar-collapse" style="margin-left:10%;" id="navbarCollapse">
-                 <ul class="navbar-nav ms-auto" >
-                     <li class="nav-item active">
-                         <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="/">Home </a>
-                     </li>
+        <a style="margin-left:80px; font-size: 2.6rem;" class="navclass navbar-brand " href="/"> <img class="logo1" src="https://i.imgur.com/nmkZOyJ.png" alt=""> Lil'Learn
+        </a>
+        <button class="navbar-toggler" style="margin-right:10%;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" style="margin-left:10%;" id="navbarCollapse">
+            <ul class="navbar-nav ms-auto" >
+                <li class="nav-item active">
+                    <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="/">Home </a>
+                </li>
 
-                     <li class="nav-item active">
-                      <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="/test_link?officalID=<%=idd%>">Test Links</a>
-                  </li>
+                <li class="nav-item active">
+                 <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="/test_link?officalID=<%=idd%>">Test Links</a>
+             </li>
+             <li class="nav-item active">
+                <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="#stats">Statistics </a>
+            </li>
+                <li class="nav-item">
+                    <a style="margin-right:80px; font-weight: bold;font-size: 1rem; color: white;" class="nav-link" href="/logout">Sign Out</a>
+                </li>
 
-                     <li class="nav-item">
-                         <a style="margin-right:80px; font-weight: bold;font-size: 1rem; color: white;" class="nav-link" href="/logout">Sign Out</a>
-                     </li>
+            </ul>
 
-                 </ul>
-
-             </div>
-         </nav>
+        </div>
+    </nav>
      </header>
      
-
      <section>
-      <div>
-          <img src="css/bg9.jpg" class ="medium"alt="">
+        <div>
+            <img src="css/bg9.jpg" class ="medium"alt="">
+        </div>
+      <div class="content" style="overflow-y :hidden;">
+        <div class="info">
+          <h2>"The Wealth of Knowledge <br><span>Accompanies its Possessor"</span></h2>
+          
+          <!-- <a href="#" class="info-btn">More Info</a> -->
+        </div>
+        <div class="abc">
+            <p>With our all-in-one solution, you can lessen the stress of determining test assignments and managing the professors. Follow the national development at the state level.</p>
+        </div>
       </div>
-    <div class="content" style="overflow-y :hidden;">
-      <div class="info">
-        <h2>"The Wealth of Knowledge <br><span>Accompanies its Possessor"</span></h2>
-        
-        <!-- <a href="#" class="info-btn">More Info</a> -->
-      </div>
-      <div class="abc">
-          <p>With our all-in-one solution, you can lessen the stress of determining test assignments and managing the professors. Follow the national development at the state level.</p>
-      </div>
-    </div>
-    <!-- <div class="media-icons">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-    </div> -->
-  </section>
+      <!-- <div class="media-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div> -->
+    </section>
+
 
 
 <section id="stats" style="background-image: linear-gradient(#e5fce7,white, #e5fce7);">
@@ -200,7 +265,7 @@ font-family: 'Ubuntu', sans-serif;
     <div class="col-lg-6 col-md-6 " style="padding-top: 6%; padding-left:5%; padding-bottom:2%;"data-aos="fade-up" data-aos-duration="2000">
 
       <div style="margin-top: 10%;"></div>
-      <label class="student" for="" style="color:#033808; font-size:1.5rem;">Select the Class:</label>
+      <label class="student" for="" style="color:#033808; font-size:1.5rem;">Select the City:</label>
       <select id="classVal" class="student" name="" onchange = "myFunction()" style="margin-bottom: 4%; padding-left:2%; margin-left:2%;padding-bottom:1%; width:20%; height:6%;" >
         <option value="1">Madurai</option>
         <option value="2">Chennai</option>
@@ -252,12 +317,10 @@ font-family: 'Ubuntu', sans-serif;
     <h1 style="padding-top: 4%;  font-size:2.7rem; color:#287335; padding-left:10%;  padding-right:10%;"data-aos="fade-left" data-aos-duration="2000">City-Wise LO Grade of State</h1>
     <div style="padding-right: 3%;">
     <h4 style="padding-top: 5%; font-weight:100; padding-left:10%; text-align:justify;  padding-right:10%;"data-aos="fade-up" data-aos-duration="1500">
-      From the drop-down menu in the top left corner, choose the class and
-       section. Each student in the specified class and section is profiled 
-       in the table on the left. Find the student's name in the table and click
-        "Read More" to learn more about the LO grade. Your screen will provide 
-        an in-depth analysis and the progress of the students.</h3>
-  </div>
+        Select the city whose LO grade is to be shown from the drop-down menu in the top left corner. The top three schools from each city are shown in the table along with their respective rankings.
+    </h4>
+  
+    </div>
   </div>
 
 </div>
@@ -271,8 +334,9 @@ font-family: 'Ubuntu', sans-serif;
   <h1 style="  font-size:2.7rem; color:#287335; padding-left:10%;  padding-right:10%;" data-aos="fade-right" data-aos-duration="1500">Tests Performance</h1>
   <div style="padding-right: 3%;">
   <h4 style="padding-top: 5%; font-weight:100; padding-left:10%; text-align:justify;  padding-right:10%;">
-    On the right side, a comprehensive graph can be observed to learn the details of each student's score per class. The progress of each class can be evaluated.
-    The graph provides a thorough assessment of how the chosen class performed in a series of tests. It compares the average scores obtained by students of that class on an examination to all other examinations that have been conducted.</h4>
+    On the right side, a thorough graph may be seen to learn more about  performance of schools of specific city on a particular exam as well as on past tests. Each school's development may be assessed. The graph offers a complete evaluation of how the selected city did across a range of exams. It contrasts a school's test average results with the results of all previous tests.
+
+</h4>
 </div>
 </div>
 <div class="col-lg-6 col-md-6"  data-aos="fade-left" data-aos-duration="2000">
@@ -296,7 +360,9 @@ font-family: 'Ubuntu', sans-serif;
     <h1 style="  font-size:2.7rem; color:#287335; padding-left:5%;  padding-right:10%;" data-aos="fade-right" data-aos-duration="1500">Performance Of Classes</h1>
     
     <div style="padding-right: 3%;">
-    <h4 style="padding-top: 5%; font-weight:100; padding-left:5%; text-align:justify;  padding-right:10%;">Your allocated classes and their performance are shown in the graph on the right. From the examinations conducted, the average results for each class are shown. It may be used efficiently to compare classes and determine how much attention should be given to each class.</h4>
+    <h4 style="padding-top: 5%; font-weight:100; padding-left:5%; text-align:justify;  padding-right:10%;">
+        The graph to the right displays the city's various designated courses and their academic results. The average score obtained from the exams is displayed for each school in that city.
+    </h4>
     <label for="" style="margin-left: 10%;">Customize graph</label>
     <select id="graph_class"  multiple  class="student"   style="margin-bottom: 4%; padding-left:2%; margin-left:2%;padding-bottom:1%; width:15%;" >
       <option value="1A">1A</option>
@@ -397,8 +463,9 @@ font-family: 'Ubuntu', sans-serif;
     });
     chart.render();
   }
-  //var dpm=[{y:12,label:'1A'},{y:11,label:'1B'},{y:14,label:'2A'},{y:11,label:'2B'},{y:18,label:'3A'},{y:16,label:'3B'}];
+  var dpm=[{y:12,label:'1A'},{y:11,label:'1B'},{y:14,label:'2A'},{y:11,label:'2B'},{y:18,label:'3A'},{y:16,label:'3B'}];
   draw(dpm);
+  console.log(dpm);
 
 
 

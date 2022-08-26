@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+.medium{
+    z-index:-1;
+  position: fixed;
+  width: 85%;
+  margin-left:28%;
+ 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+margin-top:-2%;
+  background-size: cover;
+  background-position: center;
+}
+.icon{
+    height: 15%;
+    width:5%;
+    padding-left: 2%;
+}
+
+
+.content{
+  max-width: 650px;
+  margin-top:5%;
+  margin-left: 5%;
+  overflow-y: hidden;
+}
+
+.content .info h2{
+  color: #226A80;
+  font-size: 55px;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 60px;
+  margin-bottom: 30px;
+  overflow-y: hidden;
+}
+
+.content .info h2 span{
+  color: orangered;
+  font-size: 45px;
+  font-weight: 600;
+  overflow-y: hidden;
+}
+
+.content .info p{
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 40px;
+  overflow-y: hidden;
+}
+
+.content .info-btn{
+  color: #fff;
+  background: #226A80;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: 0.3s;
+  overflow-y: hidden;
+  transition-property: background;
+}
+
+.content .info-btn:hover{
+  background: #0C4F60;
+  overflow-y: hidden;
+}
+
+.media-icons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.media-icons a{
+  position: relative;
+  color: #111;
+  font-size: 25px;
+  transition: 0.3s;
+  transition-property: transform;
+}
+
+.media-icons a:not(:last-child){
+  margin-right: 60px;
+}
+
+.media-icons a:hover{
+  transform: scale(1.5);
+}
+
+label{
+  display: none;
+}
+
+#check{
+  z-index: 3;
+  display: none;
+}
+
+/* Responsive styles */
+
+@media (max-width: 960px){
+  header .navigation{
+    display: none;
+  }
+
+  label{
+    display: block;
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    transition-property: color;
+  }
+
+  label:hover{
+    color: #fff;
+  }
+
+  label .close-btn{
+    display: none;
+  }
+
+  
+
+  .content .info h2{
+    font-size: 45px;
+    line-height: 50px;
+  }
+
+  .content .info h2 span{
+    font-size: 40px;
+    font-weight: 600;
+  }
+
+  .content .info p{
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 560px){
+  .content .info h2{
+    font-size: 35px;
+    line-height: 40px;
+  }
+
+  .content .info h2 span{
+    font-size: 30px;
+    font-weight: 600;
+  }
+
+  .content .info p{
+    font-size: 14px;
+  }
+}
+
+.abc{
+    padding: 3%;
+    text-align: justify;
+    width: 70%;
+    margin-left:-2%;
+    }
+
+.new{
+    padding-left:2% ;
+    font-size: 200px;
+}    
+
+.acd{
+    margin-left: 70%;
+}
