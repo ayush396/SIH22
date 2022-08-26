@@ -21,10 +21,48 @@
 
     <link rel="stylesheet" href="css/parentDash.css">
 
+    <style>
+
+#open {
+  animation: cssAnimation 0s 3s forwards;
+  visibility: hidden;
+}
+
+#open {
+  animation: cssAnimation 0s 3s forwards;
+  opacity: 1.0 ;
+}
+
+
+@keyframes cssAnimation {
+  to   { visibility: visible; }
+}
+
+    </style>
+
   
 </head>
 
 <body>
+  <div class="introduction">
+    <h1 class="log-header">
+      <span style="color:white "class="log">Successfully </span>
+      <span class="log">Signed In! <i class="fas fa-clipboard-check"></i></span>
+    </h1>
+  
+  </div>
+
+  <div style="top: 15%;  z-index:1;position:absolute; padding:2%; text-align:center; left:30%; width:35%; border:1px solid;  " class="card text-center" id="open">
+    <div class="card-header" style="padding:3%; text-align: justify;" >
+<span style="font-family:cursive; color: black; font-size:1.3rem; font-weight: 500; padding-bottom: 8%; "> Student's Report </span>
+         
+      
+      <a href="javascript:openfun()" style="text-decoration: none; position: absolute; left:85%;"> <span style="right: 0; left:65%">❌</span>  </a> 
+      <h1 style="font-size: 1.5rem; font-family:cursive; color:darkblue"> Based on the student's prior test results, time spent using Lil'Learn, and the number of sections they attempted, we are able to forecast the predicted score of the student in the next exams. <span id="span" style="color:brown;font-weight: 600;"></span> out of 6.00<h1>
+    </div>
+   
+    
+  </div>
   <div id="mail" style="bottom:15%;  z-index:1;position:fixed; padding-top:1%;  right:2%; width:25%; " class="card">
 
     <a href="javascript:fun1();" style="text-decoration: none; margin-left:90% ;margin-top:5%"> ❌</a>
@@ -33,7 +71,7 @@
       <div class="">
         <img class="rocket" src="https://docs.google.com/uc?id=1k4iZUhb1QL0mSBr3E903xBENzXG27Mmc" alt="rocket_contact" />
       </div>
-      <form method="post" action="/success?stud_id=<%= id %>">
+      <form method="post" action="/success_p">
         <h3>Contact Teacher</h3>
         <div class="row">
           <!-- <div class="col-md-6">
@@ -43,6 +81,8 @@
             <div class="form-group" style="border: none;">
               <input type="text" name="stud_id" class="form-control" placeholder="Student ID. " value="" /><br>
             </div> -->
+           
+  
           <!-- </div>  -->
           
             <div class="form-group" style="border: none;">
@@ -52,7 +92,9 @@
               <div class="col-md-6 col-sm-6" style="margin-top:3%;">
                 <input type="hidden" name="_next" value="https://www.lillearn.com/thankyou">
                 <input class="dp" type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
-              </div>  
+              </div>
+  
+  
         </div>
       </form>
     </div>
@@ -77,6 +119,10 @@
     <p class="des1" style="margin-top:3%;"> Fueling your child’s desire to learn .</p>
 
     </div>
+
+   
+
+   
 
     <div class="col-lg-6 col-md-6" >
        <div class="container  chart4">
@@ -111,13 +157,7 @@
 </section>
 
 
-<div class="introduction">
-  <h1 class="log-header">
-    <span style="color:white "class="log">Successfully </span>
-    <span class="log">Signed In! <i class="fas fa-clipboard-check"></i></span>
-  </h1>
 
-</div>
 
 
 
@@ -325,12 +365,10 @@
                     }]
                 },
                 options: {
-                    legend: {display:false},
+                    legend: {display: false},
                     scales: {
-                    yAxes: [{ticks: {min: 0, max:60}, scaleLabel:{display: true,labelString: 'No of question per day'}}],
-                    xAxes:[{scaleLabel:{display: true,labelString: 'Days of the month'}}]
+                    yAxes: [{ticks: {min: 0, max:60}}],
                     }
-                    
                 }
                 });
             }
@@ -430,6 +468,25 @@
 
 
 <script>
+   const array=[1,6.5,0];
+
+   const val=parseFloat(0.474*array[0] + 0.479*array[1] + 0.539*array[2] - 0.398).toFixed(2);
+
+      // const val = Math.round(0.474*array[0] + 0.479*array[1] + 0.539*array[2] - 0.398);
+      // alert(val);
+      var e=document.getElementById("span");
+      e.innerHTML=val;
+
+  var t=document.getElementById("open");
+  var e=document.getElementById("blur");
+  e.style.opacity=0.2;
+  t.style.display="block";
+  function openfun()
+  {
+    e.style.opacity=1.0;
+    t.style.display="none";
+  }
+
 
 var ctxP = document.getElementById("pieChart").getContext('2d');
     var p=score.Pie;
