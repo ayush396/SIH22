@@ -758,18 +758,20 @@ app.post("/officials_login",function(req,res){
       if(!found){
         res.send("No account with these credentials");
       }else{
-        
-        if(found.password===req.body.password && oname=="state"){
-          Score.find({state:(found.state)},(err,f)=>{
-            if(!err){
-              
-            }
-          })
-          res.render("state",{fname:found.fname,lname:found.lname,idd:found.officialID});
-        }else if(found.password===req.body.password && oname=="center"){
-          res.render("center",{fname:found.fname,lname:found.lname,idd:found.officialID});
-         
-        }else{
+        var st=found.state;
+        console.log(found);
+        if(found.password==req.body.password){
+          if(oname=="center"){
+            // Score.find({},(err,f)=>{
+            //   if(!err){
+            //     res.render("center",{fname:found.fname,lname:found.lname,idd:found.officialID,stud:JSON.stringify(f)});
+            //   }
+            // })
+            res.render("center",{fname:found.fname,lname:found.lname,idd:found.officialID});
+          }else{
+            res.render("state",{fname:found.fname,lname:found.lname,idd:found.officialID});
+          }
+         }else{
           // console.log(found.password);
           res.send("Wrong Password");
         }

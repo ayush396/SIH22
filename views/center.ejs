@@ -1,126 +1,759 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+  <script src="https://kit.fontawesome.com/59d8afb937.js" crossorigin="anonymous"></script>
+
 <head>
+    <meta charset="utf-8">
+    <title>Lil'Learn Welcome</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<style >
+
+#g   {
+  display: none;
+}
+body{
+  font-family: 'Luckiest Guy', cursive;
+font-family: 'Merriweather', serif;
+font-family: 'Recursive', sans-serif;
+font-family: 'Ubuntu', sans-serif;
+
+}
+.container {
+position: relative;
+width: 100%;
+max-width: 400px;
+}
+
+.container img {
+scale:1.2;
+
+height: auto;
+}
+
+
+.rotate {
+  animation: rotation 6s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+
+.container .btn {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+background-color: #555;
+color: white;
+font-size: 16px;
+padding: 12px 24px;
+border: none;
+cursor: pointer;
+border-radius: 5px;
+text-align: center;
+}
+
+.container .btn:hover {
+background-color: black;
+}
+.delay{
+  opacity: 1;
+  transition: ease-out;
+  transition-delay: 3s;
+}
+.fit
+{
+  position: absolute;
+  top: 2%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  z-index: -1;
+}
+.newclass{
+  font-family: 'Luckiest Guy', cursive;
+  display: inline-block;
+  
+  margin-left: 8%;
+  top:25%;
+  position: absolute;
+  z-index: -1;
+
+}
+.desc{
+font-family: sans-serif;
+  margin-left: 8%;
+  
+  display: inline-block;
+  position: absolute;
+  z-index: -1;
+  top:50%;
+  font-size: 1.4vw;
+  right:38%;
+  text-align: justify;
+
+
+}
+.desc1{
+font-family: sans-serif;
+
+  margin-left:8%;
+  font-weight: bold;
+  display: inline-block;
+  position: absolute ;
+  z-index: -1;
+  top:67%;
+  font-size: 1.4vw;
+
+  text-align: justify;
+  
+}
+
+.g:hover{
+  background-color: #54a887;
+
+}
+
+
+</style>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Merriweather:wght@900&family=Recursive:wght@500&family=Ubuntu&display=swap" rel="stylesheet">
+
+
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+
     <script src="https://kit.fontawesome.com/433f1b34e2.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,800&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+<link rel="icon" href="https://docs.google.com/uc?id=1T2q0QcgrB5lJ6wqd-jYW4HAWr5YeXasA">
+    <link rel="stylesheet" type="text/css" href="/css/stats.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-        crossorigin="anonymous"></script>
 </head>
-<body>
-    <h1>center</h1>
-    <!-- <h1> <%= fname %> </h1>
-    <h1> <%= lname %> </h1>
-    <h1> <%= idd %> </h1> -->
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+
+<body style="background-color:#e5fce7;">
+ 
+  <div id="mail" style="bottom:15%;  z-index:1;position:fixed; padding-top:1%;  right:2%; width:25%; " class="card cloud">
+
+    <a href="javascript:myfun3();" style="text-decoration: none; margin-left:90% ;margin-top:5%"> ❌</a>
     
-    <div class="form-group input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-         </div>
-         
-         <select  id="state"  class="cc custom-select form-control" name="state" style="height: 32px; margin-bottom:10px; font-size:14px;" required>
-            <option value="" >State</option>
-        </select>
-         <span class="input-group-btn" style="width:20px;"></span>
-         <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-         </div>
-         <select  id="city"  class="cc custom-select form-control" name="city" style="height: 32px; margin-bottom:10px; font-size:14px; positon:relative; " required>
-            <option value="" >City</option>
-        </select>
-
+    <div class="" style="padding: 16% 8% 18%;">
+      <div class="">
+        <img class="rocket" src="https://docs.google.com/uc?id=1k4iZUhb1QL0mSBr3E903xBENzXG27Mmc" alt="rocket_contact" />
+      </div>
+      <form method="post" action="/success_t">
+        <h3>Inform to Parents</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group" style="border: none;">
+              <input type="text" name="stud_name" class="form-control"  placeholder="Student Name " value="" /><br>
+            </div>
+            <div class="form-group" style="border: none;">
+              <input type="text" name="stud_id" class="form-control" placeholder="Student ID. " value="" /><br>
+            </div>
+           
+  
+          </div>
+          <div class="col-md-6">
+            <div class="form-group" style="border: none;">
+              <textarea name="remarks" class="form-control" placeholder="Remarks" style="width: 100%; height: 120px;"></textarea>
+            </div>
+          </div>
+  
+  
+              <div class="col-md-6 col-sm-6">
+                <input type="hidden" name="_next" value="https://www.lillearn.com/thankyou">
+                <input class="dp" type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+              </div>
+  
+  
+        </div>
+      </form>
     </div>
 
-    <script>
-        let auth_token;
-        $(document).ready( function(){
-            $.ajax({
-                type:'get',
-                url:'https://www.universal-tutorial.com/api/getaccesstoken',
-                success:function(data){
-                    auth_token=data.auth_token;
-                    getState(auth_token)
-                    console.log('ajax');
-                },
-                error:function(error){
-                    console.log(error);
-                },
-                headers:{
-                    "Accept": "application/json",
-                    "api-token": "Y4iA6bE_Bep9tMA6Xq1Fjkem-h0I6yQ1Twbu0FplS4oDCHpHunYXVPOFM_OB5_wWKqo",
-                    "user-email": "balkar81199@gmail.com"
-                }
 
+
+
+  </div>
+
+  <div style="top: 125%;  z-index:1;position:absolute; text-align:center; left:30%; width:35%;  " class="card text-center" id="readMore">
+    <div class="card-header">
+      Student's LO  <a href="javascript:myfun1()" style="text-decoration: none;"> <span style="right: 0; left:65%">❌</span>  </a> 
+
+    </div>
+    <div class="card-body" id="stud">
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js'></script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+      <canvas id="multipleLineChart" width="400" height="400"></canvas>
+      <!-- <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    </div>
+    <div class="card-footer text-muted">
+      Statistics
+    </div>
+  </div>
+
+  
+
+  <div id="blur"> 
+
+  <!-- <video src="/css/new2.mp4" autoplay loop muted poster="posterimage.jpg">
+
+  </video> -->
+  <!-- <img src="/css/welcomebg.png" class ="fit" alt=""> -->
+  <div class="introduction">
+    <h1 class="log-header">
+      <span style="color:#033808 "class="log">Successfully </span>
+      <span class="log">Signed In! <i class="fas fa-clipboard-check"></i></span>
+    </h1>
+
+  </div>
+
+
+
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark ">
+
+
+        <a style="margin-left:80px; font-size: 2.6rem;" class="navclass navbar-brand " href="/"> <img class="logo1" src="https://i.imgur.com/nmkZOyJ.png" alt=""> Lil'Learn
+        </a>
+        <button class="navbar-toggler" style="margin-right:10%;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" style="margin-left:10%;" id="navbarCollapse">
+            <ul class="navbar-nav ms-auto" >
+                <li class="nav-item active">
+                    <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="/">Home </a>
+                </li>
+
+                <li class="nav-item active">
+                 <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="/test_link?officalID=<%=idd%>">Test Links</a>
+             </li>
+             <li class="nav-item active">
+                <a style="margin-right:30px;font-size: 1rem;" class="nav-link  ms-auto" href="#stats">Statistics </a>
+            </li>
+                <li class="nav-item">
+                    <a style="margin-right:80px; font-weight: bold;font-size: 1rem; color: white;" class="nav-link" href="/logout">Sign Out</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+     </header>
+     
+<section >
+  <div class="row">
+  
+    <div class="col-lg-9 col-md-9 col-sm-9">
+      <div class="newclass">
+  
+     <h1 style="font-size:4vw; padding-top:10%;">To teach is to touch </h1>
+       <h1 style="font-size:3.5vw; "> lives forever.</h1>
+        </div>
+        <p class="desc" style=" padding-top:3%;">Join our hands to bring forth the best in every child. Don't be merely a teacher, become an awakener. Come and experience the magic of Lil'Learn as it enables the students to soar to new heights. </p>
+        <p class="desc1" style="color: black;  padding-top:4%;"> Experience a unique teaching experience ...</p>
+        <input type="text" id = "tech" hidden value="<%= idd %>" name="techid">
+    </div>
+    
+    <div class="col-lg-3 col-md-3 col-sm-3" style="margin-top:3.7%; z-index:-1;">
+      <img src="css/backcircle.png"  class ="rotate" alt="" style="z-index:-1;margin-left:-46%;scale:1.15;margin-top:52%;width:140%; ">
+      <div style="margin-top:-95%">
+        <img src="css/teacher1.png"  alt="" style="z-index:1;margin-left:-46%;scale:1.25;width:130%; ">
+        
+      </div>
+    </div>
+  
+   
+  </div>
+
+ 
+
+</section>
+  
+
+
+<section id="stats" style="background-image: linear-gradient(#e5fce7,white, #e5fce7);">
+
+<div class="student">
+  <h1> </h1>
+
+  <div class="row">
+
+
+    <div class="col-lg-6 col-md-6 " style="padding-top: 6%; padding-left:5%; padding-bottom:2%;"data-aos="fade-up" data-aos-duration="2000">
+
+      <div style="margin-top: 10%;"></div>
+      <label class="student" for="" style="color:#033808; font-size:1.5rem;">Select the State:</label>
+      <select id="classVal" class="student" name="" onchange = "myFunction()" style="margin-bottom: 4%; padding-left:2%; margin-left:2%;padding-bottom:1%; width:20%; height:6%;" >
+        <option value="1">Punjab</option>
+        <option value="2">Tamil Nadu</option>
+      </select>
+
+      
+      <div style="height: 350px; overflow: auto; margin-top:6%;" data-aos="fade-right" data-aos-duration="2000">
+<div class=" container2">
+  <table style="max-height:50px; overflow-y:auto;" class="table table-striped ">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th style="width:25%"  scope="col">City Name</th>
+        <th style="width:25%" scope="col"> School Name</th>
+        <th style="width:30%" scope="col">Ranking</th>
+
+      </tr>
+    </thead>
+
+    <tbody id="tb1">
+      <tr>
+          <td>1</td>
+          <td>Amritsar</td>
+          <td>DAV International School</td>
+          <td>1</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Anandpur Sahib</td>
+        <td>Sri Dasmesh Academy</td>
+        <td>2</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>kapurthala</td>
+      <td>Jawahar Navodaya Vidyalaya</td>
+      <td>3</td>
+  </tr>
+
+    </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+
+
+  <div class="col-md-6 col-lg-6" style="padding-top: 10%; padding-bottom:2%;"data-aos="fade-left" data-aos-duration="2000">
+
+    <h1 style="padding-top: 4%;  font-size:2.7rem; color:#287335; padding-left:10%;  padding-right:10%;"data-aos="fade-left" data-aos-duration="2000">City-Wise LO Grade of State</h1>
+    <div style="padding-right: 3%;">
+    <h4 style="padding-top: 5%; font-weight:100; padding-left:10%; text-align:justify;  padding-right:10%;"data-aos="fade-up" data-aos-duration="1500">
+      Select the State whose LO grade is to be shown from the drop-down menu in the top left corner. The top three schools from each state are shown in the table along with their respective rankings.  
+    </h4>
+  </div>
+  </div>
+
+</div>
+</section>
+
+<section style="margin-top:-2%;padding-left:3%; padding-bottom:12%;background-image: linear-gradient(#e5fce7,white, #e5fce7);">
+
+<div class=" row">
+
+<div class="col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="2500">
+  <h1 style="  font-size:2.7rem; color:#287335; padding-left:10%;  padding-right:10%;" data-aos="fade-right" data-aos-duration="1500">Tests Performance</h1>
+  <div style="padding-right: 3%;">
+  <h4 style="padding-top: 5%; font-weight:100; padding-left:10%; text-align:justify;  padding-right:10%;">
+    On the right side, a thorough graph may be seen to learn more about  performance of schools of specific state on a particular exam as well as on past tests. Each school's development may be assessed. The graph offers a complete evaluation of how the selected state did across a range of exams. It contrasts a school's test average results with the results of all previous tests.
+  </h4>
+</div>
+</div>
+<div class="col-lg-6 col-md-6"  data-aos="fade-left" data-aos-duration="2000">
+<canvas id="myChart" class="chart"></canvas>
+</div>
+</div>
+</section>
+
+<section style="padding-left:8%;padding-top: 10%; padding-bottom:12%;background-image: linear-gradient(#e5fce7,white, #e5fce7);">
+
+  <div class=" row">
+  
+  <div class="col-lg-6 col-md-6"data-aos="fade-right" data-aos-duration="1500">
+
+    <div id="chartContainer" style="height: 370px; width: 95%;" class="chart2">
+      <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    </div>
+   
+  </div>
+  <div class="col-lg-6 col-md-6"data-aos="fade-left" data-aos-duration="1500">
+    <h1 style="  font-size:2.7rem; color:#287335; padding-left:5%;  padding-right:10%;" data-aos="fade-right" data-aos-duration="1500">Performance Of Classes</h1>
+    
+    <div style="padding-right: 3%;">
+    <h4 style="padding-top: 5%; font-weight:100; padding-left:5%; text-align:justify;  padding-right:10%;">
+      The graph to the right displays the city's various designated courses and their academic results. The average score obtained from the exams is displayed for each school in that city.
+    </h4>
+    <label for="" style="margin-left: 10%;">Customize graph</label>
+    <select id="graph_class"  multiple  class="student"   style="margin-bottom: 4%; padding-left:2%; margin-left:2%;padding-bottom:1%; width:15%;" >
+      <option value="1A">1A</option>
+      <option value="1B">1B</option>
+      <option value="2A">2A</option>
+      <option value="2B">2B</option>
+      <option value="3A">3A</option>
+      <option value="3B">3B</option>
+     </select>
+     <button type="button" onclick="customize()">Customize</button>
+    
+  </div>
+  </div>
+  </div>
+  </section>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+      AOS.init();
+  </script>
+<script>
+  var dpc=[{y:13,label:'1A'},{y:11,label:'1B'},{y:14,label:'2A'},{y:12,label:'2B'},{y:17,label:'3A'},{y:16,label:'3B'}];
+  var dpm=[{y:12,label:'1A'},{y:11,label:'1B'},{y:14,label:'2A'},{y:11,label:'2B'},{y:18,label:'3A'},{y:16,label:'3B'}];
+      
+  function myFunction(){
+    var t=document.getElementById("classVal").value;
+    console.log(t);
+    var tb=document.getElementById("tb1");
+    if(t==1){  
+      var xValues = ['test1','test2','test3','test4','test5','test6'];
+      var yValues = [15,18,16,19,14,18];
+      draw(dpm);
+      mycharts(xValues,yValues);
+      tb.innerHTML="";
+      tb.innerHTML=("<tr><td>1</td><td>Amritsar</td><td>DAV International School</td><td>1</td></tr><tr><td>2</td><td>Anandpur Sahib</td><td>Sri Dasmesh Academy</td><td>2</td></tr> <tr><td>3</td><td>Kapurthala</td><td>Jawahar Navodaya Vidyalaya</td><td>3</td></tr>");
+    }else{
+      var xValues = ['test1','test2','test3','test4','test5','test6','test7'];
+      var yValues = [15,16,16,17,14,19,15];
+      //var dpc=[{y:13,label:'1A'},{y:11,label:'1B'},{y:14,label:'2A'},{y:12,label:'2B'},{y:17,label:'3A'},{y:16,label:'3B'}];
+      draw(dpc);
+      mycharts(xValues,yValues);
+      tb.innerHTML="";
+      tb.innerHTML=("<tr><td>1</td><td>Adyar</td><td>Bala Vidya Mandir School</td><td>1</td></tr><tr><td>2</td><td>Chennai</td><td>Chinmaya Vidyalaya</td><td>2</td></tr> <tr><td>3</td><td>Chennai</td><td>Chettinad Vidyashram</td><td>3</td></tr>");
+    }
+  }
+  
+  function customize(){
+    var st=document.getElementById("classVal").value;
+    if(st==1){
+      var l=dpm;
+      var options=document.getElementById("graph_class").selectedOptions;
+      var values = Array.from(options).map(({ value }) => value);
+      console.log(values);
+      var newL=[];
+      l.forEach(e=>{
+        values.forEach(v=>{
+        if(e.label===v){
+          newL.push(e);
+        }
+      })
+      })
+      draw(newL);
+    }else{
+      var l=dpc;
+      var options=document.getElementById("graph_class").selectedOptions;
+      var values = Array.from(options).map(({ value }) => value);
+      console.log(values);
+      var newL=[];
+      l.forEach(e=>{
+        values.forEach(v=>{
+        if(e.label===v){
+          newL.push(e);
+        }
+      })
+      })
+      draw(newL);
+    }
+  }
+
+  function draw(dp){
+    var chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      theme: "light1", // "light1", "light2", "dark1", "dark2"
+      title:{
+        text: "Class Wise Comparision"
+      },
+      axisY: {
+        title: "L.O. Points"
+      },
+      axisX: {
+        title: "Classes"
+      },
+      data: [{        
+        type: "column",  
+        showInLegend: false, 
+        
+        dataPoints: dp
+      }]
+    });
+    chart.render();
+  }
+  //var dpm=[{y:12,label:'1A'},{y:11,label:'1B'},{y:14,label:'2A'},{y:11,label:'2B'},{y:18,label:'3A'},{y:16,label:'3B'}];
+  draw(dpm);
+
+
+
+
+
+  var card=document.getElementById("readMore");
+  card.style.display="none";
+  function myfun(std){
+    var x=document.getElementById("blur");
+    x.style.opacity=0.5;
+    card.style.opacity=1.0;
+  }
+  function myfun1()
+  {
+    
+    var x=document.getElementById("blur");
+    x.style.opacity=1.0;
+
+    card.style.display="none";
+  }
+
+
+
+
+
+
+
+
+ function mycharts(xValues,yValues){
+  new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,0.1)",
+      data: yValues
+    }]
+  },
+  options: {
+    responsive: true,
+    legend: {display: false},
+    scales: {
+      
+      yAxes: [{ticks: {min: 0, max:25}, scaleLabel: {
+        display: true,
+        labelString: 'Average Marks'
+      }}],
+      xAxes: [{ticks: {min: 0, max:25}, scaleLabel: {
+        display: true,
+        labelString: 'Number Of Tests'
+      }}]
+     
+    }
+  }
+  });
+ }
+
+ var xValues = ['test1','test2','test3','test4','test5','test6'];
+ var yValues = [15,18,16,19,14,18];
+ mycharts(xValues,yValues);
+
+  var cl=document.getElementById("classVal");
+  
+
+
+  function tableCreate() {
+  var tbody=document.getElementById('t1')
+  var tbody=document.getElementById('tb1')
+  tbody.innerHTML="";
+  for (let i = 0; i < names.length; i++) {
+        const tr = tbody.insertRow();
+        const td1 = tr.insertCell();
+        td1.appendChild(document.createTextNode(i+1));
+        
+        const td2 = tr.insertCell();
+        td2.appendChild(document.createTextNode(names[i]));
+        
+        const td3 = tr.insertCell();
+        td3.appendChild(document.createTextNode(ids[i]));
+        
+        const td4 = tr.insertCell();
+        td4.appendChild(document.createTextNode(lo[i]));
+        
+        const td5 = tr.insertCell();
+        var btn = document.createElement("button");
+        var text1 = document.createTextNode("Read More");
+        btn.appendChild(text1);
+        btn.setAttribute("id", "btn"+i);
+        btn.setAttribute("class", "btn btn-success");
+        btn.setAttribute("value",ids[i]);
+        var v=btn.value;
+        btn.setAttribute("onclick", "myfun(value)");
+        btn.setAttribute("style", "float:left;margin-left:20px; width:130px;");
+
+        td5.appendChild(btn);
+        
+    
+  }
+  // table.appendChild(tbody);
+}
+
+// tableCreate();
+
+</script>
+  <!-- <div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-6">
+
+
+  <div class="">
+    <div class="">
+      <img class="rocket" src="https://docs.google.com/uc?id=1k4iZUhb1QL0mSBr3E903xBENzXG27Mmc" alt="rocket_contact" />
+    </div>
+    <form method="post" action="https://formsubmit.co/lillearn.13@gmail.com">
+      <h3>Inform to Parents</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group" style="border: none;">
+            <input type="text" name="txtName" class="form-control" placeholder="Student Name " value="" /><br>
+          </div>
+          <div class="form-group" style="border: none;">
+            <input type="text" name="txtEmail" class="form-control" placeholder="Student Roll No. " value="" /><br>
+          </div>
+         
+
+        </div>
+        <div class="col-md-6">
+          <div class="form-group" style="border: none;">
+            <textarea name="txtMsg" class="form-control" placeholder="Remakrs" style="width: 100%; height: 120px;"></textarea>
+          </div>
+        </div>
+
+
+            <div class="col-md-6 col-sm-6">
+              <input type="hidden" name="_next" value="https://www.lillearn.com/thankyou">
+              <input class="dp" type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+            </div>
+
+
+      </div>
+    </form>
+  </div>
+</div>
+</div> -->
+
+
+
+<!-- <button type="button"  id="g" style="background-color:#328073; position: absolute;bottom: 100px;right: 100px;width:300px;height:80px;" class="btn  "><a id="link" style="text-decoration:none;color:white;font-size:1.8vw;"href="css/setup.exe">Download Software</a></button> -->
+
+<!-- <a id="g"href="https://docs.google.com/uc?export=download&id=1c-LHVk4COsDctG8swEnTpKI0hJAj8V2p"> <button type="button"   style="background-color:#387543; z-index: 1;position: absolute;top:80%;right: 71.5%;width:20%;height:70px;" class="btn g"> <p style="color:white;font-size:1.6vw; padding-top:3%;">Download Software</p> </button></a> -->
+
+
+     <p class="delay"style="font-size: 1.1vw; margin-left: 80%;z-index:-1;font-weight: bold;position:absolute; top:16%;"> Welcome, <span class="span" style="font-size:1.1vw; color:#387543"><%=fname%> <%=lname%></span> </p>
+
+
+
+  </section>
+
+        <!-- <canvas class="background">
+            </canvas> -->
+        <!-- <script>
+            window.
+            onload
+                = function() {
+                    Particles.
+                    init
+                        ({
+                            selector: '.background'
+                        });
+                };
+        </script> -->
+
+
+      <script >
+        var blur=document.getElementById("blur");
+        var mail=document.getElementById("mail");
+        mail.style.display="none";
+        function myfun2()
+        {
+          mail.style.display="block";
+          blur.style.opacity=0.2;
+        }
+        function myfun3()
+        {
+          mail.style.display="none";
+          blur.style.opacity=1.0;
+        }
+      $(document).ready(function() {
+        setTimeout(function() {
+          $("#g").show();
+        }, 2500);
+      });
+
+
+
+    // var x=document.getElementById('g');
+    //   setTimeout(function() {
+    //       x.style.zIndex=0;
+    //   }, 3000);
+
+
+
+      let intro=document.querySelector('.introduction');
+      let logo=document.querySelector('.log-header');
+      let logoSpan=document.querySelectorAll('.log');
+      window.addEventListener('DOMContentLoaded',()=>{
+        setTimeout(()=>{
+          logoSpan.forEach((span,idx)=>{
+            setTimeout(()=>{
+              span.classList.add('active');
+            },(idx+1)*400)
+          });
+          setTimeout(()=>{
+            logoSpan.forEach((span,idx)=>{
+              setTimeout(()=>{
+                span.classList.vwove('active');
+                span.classList.add('fade');
+              },(idx+1)*2000)
             })
-           
-            $('#country').change(function(){
-                getState();
-            });
-           
-            $('#state').change(function(){
-                getCity();
-            });
-            console.log('hello');
+          },2000);
+          setTimeout(()=>{
+            intro.style.top='-100vh';
+          },2300)
         })
-        function getState(auth_token){
-            let country_name='India';
-            $.ajax({
-                type:'get',
-                url:'https://www.universal-tutorial.com/api/states/'+country_name,
-                success:function(data){
-                    
-                    $('#state').empty();
-                    data.forEach(element=>{
-                        $('#state').append( '<option value="'+element.state_name+ '">'+element.state_name+'</option>' );
-                    })
-                    // getCity(auth_token);
-                    console.log('ajax');
-                },
-                error:function(error){
-                    console.log(error);
-                },
-                headers:{
-                    "Authorization": "Bearer " +auth_token,
-                    "Accept": "application/json"
-                }
-
-            })
-        }
+      })
 
 
-        function getCity(){
-            let state_name=$('#state').val();
-            $.ajax({
-                type:'get',
-                url:'https://www.universal-tutorial.com/api/cities/'+state_name,
-                success:function(data){
-                    $('#city').empty();
-                    data.forEach(element=>{
-                        $('#city').append( '<option value="'+element.city_name+ '">'+element.city_name+'</option>' );
-                    })
-                   console.log('ajax');
-                },
-                error:function(error){
-                    console.log(error);
-                },
-                headers:{
-                    "Authorization": "Bearer " +auth_token,
-                    "Accept": "application/json"
-                }
+      </script>
+      
+        <!-- <h1>fklndsjkg</h1> -->
 
-            })
-        }
-    </script>
+
+<div >
+   <a href="javascript:myfubnb2();" > <img src="/css/parent1.png" onclick="myfun2()" id="connect" class="kuch" alt=""></a> 
+
+</div>
+
+       
+      
+      <div class=" footer " >
+        <i class="footer-image fab in fa-instagram fa-2x "></i>
+        <i class="footer-image fab face fa-facebook fa-2x "></i>
+        <i class="footer-image fab tw fa-twitter fa-2x "></i>
+        <i class="footer-image fas mail fa-envelope fa-2x "></i>
+        <p>© Copyright 2022 Lil'Learn</p>
+    </div>
+
+</div>
+
 </body>
+
 </html>
