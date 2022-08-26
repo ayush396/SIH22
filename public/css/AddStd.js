@@ -22,7 +22,7 @@ function displayList() {
     var name=document.getElementById('Idname');
     name.setAttribute("style",'visibility: visible;');
     inp.innerHTML = "";
-    for (var i = 0; i < p.length; i++) {
+    for (var i = 0; i < p.length/2-5; i++) {
         var card = document.createElement("div");
         //card.setAttribute("class", "card");
         var pid = document.createElement("div");

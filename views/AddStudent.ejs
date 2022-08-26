@@ -41,8 +41,8 @@
                     <% }) %>
                  
                  </select>
-                <div id="Idname" style="visibility: hidden;margin-top: -10%;">
-                  <table style="width:80%;">
+                <div id="Idname" style="visibility: hidden;margin-top: -10%; ">
+                  <table style="width:80%; ">
                     <tr>
                       <th style="padding-left:10%;">Student ID</th>
                       <th style="width:50%;">Student Name</th>
@@ -57,9 +57,14 @@
                 <div id="showinput"></div>
 
                 <form action="/add" method="post">
-                  <input type="text" hidden name="student_list" id="sends"/>
-                  <input type="text" hidden name="tid" id="tid"/>
-                  <input type="text" hidden name="classs" id="cls" >
+                 
+                        <input type="text" hidden name="student_list" id="sends"/>
+                    <input type="text" hidden name="tid" id="tid"/>
+                    <input type="text" hidden name="classs" id="cls" >
+                     
+                    
+                
+                  
                   <button type="submit" class="btn btn-primary" style="margin-left: 55%;margin-top:5%; border:none;background-color: #22663b; font-size: 1rem; padding:1.3%; padding-left:3.2%;padding-right:3.2%" onclick="saveChanges()">Save Changes</button>
                 </form>
                 <hr>
