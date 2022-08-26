@@ -78,6 +78,8 @@ const teacherSchema = new mongoose.Schema({
     unique: false
   },
   school:String,
+  city:String,
+  state:String,
   links:[],
   img:
    {
@@ -122,6 +124,8 @@ const userSchema = new mongoose.Schema({
   fname: String,
   lname: String,
   city: String,
+  state:String,
+  school:String,
   dob: String,
   gender: String,
   contact: String,
@@ -147,8 +151,10 @@ const scoreSchema = {
   count: Number,
   email: String,
   score: Number,
-
-
+  school:String,
+  city:String,
+  state:String,
+  studentID:Number,
   January: {
     type: [Number],
     index: true,
@@ -752,12 +758,19 @@ app.post("/officials_login",function(req,res){
       if(!found){
         res.send("No account with these credentials");
       }else{
+        
         if(found.password===req.body.password && oname=="state"){
+          Score.find({state:(found.state)},(err,f)=>{
+            if(!err){
+              
+            }
+          })
           res.render("state",{fname:found.fname,lname:found.lname,idd:found.officialID});
         }else if(found.password===req.body.password && oname=="center"){
           res.render("center",{fname:found.fname,lname:found.lname,idd:found.officialID});
          
         }else{
+          // console.log(found.password);
           res.send("Wrong Password");
         }
       }
@@ -1778,3 +1791,129 @@ app.get("/facts",function(req,res){
     app.listen(process.env.PORT || 3000, function(req, res) {
       console.log("Server is running on ");
     });
+    var t_cit=["Chennai","Madurai","Vellore"];
+    var h_cit=["Panipat","kernal","Hisar"];
+    var p_cit=["Bathinda","Mansa","Amritsar"];
+    var H_city=["Dyal Singh Public School","GD Public School","S.D. Vidya Mandir", "Partap Public School" ,"OPS Vidya Mandir","Nishan Public School","Sant Kabir School","Holy Angel School","DAV Public School"];
+    var P_city=["Oxford Public School","DAV International School","Holy Heart Presidency School","St. Xavier's School","St. Joseph's Convent Senior Secondary School","Delhi Public School","Singhal Stars School","SDKL DAV CENT. SR. SEC. PUBLIC SCHOOL","Alpine Public School"];
+    var T_city=["Jeevana Public School","Queen Meera Public School","Jain Vidyalaya","DOT School of Design","St. Britto's Acadamy","Vidya Mandir School","Shree Jayam School","BMD Jain School","Sunbeam School"];
+    // app.get("/extra",(req,res)=>{
+    //   var i=4000,ii=0;
+    //   while(i<4042){
+    //     if(i%3==0){
+    //       solve(i,P_city[ii]);
+    //       ii++;
+    //     }
+    //     if(ii==9)ii=0;
+    //     i++;
+    //   }
+    //   res.send("hi");
+    // })
+
+    // app.get("/extra",(req,res)=>{
+    //   var p=0,h=0,t=0;
+    //   for(var i=4000;i<4042;i++){
+    //     // if(i%3==1){
+    //     //   solve(i,h_cit[h],"Haryana");
+    //     // }
+    //      if(i%3==2){
+    //       solve(i,t_cit[t],"Tamil Nadu");
+    //     }
+    //     // else{
+    //     //   solve(i,p_cit[p],"Punjab");
+    //     // }
+    //   }
+    // })
+    // function solve(i,c,st){
+      
+    //   Score.updateOne({studentID:i},{$set:{city:c,state:st}},(err,doc)=>{
+    //     if(!err){
+    //       console.log(doc);
+    //     }
+    //   })
+    // }
+
+    // app.get("/extra2",(req,res)=>{
+    //   var list=[];
+    //   var ll=["sukhbirsingh521@gmail.com"];
+    //   Score.find({},(err,found)=>{
+    //     if(!err){
+    //       list=found;
+    //       list.forEach(e=>{
+    //         ll.push(e.email);
+    //       })
+    //      ll.pop();
+    //      ll.pop();
+    //      ll.push("bsingh1_be19@thapar.edu");
+    //      console.log(ll);
+    //      var co=4000;
+    //      ll.forEach(e=>{
+    //       Score.updateOne({email:e},{$set:{studentID:co}},(err,doc)=>{
+    //         if(!err){
+    //           console.log(doc);
+    //         }
+    //       })
+    //       co++;
+    //      })
+    //     }
+    //   })
+      
+    //   res.send("hi");
+    // })
+
+   // app.get("/extra",(req,res)=>{
+     // var j=0;
+      // Teacher.deleteMany({lname:'T0'},(err)=>{
+      //   if(err){
+      //     console.log(err);
+      //   }else{
+      //     console.log(hi);
+      //   }
+      // })
+      //for(var i=8000;i<8012;i++){
+    //     Teacher.create({
+    //       email:"balkar81199@gmail.com",
+    //       password:"12345",
+    //       fname:"Mr",
+
+    //       lname:("T"+j),
+    //       dob:"05/03/1992",
+    //       designation:"Primary Classes",
+    //       teacherID:i,
+    //       classes:['1A','1B','2B','2B','3A','3B']
+    //     },(err,doc)=>{
+    //       if(!err){
+    //         console.log(doc);
+    //       }else{
+    //         console.log(err);
+    //       }
+    //     })
+    //     j++;
+    //   }
+    //   res.send("hi")
+    // })
+  //   Teacher.deleteOne({},(err)=>{
+  //     if(!err){
+  //       res.send("hii");
+  //     }
+  //   })
+  // }})
+
+  //   Teacher.create({
+  //     email:"balkar81199@gmail.com",
+  //     password:"12345",
+  //     fname:"Mr",
+  //     lname:("T"+j),
+  //     dob:"05/03/1992",
+  //     city:"",
+  //     state:"",
+  //     school:"",
+  //     designation:"Primary Classes",
+  //     teacherID:i,
+  //     classes:['1A','1B','2B','2B','3A','3B']
+  //   },(err,doc)=>{
+  //     if(!err){
+  //       console.log(doc);
+  //     }
+  //   })
+  // }})
