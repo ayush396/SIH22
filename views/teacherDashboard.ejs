@@ -332,9 +332,9 @@ font-family: sans-serif;
       </select>
 
       
-      <div style="height: 350px; overflow: auto; margin-top:6%;" data-aos="fade-right" data-aos-duration="2000">
+      <div style="height: 370px; overflow: auto; margin-top:6%;" data-aos="fade-right" data-aos-duration="2000">
 <div class=" container2">
-  <table style="max-height:50px; overflow-y:auto;" class="table table-striped ">
+  <table style="max-height:60px; overflow-y:auto;" class="table table-striped ">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -355,7 +355,7 @@ font-family: sans-serif;
   </div>
 
 
-  <div class="col-md-6 col-lg-6" style="padding-top: 10%; padding-bottom:2%;"data-aos="fade-left" data-aos-duration="2000">
+  <div class="col-md-6 col-lg-6" style="padding-top: 13%; padding-bottom:2%;"data-aos="fade-left" data-aos-duration="2000">
 
     <h1 style="padding-top: 4%;  font-size:2.7rem; color:#287335; padding-left:10%;  padding-right:10%;"data-aos="fade-left" data-aos-duration="2000">Student-Wise LO Grade</h1>
     <div style="padding-right: 3%;">
@@ -377,11 +377,22 @@ font-family: sans-serif;
 <div class="col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="2500">
   <h1 style="  font-size:2.7rem; color:#287335; padding-left:10%;  padding-right:10%;" data-aos="fade-right" data-aos-duration="1500">Tests Performance</h1>
   <div style="padding-right: 3%;">
+
+    </select>
+
   <h4 style="padding-top: 5%; font-weight:100; padding-left:10%; text-align:justify;  padding-right:10%;">On the right side, a comprehensive graph can be observed to learn the details of each student's score per class. The progress of each class can be evaluated.
     The graph provides a thorough assessment of how the chosen class performed in a series of tests. It compares the average scores obtained by students of that class on an examination to all other examinations that have been conducted.</h4>
 </div>
 </div>
 <div class="col-lg-6 col-md-6"  data-aos="fade-left" data-aos-duration="2000">
+  <label class="student" for="" style="color:#033808; font-size:1.5rem;">Select the Class:</label>
+  <select id="classVal" class="student" name="" onchange = "myFunction()" style="margin-bottom: 4%; padding-left:2%; margin-left:2%;padding-bottom:1%; width:10%; height:8%;" >
+   <% cl.forEach(c=>{ %>
+      <option  value="<%= c %>"> <%= c %> </option>
+      <h1><%= c %></h1>
+     <% }) %>
+  
+  </select>
 <canvas id="myChart" class="chart"></canvas>
 </div>
 </div>
@@ -392,25 +403,31 @@ font-family: sans-serif;
   <div class=" row">
   
   <div class="col-lg-6 col-md-6"data-aos="fade-right" data-aos-duration="1500">
-
+     
     <div id="chartContainer" style="height: 370px; width: 95%;" class="chart2">
       <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     </div>
    
   </div>
   <div class="col-lg-6 col-md-6"data-aos="fade-left" data-aos-duration="1500">
-    <h1 style="  font-size:2.7rem; color:#287335; padding-left:5%;  padding-right:10%;" data-aos="fade-right" data-aos-duration="1500">Performance Of Classes</h1>
-    
-    <div style="padding-right: 3%;">
-    <h4 style="padding-top: 5%; font-weight:100; padding-left:5%; text-align:justify;  padding-right:10%;">Your allocated classes and their performance are shown in the graph on the right. From the examinations conducted, the average results for each class are shown. It may be used efficiently to compare classes and determine how much attention should be given to each class.</h4>
-    <label for="" style="margin-left: 10%;">Customize graph</label>
-    <select id="graph_class"  multiple  class="student"   style="margin-bottom: 4%; padding-left:2%; margin-left:2%;padding-bottom:1%; width:12%;" >
+    <h1 style="  font-size:2.7rem; color:#287335; padding-left:5%;  padding-right:10%; margin-top:-3%;" data-aos="fade-right" data-aos-duration="1500">Performance Of Classes</h1>
+    <label for="" style="margin-left: 5%; font-size:1.3rem;">Customize graph</label>
+    <hr>
+    <div style="margin-left: 10%;">
+     
+    <select id="graph_class"  multiple  class="student"   style="margin-bottom: 4%;height:31.5%; padding-left:5%; margin-top:0.5%; margin-left:2%; width:25%;" >
       <% cl.forEach(c=>{ %>
-         <option  value="<%= c %>"> <%= c %> </option>
+         <option  value="<%= c %>"> Class <%= c %> </option>
          <h1><%= c %></h1>
         <% }) %>
      </select>
-     <button type="button" onclick="customize()">Customize</button>
+
+     <button type="button" class ="btn btn-success" onclick="customize()" style="margin-left:5%; margin-top:-11%;">Customize</button>
+    
+    </div>
+    <div style="padding-right: 3%;">
+    <h4 style="padding-top: 5%; font-weight:100; padding-left:5%; text-align:justify;  padding-right:10%;">Your allocated classes and their performance are shown in the graph on the right. From the examinations conducted, the average results for each class are shown. It may be used efficiently to compare classes and determine how much attention should be given to each class.</h4>
+    
     
   </div>
   </div>
